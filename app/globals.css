@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "TheSignature";
+  src: url("../assets/fonts/Thesignature-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #fcfbf9 100%);
+  color: #212020;
+}
+
+body {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+a,
+p,
+h3,
+h4 {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.sketch svg * {
+  fill: none;
+  stroke: #212020;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.sketch .grid line {
+  stroke: rgba(33, 32, 32, 0.06);
+  stroke-width: 1;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  animation: none;
+}
+
+.sketch .guide {
+  stroke: rgba(33, 32, 32, 0.16);
+  stroke-width: 1.1;
+}
+
+.sketch .guide.dashed {
+  stroke-dasharray: 8 10;
+}
+
+.sketch .outline {
+  stroke: #212020;
+  stroke-width: 2.2;
+}
+
+.sketch .detail {
+  stroke: rgba(33, 32, 32, 0.82);
+  stroke-width: 1.35;
+}
+
+.sketch path,
+.sketch line,
+.sketch rect {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2.8s ease forwards;
+}
+
+.project-name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.18rem;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+a:hover .project-name::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  .sketch path,
+  .sketch line,
+  .sketch rect {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
