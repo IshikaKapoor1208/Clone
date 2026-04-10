@@ -40,7 +40,15 @@ body {
 }
 
 body {
+  box-sizing: border-box;
   font-family: "Montserrat", Arial, sans-serif;
+  padding: 0 40px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 a,
@@ -48,6 +56,12 @@ p,
 h3,
 h4 {
   font-family: "Montserrat", Arial, sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "TheSignature", Georgia, serif;
+  font-weight: 400;
 }
 
 .sketch svg * {
@@ -120,5 +134,17 @@ a:hover .project-name::after {
   .sketch rect {
     animation: none;
     stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding: 0;
   }
 }
