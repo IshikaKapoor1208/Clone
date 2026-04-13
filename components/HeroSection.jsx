@@ -267,17 +267,17 @@ export default function HeroSection() {
       />
 
       <motion.div
-        className="relative z-10 flex min-h-screen items-end px-6 pb-8 pt-24 md:justify-end md:px-10 md:items-end md:pb-12"
+        className="relative z-10 flex min-h-screen items-end px-4 pb-8 pt-24 md:items-end md:justify-end md:px-10 md:pb-12 lg:px-20"
         initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 1.45 }}
       >
         <div className="w-full max-w-[58rem] text-left md:ml-auto md:max-w-[42rem] md:translate-y-6 md:text-right">
-          <p className="mb-4 text-[0.72rem] uppercase tracking-[0.34em] text-[rgba(33,32,32,0.55)]">
+          <p className="mb-4 text-[0.68rem] uppercase tracking-[0.24em] text-[rgba(33,32,32,0.55)] md:text-[0.72rem] md:tracking-[0.34em]">
             Architectural Motion Study
           </p>
           <div className="flex md:justify-end">
-            <h1 className="m-0 overflow-visible font-signature text-[clamp(2rem,5vw,4.2rem)] font-normal leading-[0.95] tracking-[0.03em] text-[#212020] whitespace-nowrap">
+            <h1 className="m-0 overflow-visible font-signature text-[2rem] font-normal leading-[0.95] tracking-[0.03em] text-[#212020] md:text-[3.2rem] lg:text-[4.2rem]">
               {prefersReducedMotion
                 ? heroName
                 : heroName.split("").map((character, index) => (

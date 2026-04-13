@@ -42,7 +42,8 @@ body {
 body {
   box-sizing: border-box;
   font-family: "Montserrat", Arial, sans-serif;
-  padding: 0 40px;
+  overflow-x: hidden;
+  padding: 0;
 }
 
 *,
@@ -134,12 +135,6 @@ a:hover .project-name::after {
   .sketch rect {
     animation: none;
     stroke-dashoffset: 0;
-  }
-}
-
-@media (max-width: 1024px) {
-  body {
-    padding: 0 24px;
   }
 }
 
