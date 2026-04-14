@@ -1,5 +1,7 @@
 import HeroSection from "../components/HeroSection";
 import CaseStudySection from "../components/CaseStudySection";
+import Navbar from "../components/Navbar";
+import ProjectIndexSection from "../components/ProjectIndexSection";
 
 const projects = [
   {
@@ -99,82 +101,13 @@ const projects = [
 export default function Page() {
   return (
     <main className="relative overflow-x-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fcfbf9_100%)] text-ink">
-      <header className="sticky top-0 z-50 border-b border-black/8 bg-[rgba(255,255,255,0.86)] backdrop-blur-md">
-        <div className="flex flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-10 lg:px-20">
-          <a href="#top" className="text-[0.72rem] uppercase tracking-[0.26em] text-black/65 md:text-[0.78rem] md:tracking-[0.34em]">
-            GP Architects
-          </a>
-          <nav aria-label="Main" className="flex flex-wrap items-center gap-4 md:gap-8">
-            <a href="#index-section" className="text-[0.78rem] uppercase tracking-[0.24em] text-black/55 transition hover:text-black">
-              Index
-            </a>
-            <a href="#projects-overview" className="text-[0.78rem] uppercase tracking-[0.24em] text-black/55 transition hover:text-black">
-              Projects
-            </a>
-            <a href="#portfolio-footer" className="text-[0.78rem] uppercase tracking-[0.24em] text-black/55 transition hover:text-black">
-              Contact
-            </a>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
       <div id="top">
         <HeroSection />
       </div>
 
-      <section
-        id="index-section"
-        className="relative overflow-hidden bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
-      >
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
-
-        <div className="grid gap-12 md:gap-14 xl:grid-cols-12 xl:gap-16">
-          <div className="xl:col-span-4">
-            <div className="xl:sticky xl:top-24">
-              <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
-                Selected Work
-              </p>
-              <h2 className="mt-4 max-w-[8ch] text-[2.9rem] leading-[0.9] tracking-[0.03em] md:text-[4.4rem] lg:text-[5.4rem] xl:text-[6.4rem]">
-                Project Index
-              </h2>
-              <p className="mt-6 max-w-[24rem] text-sm leading-7 text-black/60 md:text-[0.98rem]">
-                A curated sequence of residential, hospitality, and wellness
-                work presented through drawings, process studies, and spatial
-                narratives.
-              </p>
-            </div>
-          </div>
-
-          <div id="projects-overview" className="xl:col-span-7 xl:col-start-6">
-            <nav aria-label="Projects" className="border-t border-[rgba(33,32,32,0.14)]">
-              {projects.map((project) => (
-                <a
-                  key={project.id}
-                  href={`#${project.id}`}
-                  className="grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-200 hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)]"
-                >
-                  <span className="text-[0.82rem] uppercase tracking-[0.18em] text-[rgba(33,32,32,0.58)]">
-                    {project.number}
-                  </span>
-
-                  <span className="grid gap-2">
-                    <h3 className="project-name relative m-0 w-fit text-xl font-medium leading-[1.1] md:text-2xl lg:text-[1.95rem]">
-                      {project.title}
-                    </h3>
-                    <p className="m-0 max-w-[56ch] text-sm leading-[1.7] text-[rgba(33,32,32,0.62)] md:text-[0.97rem]">
-                      {project.description}
-                    </p>
-                  </span>
-
-                  <span className="break-words text-[0.76rem] uppercase tracking-[0.16em] text-[rgba(33,32,32,0.58)] md:text-[0.82rem] md:tracking-[0.18em]">
-                    {project.meta}
-                  </span>
-                </a>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </section>
+      <ProjectIndexSection projects={projects} />
 
       {projects.map((project, index) => (
         <CaseStudySection
@@ -197,27 +130,29 @@ export default function Page() {
 
       <footer
         id="portfolio-footer"
-        className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-4 py-16 md:px-10 md:py-20 lg:px-20"
+        className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-4 py-10 md:px-10 md:py-12 lg:px-20"
       >
-        <div className="grid gap-10 md:grid-cols-2 md:items-end">
-          <div className="space-y-4">
-            <p className="text-[0.76rem] uppercase tracking-[0.3em] text-black/48">
+        <div className="grid gap-6 md:grid-cols-2 md:items-end">
+          <div className="space-y-3">
+            <p className="text-[0.68rem] uppercase tracking-[0.26em] text-black/48">
               Gaurav Patharey Architects
             </p>
-            <h2 className="max-w-[8ch] text-[2.7rem] leading-[0.92] tracking-[0.03em] md:text-[4rem] lg:text-[5.4rem]">
-              Calm spaces, drawn with precision.
+            <h2 className="max-w-[8ch] text-[2.2rem] leading-[0.92] tracking-[0.03em] md:text-[3rem] lg:text-[4rem]">
+              <span className="block whitespace-nowrap">Calm spaces,</span>
+              <span className="block">drawn</span>
+              <span className="block whitespace-nowrap">with precision.</span>
             </h2>
           </div>
 
-          <div className="grid gap-3 md:justify-items-end">
-            <p className="max-w-[30rem] text-sm leading-7 text-black/62 md:text-right md:text-[0.98rem]">
+          <div className="grid gap-2 md:justify-items-end">
+            <p className="max-w-[28rem] text-sm leading-6 text-black/62 md:text-right md:text-[0.9rem]">
               Residential, hospitality, and wellness environments shaped through
               thoughtful planning, restrained material language, and architectural
               clarity.
             </p>
             <a
               href="mailto:studio@example.com"
-              className="text-[0.8rem] uppercase tracking-[0.26em] text-black/58 transition hover:text-black"
+              className="text-[0.72rem] uppercase tracking-[0.22em] text-black/58 transition hover:text-black"
             >
               studio@example.com
             </a>

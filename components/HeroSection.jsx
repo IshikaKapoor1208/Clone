@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import { motion, useReducedMotion } from "framer-motion";
+import useSectionReveal from "./useSectionReveal";
 
 const houseLines = [
   {
@@ -137,35 +140,109 @@ const draftingLines = [
 
 export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
-  const [settled, setSettled] = useState(prefersReducedMotion);
-  const heroName = "Gaurav Patharey Architects";
+  const { sectionRef, revealClassName } = useSectionReveal();
+  const heroSketchRef = useRef(null);
+  const headingRef = useRef(null);
+  const hasAnimatedHeading = useRef(false);
+  const hasAnimatedHeroSketch = useRef(false);
+  const heroName = "Gaurav Datharey Architects";
+  const heroNameCharacters = [...heroName];
 
   useEffect(() => {
-    if (prefersReducedMotion) {
+    if (!headingRef.current || hasAnimatedHeading.current) {
       return undefined;
     }
 
-    const timer = window.setTimeout(() => {
-      setSettled(true);
-    }, 2200);
+    hasAnimatedHeading.current = true;
 
-    return () => window.clearTimeout(timer);
+    const context = gsap.context(() => {
+      const characters = gsap.utils.toArray(".hero-heading-character");
+
+      if (prefersReducedMotion) {
+        gsap.set(characters, { opacity: 1, scaleX: 1 });
+        return;
+      }
+
+      gsap.fromTo(
+        characters,
+        { opacity: 0, scaleX: 0 },
+        {
+          opacity: 1,
+          scaleX: 1,
+          transformOrigin: "center center",
+          duration: 0.4,
+          ease: "power2.out",
+          delay: 1.45,
+          stagger: {
+            each: 0.04,
+            from: "edges"
+          }
+        }
+      );
+    }, headingRef);
+
+    return () => context.revert();
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    if (!heroSketchRef.current || hasAnimatedHeroSketch.current) {
+      return undefined;
+    }
+
+    const context = gsap.context(() => {
+      if (prefersReducedMotion) {
+        gsap.set(heroSketchRef.current, { scale: 1, opacity: 1 });
+        return;
+      }
+
+      const animation = gsap.fromTo(
+        heroSketchRef.current,
+        { scale: 3, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power4.out",
+          delay: 0.35
+        }
+      );
+
+      return () => animation.kill();
+    }, heroSketchRef);
+
+    hasAnimatedHeroSketch.current = true;
+
+    return () => {
+      context.revert();
+      hasAnimatedHeroSketch.current = false;
+    };
   }, [prefersReducedMotion]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f7f4ee]">
+    <section
+      ref={sectionRef}
+      className={`relative min-h-screen overflow-hidden bg-[#f7f4ee] ${revealClassName}`}
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,0,0,0.05),transparent_32%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.68))]" />
 
-      <motion.div
-        className="absolute inset-0"
-        initial={prefersReducedMotion ? false : { scale: 1.08, x: "-4%", y: "-2%" }}
-        animate={settled ? { scale: 1, x: 0, y: 0 } : { scale: 1.08, x: "-4%", y: "-2%" }}
-        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <div className="absolute left-4 top-1/2 h-[62vh] w-[76vw] -translate-y-1/2 md:left-10 md:h-[68vh] md:w-[54vw] lg:left-20 lg:w-[48vw]">
+        <div
+          ref={heroSketchRef}
+          className="absolute inset-0 opacity-0"
+        >
+          <Image
+            src="/sketch-3.webp"
+            alt="Minimal architectural perspective sketch of a modern residence"
+            fill
+            priority
+            sizes="100vw"
+            className="object-contain object-center grayscale"
+          />
+        </div>
         <svg
           viewBox="0 0 1800 1200"
-          className="absolute left-1/2 top-1/2 h-[130vh] w-[130vw] -translate-x-1/2 -translate-y-1/2 md:h-[118vh] md:w-[118vw]"
+          className="hidden"
           fill="none"
           aria-label="Architectural line sketch forming a house"
         >
@@ -257,7 +334,7 @@ export default function HeroSection() {
             />
           </motion.g>
         </svg>
-      </motion.div>
+      </div>
 
       <motion.div
         className="absolute inset-x-0 bottom-0 h-[48svh] bg-[linear-gradient(180deg,rgba(247,244,238,0)_0%,rgba(247,244,238,0.86)_48%,#f7f4ee_100%)] md:right-0 md:left-auto md:h-full md:w-[44%] md:bg-[linear-gradient(90deg,rgba(247,244,238,0)_0%,rgba(247,244,238,0.9)_26%,#f7f4ee_100%)]"
@@ -277,23 +354,18 @@ export default function HeroSection() {
             Architectural Motion Study
           </p>
           <div className="flex md:justify-end">
-            <h1 className="m-0 overflow-visible font-signature text-[2rem] font-normal leading-[0.95] tracking-[0.03em] text-[#212020] md:text-[3.2rem] lg:text-[4.2rem]">
-              {prefersReducedMotion
-                ? heroName
-                : heroName.split("").map((character, index) => (
-                    <motion.span
-                      key={`${character}-${index}`}
-                      className="inline-block"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: settled ? 1 : 0 }}
-                      transition={{
-                        duration: 0.02,
-                        delay: settled ? 1.45 + (index / heroName.length) * 0.5 : 0
-                      }}
-                    >
-                      {character === " " ? "\u00A0" : character}
-                    </motion.span>
-                  ))}
+            <h1
+              ref={headingRef}
+              className="m-0 overflow-visible font-signature text-[2rem] font-normal leading-[0.95] tracking-[0.03em] text-[#212020] md:text-[3.2rem] lg:text-[4.2rem]"
+            >
+              {heroNameCharacters.map((character, index) => (
+                <span
+                  key={`${character}-${index}`}
+                  className="hero-heading-character inline-block opacity-0"
+                >
+                  {character === " " ? "\u00A0" : character}
+                </span>
+              ))}
             </h1>
           </div>
           <p className="mt-5 max-w-[34rem] text-sm leading-7 text-[rgba(33,32,32,0.7)] md:ml-auto md:text-[0.98rem]">

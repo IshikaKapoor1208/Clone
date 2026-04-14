@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import useSectionReveal from "./useSectionReveal";
 
 export default function CaseStudySection({
   id,
@@ -15,58 +16,42 @@ export default function CaseStudySection({
   imageSrc,
   imageAlt,
   imagePriority = false,
-  watermark,
-  reverse = false
+  watermark
 }) {
   const prefersReducedMotion = useReducedMotion();
-
-  const sectionTransition = prefersReducedMotion
-    ? {}
-    : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
+  const { sectionRef, revealClassName } = useSectionReveal();
 
   const itemTransition = prefersReducedMotion
     ? {}
     : { duration: 0.72, ease: [0.22, 1, 0.36, 1] };
 
-  const sectionInitial = prefersReducedMotion ? false : { opacity: 0, y: 40 };
-  const textInitial = prefersReducedMotion
-    ? false
-    : { opacity: 0, x: reverse ? 28 : -28 };
-  const imageInitial = prefersReducedMotion
-    ? false
-    : { opacity: 0, x: reverse ? -28 : 28 };
-  const mediaInitial = prefersReducedMotion ? false : { opacity: 0, scale: 1.03 };
+  const textInitial = prefersReducedMotion ? false : { opacity: 0, y: 22 };
 
   return (
     <motion.section
+      ref={sectionRef}
       id={id}
-      className={`relative overflow-hidden px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28 ${backgroundClassName}`}
-      initial={sectionInitial}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={sectionTransition}
+      className={`relative overflow-hidden px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28 ${backgroundClassName} ${revealClassName}`}
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[16%] border-r border-black/6 bg-[linear-gradient(90deg,rgba(255,255,255,0.9),rgba(255,255,255,0))] xl:block" />
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[22%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:38px_38px] opacity-40 xl:block" />
 
-      <div className="grid min-h-[calc(100svh-5rem)] grid-cols-1 gap-10 md:gap-12 xl:grid-cols-12 xl:gap-16">
+      <div className="grid min-h-[calc(100svh-5rem)] grid-cols-1 gap-10 md:gap-12 xl:grid-cols-[55fr_45fr] xl:gap-16">
         <motion.div
-          className={`relative min-w-0 ${
-            reverse ? "xl:col-span-4 xl:col-start-8" : "xl:col-span-4 xl:col-start-1"
-          }`}
+          className="relative min-w-0"
           initial={textInitial}
-          whileInView={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={itemTransition}
+          transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.28 }}
         >
           <div className="xl:sticky xl:top-24">
-            <div className="max-w-[30rem] space-y-6 md:space-y-7">
+            <div className="max-w-[38rem] space-y-6 md:space-y-7">
               <motion.p
                 className="text-[0.68rem] uppercase tracking-[0.24em] text-[#6a645e] md:text-[0.72rem] md:tracking-[0.34em]"
                 initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={itemTransition}
+                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.34 }}
               >
                 Project {number}
               </motion.p>
@@ -76,7 +61,7 @@ export default function CaseStudySection({
                 initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
-                transition={itemTransition}
+                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.4 }}
               >
                 <div className="flex items-center gap-3">
                   <span className="text-[0.76rem] uppercase tracking-[0.18em] text-black/40 md:text-[0.82rem] md:tracking-[0.24em]">
@@ -99,7 +84,7 @@ export default function CaseStudySection({
                 initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
-                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.05 }}
+                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.46 }}
               >
                 {meta}
               </motion.p>
@@ -109,7 +94,7 @@ export default function CaseStudySection({
                 initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.1 }}
+                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.52 }}
               >
                 {paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
@@ -120,23 +105,11 @@ export default function CaseStudySection({
         </motion.div>
 
         <motion.div
-          className={`relative min-w-0 ${
-            reverse
-              ? "xl:col-span-7 xl:col-start-1 xl:row-start-1"
-              : "xl:col-span-7 xl:col-start-6"
-          }`}
-          initial={imageInitial}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={itemTransition}
+          className="relative min-w-0"
         >
           <div className="relative overflow-hidden border border-black/8 bg-[#f5f2ec] shadow-[0_30px_70px_rgba(33,32,32,0.08)]">
             <motion.div
               className="border-b border-black/10 px-4 py-4 text-[0.68rem] uppercase tracking-[0.16em] text-[#5d5751] md:px-8 md:py-5 md:text-[0.72rem] md:tracking-[0.22em] xl:px-10"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.06 }}
             >
               <div className="grid gap-3 md:grid-cols-3">
                 {tags.map((tag) => (
@@ -147,10 +120,6 @@ export default function CaseStudySection({
 
             <motion.div
               className="relative aspect-[4/4.7] w-full overflow-hidden md:aspect-[4/3.1]"
-              initial={mediaInitial}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.28 }}
-              transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.12 }}
             >
               <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(0deg,rgba(255,255,255,0.28),rgba(255,255,255,0.06))]" />
               <Image

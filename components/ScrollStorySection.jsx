@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import useSectionReveal from "./useSectionReveal";
 
 const storyFrames = [
   {
@@ -29,9 +30,13 @@ const storyFrames = [
 
 export default function ScrollStorySection() {
   const prefersReducedMotion = useReducedMotion();
+  const { sectionRef, revealClassName } = useSectionReveal();
 
   return (
-    <section className="relative overflow-hidden bg-[#fbfaf7] px-4 py-16 text-[#212020] md:px-10 md:py-0 lg:px-20">
+    <section
+      ref={sectionRef}
+      className={`relative overflow-hidden bg-[#fbfaf7] px-4 py-16 text-[#212020] md:px-10 md:py-0 lg:px-20 ${revealClassName}`}
+    >
       <div className="grid gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
         <div className="md:sticky md:top-24 md:flex md:h-[calc(100vh-6rem)] md:items-center">
           <div className="max-w-[34rem] space-y-6">
