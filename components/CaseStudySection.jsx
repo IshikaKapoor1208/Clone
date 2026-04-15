@@ -1,13 +1,15 @@
 "use client";
 
+import { useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import useSectionReveal from "./useSectionReveal";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CaseStudySection({
   id,
   number,
-  backgroundClassName,
   title,
   subtitle,
   meta,
@@ -16,124 +18,183 @@ export default function CaseStudySection({
   imageSrc,
   imageAlt,
   imagePriority = false,
-  watermark
+  stackIndex = 0
 }) {
-  const prefersReducedMotion = useReducedMotion();
-  const { sectionRef, revealClassName } = useSectionReveal();
+  const sectionRef = useRef(null);
+  const imageFrameRef = useRef(null);
+  const revealMaskRef = useRef(null);
 
-  const itemTransition = prefersReducedMotion
-    ? {}
-    : { duration: 0.72, ease: [0.22, 1, 0.36, 1] };
+  const summaryParagraphs = useMemo(() => paragraphs.slice(0, 1), [paragraphs]);
 
-  const textInitial = prefersReducedMotion ? false : { opacity: 0, y: 22 };
+  useEffect(() => {
+    const section = sectionRef.current;
+    const imageFrame = imageFrameRef.current;
+    const revealMask = revealMaskRef.current;
+    const image = imageFrame?.querySelector("img");
+
+    if (!section || !imageFrame || !revealMask || !image) {
+      return undefined;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      gsap.set([image, revealMask], { clearProps: "all" });
+      return undefined;
+    }
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      const context = gsap.context(() => {
+        gsap.set(revealMask, {
+          scaleY: 1,
+          transformOrigin: "top center",
+          willChange: "transform"
+        });
+
+        gsap.set(image, {
+          scale: 1.08,
+          objectPosition: "50% 58%",
+          transformOrigin: "center center",
+          willChange: "transform, object-position"
+        });
+
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 74%",
+            end: "top 20%",
+            scrub: true
+          }
+        })
+          .to(
+            revealMask,
+            {
+              scaleY: 0,
+              ease: "none",
+              duration: 1
+            },
+            0
+          )
+          .to(
+            image,
+            {
+              scale: 1,
+              objectPosition: "50% 44%",
+              ease: "none",
+              duration: 1
+            },
+            0
+          )
+          .to(
+            imageFrame,
+            {
+              boxShadow: "0 34px 80px rgba(33,32,32,0.12)",
+              ease: "none",
+              duration: 0.6
+            },
+            0
+          );
+
+      }, section);
+
+      return () => context.revert();
+    });
+
+    mm.add("(max-width: 1023px)", () => {
+      const context = gsap.context(() => {
+        gsap.set(revealMask, {
+          scaleY: 0,
+          clearProps: "transform-origin,will-change"
+        });
+        gsap.set(image, {
+          scale: 1,
+          objectPosition: "50% 50%",
+          clearProps: "will-change"
+        });
+      }, section);
+
+      return () => context.revert();
+    });
+
+    return () => mm.revert();
+  }, []);
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       id={id}
-      className={`relative overflow-hidden px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28 ${backgroundClassName} ${revealClassName}`}
+      className="relative border-t border-black/8 bg-white px-4 py-14 md:sticky md:top-0 md:min-h-[130vh] md:px-10 md:py-0 lg:min-h-[140vh] lg:px-16"
+      style={{ zIndex: 30 + stackIndex }}
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[16%] border-r border-black/6 bg-[linear-gradient(90deg,rgba(255,255,255,0.9),rgba(255,255,255,0))] xl:block" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[22%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:38px_38px] opacity-40 xl:block" />
+      <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="grid min-h-[calc(100svh-5rem)] grid-cols-1 gap-10 md:gap-12 xl:grid-cols-[55fr_45fr] xl:gap-16">
-        <motion.div
-          className="relative min-w-0"
-          initial={textInitial}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.28 }}
-        >
-          <div className="xl:sticky xl:top-24">
-            <div className="max-w-[38rem] space-y-6 md:space-y-7">
-              <motion.p
-                className="text-[0.68rem] uppercase tracking-[0.24em] text-[#6a645e] md:text-[0.72rem] md:tracking-[0.34em]"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.34 }}
-              >
-                Project {number}
-              </motion.p>
-
-              <motion.div
-                className="space-y-4"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.4 }}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-[0.76rem] uppercase tracking-[0.18em] text-black/40 md:text-[0.82rem] md:tracking-[0.24em]">
-                    {watermark}
-                  </span>
-                  <span className="h-px flex-1 bg-black/10" />
-                </div>
-
-                <h2 className="max-w-[7ch] text-[3.1rem] leading-[0.84] tracking-[0.02em] text-[#1f1d1b] md:text-[4.8rem] lg:text-[5.6rem] xl:text-[6.4rem]">
+      <div className="relative mx-auto grid max-w-[96rem] grid-cols-1 gap-10 py-14 md:h-screen md:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12 lg:py-20">
+        <div>
+          <div>
+            <div className="max-w-[33rem] space-y-6">
+              <div className="space-y-3">
+                <p className="text-[0.7rem] uppercase tracking-[0.24em] text-black/52">
+                  Project {number}
+                </p>
+                <h2 className="text-[2.6rem] leading-[0.9] tracking-[0.02em] text-[#1f1d1b] md:text-[4rem] lg:text-[5rem]">
                   {title}
                 </h2>
-
-                <p className="max-w-[24rem] text-base font-medium tracking-[0.08em] text-[#4f4a45] md:text-xl">
+                <p className="text-base tracking-[0.04em] text-black/62 md:text-lg">
                   {subtitle}
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.p
-                className="max-w-[28rem] text-xs uppercase leading-6 tracking-[0.18em] text-[#6a645e] md:text-sm md:tracking-[0.24em]"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.46 }}
-              >
+              <p className="text-[0.72rem] uppercase tracking-[0.2em] text-black/46 md:text-[0.76rem]">
                 {meta}
-              </motion.p>
+              </p>
 
-              <motion.div
-                className="space-y-5 text-sm leading-7 text-[#3f3a35] md:space-y-6 md:leading-8 md:text-[0.98rem]"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ ...itemTransition, delay: prefersReducedMotion ? 0 : 0.52 }}
-              >
-                {paragraphs.map((paragraph) => (
+              <div className="space-y-4 text-[0.96rem] leading-8 text-black/68">
+                {summaryParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
+              </div>
 
-        <motion.div
-          className="relative min-w-0"
-        >
-          <div className="relative overflow-hidden border border-black/8 bg-[#f5f2ec] shadow-[0_30px_70px_rgba(33,32,32,0.08)]">
-            <motion.div
-              className="border-b border-black/10 px-4 py-4 text-[0.68rem] uppercase tracking-[0.16em] text-[#5d5751] md:px-8 md:py-5 md:text-[0.72rem] md:tracking-[0.22em] xl:px-10"
-            >
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="flex flex-wrap gap-2 pt-1">
                 {tags.map((tag) => (
-                  <p key={tag} className="break-words">{tag}</p>
+                  <span
+                    key={tag}
+                    className="border border-black/14 px-3 py-1 text-[0.64rem] uppercase tracking-[0.15em] text-black/55"
+                  >
+                    {tag}
+                  </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
+          </div>
+        </div>
 
-            <motion.div
-              className="relative aspect-[4/4.7] w-full overflow-hidden md:aspect-[4/3.1]"
-            >
-              <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(0deg,rgba(255,255,255,0.28),rgba(255,255,255,0.06))]" />
+        <div className="md:h-full">
+          <div
+            ref={imageFrameRef}
+            className="relative overflow-hidden border border-black/10 bg-white shadow-[0_18px_48px_rgba(33,32,32,0.08)]"
+          >
+            <div className="relative aspect-[4/4.8] w-full overflow-hidden md:aspect-[16/10] lg:aspect-[4/5] xl:aspect-[16/10]">
               <Image
                 src={imageSrc}
                 alt={imageAlt}
                 fill
                 priority={imagePriority}
-                sizes="(max-width: 1279px) 100vw, 58vw"
+                sizes="(max-width: 1023px) 100vw, 56vw"
                 className="h-auto w-full object-cover object-center grayscale"
               />
-            </motion.div>
+              <div
+                ref={revealMaskRef}
+                className="pointer-events-none absolute inset-0 z-20 origin-top scale-y-0 bg-white"
+              />
+              <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.2))]" />
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

@@ -30,7 +30,7 @@ export default function Navbar() {
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           onClick={() => setIsOpen((current) => !current)}
-          className="group grid h-12 w-12 place-items-center border border-black/10 bg-white/80 backdrop-blur-md transition duration-300 hover:bg-white"
+          className="group grid h-12 w-12 place-items-center border border-black/10 bg-white/96 backdrop-blur-md transition duration-300 hover:bg-white"
         >
           <span className="grid w-6 gap-1.5">
             <span
@@ -53,7 +53,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-0 z-[60] overflow-y-auto bg-[#fbfaf7] px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${
+        className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${
           isOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"

@@ -1,5 +1,5 @@
 import HeroSection from "../components/HeroSection";
-import CaseStudySection from "../components/CaseStudySection";
+import CaseStudiesStickySection from "../components/CaseStudiesStickySection";
 import Navbar from "../components/Navbar";
 import ProjectIndexSection from "../components/ProjectIndexSection";
 
@@ -109,24 +109,7 @@ export default function Page() {
 
       <ProjectIndexSection projects={projects} />
 
-      {projects.map((project, index) => (
-        <CaseStudySection
-          key={project.id}
-          id={project.id}
-          number={project.number}
-          title={project.title}
-          subtitle={project.subtitle}
-          meta={project.meta}
-          paragraphs={project.paragraphs}
-          tags={project.tags}
-          imageSrc={project.imageSrc}
-          imageAlt={project.imageAlt}
-          imagePriority={project.imagePriority}
-          backgroundClassName={project.backgroundClassName}
-          watermark={project.number}
-          reverse={index % 2 === 1}
-        />
-      ))}
+      <CaseStudiesStickySection projects={projects} />
 
       <footer
         id="portfolio-footer"

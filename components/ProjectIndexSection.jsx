@@ -1,15 +1,62 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import useSectionReveal from "./useSectionReveal";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectIndexSection({ projects }) {
   const itemRefs = useRef([]);
-  const { sectionRef, revealClassName } = useSectionReveal();
+  const sectionRef = useRef(null);
+  const introPinRef = useRef(null);
+  const listRef = useRef(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
   const [revealedProjectIds, setRevealedProjectIds] = useState(
     projects[0]?.id ? [projects[0].id] : []
   );
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return undefined;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      gsap.set(section, { clearProps: "all" });
+      return undefined;
+    }
+
+    const context = gsap.context(() => {
+      gsap.set(section, {
+        yPercent: 14,
+        opacity: 0.98,
+        willChange: "transform"
+      });
+
+      const tween = gsap.to(section, {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.95,
+        ease: "power3.out",
+        paused: true
+      });
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top bottom-=10%",
+        once: true,
+        onEnter: () => tween.play()
+      });
+    }, section);
+
+    return () => context.revert();
+  }, []);
 
   useEffect(() => {
     if (!projects.length) {
@@ -73,17 +120,49 @@ export default function ProjectIndexSection({ projects }) {
     };
   }, [projects]);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const introPin = introPinRef.current;
+    const list = listRef.current;
+    const pinEndItem =
+      itemRefs.current[Math.min(2, Math.max(projects.length - 1, 0))] ?? null;
+
+    if (!section || !introPin || !list || !pinEndItem) {
+      return undefined;
+    }
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      const context = gsap.context(() => {
+        ScrollTrigger.create({
+          trigger: list,
+          start: "top top+=96",
+          endTrigger: pinEndItem,
+          end: "bottom top+=140",
+          pin: introPin,
+          pinSpacing: false,
+          invalidateOnRefresh: true
+        });
+      }, section);
+
+      return () => context.revert();
+    });
+
+    return () => mm.revert();
+  }, [projects.length]);
+
   return (
     <section
       ref={sectionRef}
       id="index-section"
-      className={`relative overflow-hidden bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28 ${revealClassName}`}
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
     >
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
 
       <div className="grid gap-12 md:gap-14 xl:grid-cols-12 xl:gap-16">
         <div className="xl:col-span-4">
-          <div className="xl:sticky xl:top-24">
+          <div ref={introPinRef}>
             <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>
@@ -98,7 +177,11 @@ export default function ProjectIndexSection({ projects }) {
           </div>
         </div>
 
-        <div id="projects-overview" className="xl:col-span-7 xl:col-start-6">
+        <div
+          id="projects-overview"
+          ref={listRef}
+          className="xl:col-span-7 xl:col-start-6"
+        >
           <nav aria-label="Projects" className="border-t border-[rgba(33,32,32,0.14)]">
             {projects.map((project, index) => {
               const isActive = activeProjectId === project.id;
