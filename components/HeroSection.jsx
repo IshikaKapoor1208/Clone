@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { motion, useReducedMotion } from "framer-motion";
@@ -138,15 +137,46 @@ const draftingLines = [
   "M1240 860 L1760 620"
 ];
 
+const HERO_VIDEO_PLAYBACK_RATE = 1.45;
+const HERO_ENTRY_DELAY = 0.06;
+const HERO_MEDIA_ENTRY_DURATION = 0.72;
+const HERO_MEDIA_HOLD_DURATION = 0.55;
+const HERO_MEDIA_SETTLE_DURATION = 0.98;
+const HERO_CONTENT_DELAY =
+  HERO_ENTRY_DELAY + HERO_MEDIA_ENTRY_DURATION + HERO_MEDIA_HOLD_DURATION + 0.18;
+
 export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
   const { sectionRef, revealClassName } = useSectionReveal();
-  const heroSketchRef = useRef(null);
+  const heroMediaWrapperRef = useRef(null);
+  const heroMediaFrameRef = useRef(null);
+  const heroVideoRef = useRef(null);
   const headingRef = useRef(null);
   const hasAnimatedHeading = useRef(false);
-  const hasAnimatedHeroSketch = useRef(false);
+  const hasAnimatedHeroMedia = useRef(false);
   const heroName = "Gaurav Datharey Architects";
   const heroNameCharacters = [...heroName];
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+
+    if (!video) {
+      return undefined;
+    }
+
+    const applyPlaybackRate = () => {
+      video.playbackRate = HERO_VIDEO_PLAYBACK_RATE;
+    };
+
+    applyPlaybackRate();
+    video.addEventListener("loadedmetadata", applyPlaybackRate);
+    video.addEventListener("play", applyPlaybackRate);
+
+    return () => {
+      video.removeEventListener("loadedmetadata", applyPlaybackRate);
+      video.removeEventListener("play", applyPlaybackRate);
+    };
+  }, []);
 
   useEffect(() => {
     if (!headingRef.current || hasAnimatedHeading.current) {
@@ -172,7 +202,7 @@ export default function HeroSection() {
           transformOrigin: "center center",
           duration: 0.4,
           ease: "power2.out",
-          delay: 1.45,
+          delay: HERO_CONTENT_DELAY,
           stagger: {
             each: 0.04,
             from: "edges"
@@ -185,38 +215,98 @@ export default function HeroSection() {
   }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (!heroSketchRef.current || hasAnimatedHeroSketch.current) {
+    if (
+      !heroMediaWrapperRef.current ||
+      !heroMediaFrameRef.current ||
+      hasAnimatedHeroMedia.current
+    ) {
       return undefined;
     }
 
     const context = gsap.context(() => {
+      const wrapper = heroMediaWrapperRef.current;
+      const frame = heroMediaFrameRef.current;
+
       if (prefersReducedMotion) {
-        gsap.set(heroSketchRef.current, { scale: 1, opacity: 1 });
+        gsap.set(wrapper, {
+          x: 0,
+          y: 0,
+          scale: 1,
+          opacity: 1
+        });
+        gsap.set(frame, {
+          borderRadius: "1.35rem",
+          borderColor: "rgba(33,32,32,0.12)",
+          boxShadow: "0 30px 80px rgba(33,32,32,0.14)"
+        });
         return;
       }
 
-      const animation = gsap.fromTo(
-        heroSketchRef.current,
-        { scale: 3, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 1.2,
-          ease: "power4.out",
-          delay: 0.35
-        }
+      const bounds = wrapper.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const scale = Math.max(
+        viewportWidth / Math.max(bounds.width, 1),
+        viewportHeight / Math.max(bounds.height, 1)
       );
+      const x = viewportWidth / 2 - (bounds.left + bounds.width / 2);
+      const y = viewportHeight / 2 - (bounds.top + bounds.height / 2);
 
-      return () => animation.kill();
-    }, heroSketchRef);
+      gsap.set(wrapper, {
+        x,
+        y,
+        scale: scale * 1.03,
+        opacity: 0,
+        transformOrigin: "center center"
+      });
+      gsap.set(frame, {
+        borderRadius: "0rem",
+        borderColor: "rgba(33,32,32,0)",
+        boxShadow: "0 0 0 rgba(33,32,32,0)"
+      });
 
-    hasAnimatedHeroSketch.current = true;
+      const timeline = gsap.timeline({ delay: HERO_ENTRY_DELAY });
+
+      timeline
+        .to(wrapper, {
+          opacity: 1,
+          duration: HERO_MEDIA_ENTRY_DURATION,
+          ease: "power2.out"
+        })
+        .to({}, { duration: HERO_MEDIA_HOLD_DURATION })
+        .to(
+          wrapper,
+          {
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: HERO_MEDIA_SETTLE_DURATION,
+            ease: "power3.inOut"
+          },
+          "settle"
+        )
+        .to(
+          frame,
+          {
+            borderRadius: "1.35rem",
+            borderColor: "rgba(33,32,32,0.12)",
+            boxShadow: "0 30px 80px rgba(33,32,32,0.14)",
+            duration: HERO_MEDIA_SETTLE_DURATION,
+            ease: "power3.inOut"
+          },
+          "settle"
+        );
+
+      return () => timeline.kill();
+    }, sectionRef);
+
+    hasAnimatedHeroMedia.current = true;
 
     return () => {
       context.revert();
-      hasAnimatedHeroSketch.current = false;
+      hasAnimatedHeroMedia.current = false;
     };
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, sectionRef]);
 
   return (
     <section
@@ -224,21 +314,31 @@ export default function HeroSection() {
       className={`relative min-h-screen overflow-hidden bg-[#f7f4ee] ${revealClassName}`}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,0,0,0.05),transparent_32%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.68))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.58))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_58%,rgba(247,244,238,0.82),rgba(247,244,238,0.26)_34%,rgba(247,244,238,0)_58%)]" />
 
-      <div className="absolute left-4 top-1/2 h-[62vh] w-[76vw] -translate-y-1/2 md:left-10 md:h-[68vh] md:w-[54vw] lg:left-20 lg:w-[48vw]">
+      <div className="absolute left-1/2 top-1/2 h-[68svh] w-[calc(100vw-2rem)] max-w-[58rem] -translate-x-1/2 -translate-y-1/2 md:left-10 md:h-[70vh] md:w-[62vw] md:max-w-none md:-translate-x-0 lg:left-16 lg:w-[58vw] xl:left-20 xl:w-[54vw]">
         <div
-          ref={heroSketchRef}
-          className="absolute inset-0 opacity-0"
+          ref={heroMediaWrapperRef}
+          className="absolute inset-0 opacity-0 will-change-transform"
         >
-          <Image
-            src="/sketch-3.webp"
-            alt="Minimal architectural perspective sketch of a modern residence"
-            fill
-            priority
-            sizes="100vw"
-            className="object-contain object-center grayscale"
-          />
+          <div
+            ref={heroMediaFrameRef}
+            className="relative h-full w-full overflow-hidden border border-transparent bg-[#f5f2ec]"
+          >
+            <video
+              ref={heroVideoRef}
+              className="h-full w-full object-cover object-center grayscale"
+              src="/vid3.mp4"
+              poster="/vid3-poster.jpg"
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(247,244,238,0.28)),radial-gradient(circle_at_72%_34%,rgba(255,255,255,0.36),rgba(255,255,255,0)_42%)]" />
+          </div>
         </div>
         <svg
           viewBox="0 0 1800 1200"
@@ -340,14 +440,14 @@ export default function HeroSection() {
         className="absolute inset-x-0 bottom-0 h-[48svh] bg-[linear-gradient(180deg,rgba(247,244,238,0)_0%,rgba(247,244,238,0.86)_48%,#f7f4ee_100%)] md:right-0 md:left-auto md:h-full md:w-[44%] md:bg-[linear-gradient(90deg,rgba(247,244,238,0)_0%,rgba(247,244,238,0.9)_26%,#f7f4ee_100%)]"
         initial={prefersReducedMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 1.4 }}
+        transition={{ duration: 0.7, delay: HERO_CONTENT_DELAY }}
       />
 
       <motion.div
         className="relative z-10 flex min-h-screen items-end px-4 pb-8 pt-24 md:items-end md:justify-end md:px-10 md:pb-12 lg:px-20"
         initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 1.45 }}
+        transition={{ duration: 0.7, delay: HERO_CONTENT_DELAY }}
       >
         <div className="w-full max-w-[58rem] text-left md:ml-auto md:max-w-[42rem] md:translate-y-6 md:text-right">
           <p className="mb-4 text-[0.68rem] uppercase tracking-[0.24em] text-[rgba(33,32,32,0.55)] md:text-[0.72rem] md:tracking-[0.34em]">
