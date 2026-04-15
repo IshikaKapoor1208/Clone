@@ -28,8 +28,8 @@ export default function SmoothScroll() {
 
     let lastWheelAt = 0;
     let lastDirection = 0;
-    const WHEEL_STEP = 300;
-    const WHEEL_GATE_MS = 110;
+    const WHEEL_STEP = 220;
+    const WHEEL_GATE_MS = 70;
 
     const onWheel = (event) => {
       const direction = Math.sign(event.deltaY);
@@ -48,7 +48,7 @@ export default function SmoothScroll() {
       event.preventDefault();
 
       lenis.scrollTo(window.scrollY + direction * WHEEL_STEP, {
-        duration: 1.25,
+        duration: 0.9,
         easing: easeOutQuart
       });
     };
