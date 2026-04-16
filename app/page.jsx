@@ -2,7 +2,7 @@ import HeroSection from "../components/HeroSection";
 import CaseStudiesStickySection from "../components/CaseStudiesStickySection";
 import Navbar from "../components/Navbar";
 import ProjectIndexSection from "../components/ProjectIndexSection";
-
+//jdjdjd
 const projects = [
   {
     id: "project-01",
