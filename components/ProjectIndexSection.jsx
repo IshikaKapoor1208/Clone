@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ProjectIndexSection({ projects }) {
   const itemRefs = useRef([]);
   const sectionRef = useRef(null);
-  const introPinRef = useRef(null);
   const listRef = useRef(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
   const [revealedProjectIds, setRevealedProjectIds] = useState(
@@ -120,38 +119,6 @@ export default function ProjectIndexSection({ projects }) {
     };
   }, [projects]);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const introPin = introPinRef.current;
-    const list = listRef.current;
-    const pinEndItem =
-      itemRefs.current[Math.min(2, Math.max(projects.length - 1, 0))] ?? null;
-
-    if (!section || !introPin || !list || !pinEndItem) {
-      return undefined;
-    }
-
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 1024px)", () => {
-      const context = gsap.context(() => {
-        ScrollTrigger.create({
-          trigger: list,
-          start: "top top+=96",
-          endTrigger: pinEndItem,
-          end: "bottom top+=140",
-          pin: introPin,
-          pinSpacing: false,
-          invalidateOnRefresh: true
-        });
-      }, section);
-
-      return () => context.revert();
-    });
-
-    return () => mm.revert();
-  }, [projects.length]);
-
   return (
     <section
       ref={sectionRef}
@@ -162,7 +129,7 @@ export default function ProjectIndexSection({ projects }) {
 
       <div className="grid gap-12 md:gap-14 xl:grid-cols-12 xl:gap-16">
         <div className="xl:col-span-4">
-          <div ref={introPinRef}>
+          <div>
             <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>

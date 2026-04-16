@@ -41,7 +41,7 @@ export default function HeroSection() {
 
       <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-4 pb-8 pt-24 md:px-10 md:pb-10 lg:grid-cols-[1.18fr_0.82fr] lg:gap-0 lg:px-16 lg:pt-20">
         <motion.div
-          className="relative overflow-hidden border border-black/10"
+          className="hero-video-feather relative overflow-hidden border border-black/10"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.72, ease: "easeOut" }}

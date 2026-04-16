@@ -65,6 +65,42 @@ h2 {
   font-weight: 400;
 }
 
+.hero-video-feather {
+  --hero-video-feather: clamp(40px, 5vw, 80px);
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--hero-video-feather),
+      #000 calc(100% - var(--hero-video-feather)),
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 var(--hero-video-feather),
+      #000 calc(100% - var(--hero-video-feather)),
+      transparent 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--hero-video-feather),
+      #000 calc(100% - var(--hero-video-feather)),
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 var(--hero-video-feather),
+      #000 calc(100% - var(--hero-video-feather)),
+      transparent 100%
+    );
+  mask-composite: intersect;
+}
+
 .sketch svg * {
   fill: none;
   stroke: #212020;
