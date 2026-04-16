@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import useSectionReveal from "./useSectionReveal";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 
 const HERO_VIDEO_PLAYBACK_RATE = 1.35;
 
@@ -31,6 +33,32 @@ export default function HeroSection() {
       video.removeEventListener("play", applyPlaybackRate);
     };
   }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    gsap.registerPlugin(SplitText);
+
+    // Using new SplitText according to GSAP API. 
+    // Fallback if the user meant SplitText.create.
+    const split = new SplitText(".text", { type: "chars" });
+
+    const ctx = gsap.context(() => {
+      gsap.from(split.chars, {
+        opacity: 0.1,
+        scale: 0.8,
+        filter: "blur(4px)",
+        stagger: { each: 0.06, from: "center" },
+        duration: 0.4,
+        ease: "power2.out"
+      });
+    });
+
+    return () => {
+      split.revert();
+      ctx.revert();
+    };
+  }, [prefersReducedMotion]);
 
   return (
     <section
@@ -76,10 +104,10 @@ export default function HeroSection() {
               Chapter 01 \ Architectural Motion Study
             </p>
 
-            <h1 className="mt-4 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]">
+            <h3 className="text mt-4 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]">
               <span className="block">Gaurav Patharey</span>
               <span className="block">Architects</span>
-            </h1>
+            </h3>
 
             <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
               Thin drafting lines move from abstract positions into a clear building
