@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import useSectionReveal from "./useSectionReveal";
 import gsap from "gsap";
@@ -34,14 +34,33 @@ export default function HeroSection() {
     };
   }, []);
 
+  const [isVideoExpanded, setIsVideoExpanded] = useState(true);
+  const [playReveal, setPlayReveal] = useState(false);
+  const textContainerRef = useRef(null);
+
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      setIsVideoExpanded(false);
+      setPlayReveal(true);
+      return;
+    }
+    
+    // Hold video fullscreen for 1 second, then trigger Framer Motion layout shrink
+    const t = setTimeout(() => {
+      setIsVideoExpanded(false);
+    }, 1000);
+    return () => clearTimeout(t);
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    if (!playReveal) return;
 
     gsap.registerPlugin(SplitText);
 
-    // Using new SplitText according to GSAP API. 
-    // Fallback if the user meant SplitText.create.
-    const split = new SplitText(".text", { type: "chars" });
+    // Make the text container visible right before GSAP children animation
+    if (textContainerRef.current) gsap.set(textContainerRef.current, { opacity: 1 });
+    
+    const split = new SplitText(textContainerRef.current, { type: "chars" });
 
     const ctx = gsap.context(() => {
       gsap.from(split.chars, {
@@ -50,7 +69,8 @@ export default function HeroSection() {
         filter: "blur(4px)",
         stagger: { each: 0.06, from: "center" },
         duration: 0.4,
-        ease: "power2.out"
+        ease: "power2.out",
+        delay: 0.1
       });
     });
 
@@ -58,7 +78,7 @@ export default function HeroSection() {
       split.revert();
       ctx.revert();
     };
-  }, [prefersReducedMotion]);
+  }, [playReveal, prefersReducedMotion]);
 
   return (
     <section
@@ -68,16 +88,27 @@ export default function HeroSection() {
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
       <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-4 pb-8 pt-24 md:px-10 md:pb-10 lg:grid-cols-[1.18fr_0.82fr] lg:gap-0 lg:px-16 lg:pt-20">
-        <motion.div
-          className="hero-video-feather relative overflow-hidden border border-black/10"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.72, ease: "easeOut" }}
-        >
-          <video
-            ref={heroVideoRef}
-            className="h-[54vh] w-full object-cover object-center grayscale md:h-[62vh] lg:h-[78vh]"
-            src="/vid3.mp4"
+        <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
+          <motion.div
+            layout
+            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${
+              isVideoExpanded && !prefersReducedMotion
+                ? "fixed inset-0 z-50 rounded-none border-none"
+                : "absolute inset-0 border border-black/10"
+            }`}
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+            onLayoutAnimationComplete={() => {
+              if (!isVideoExpanded && !prefersReducedMotion) {
+                setPlayReveal(true);
+              }
+            }}
+          >
+            <video
+              ref={heroVideoRef}
+              className="h-full w-full object-cover object-center grayscale"
+              src="/vid3.mp4"
             poster="/vid3-poster.jpg"
             autoPlay
             muted
@@ -92,19 +123,27 @@ export default function HeroSection() {
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.14))]" />
         </motion.div>
+      </div>
 
         <motion.div
           className="flex items-end pb-8 md:pb-10 lg:border-l lg:border-black/10 lg:pb-14 lg:pl-12"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.68, delay: 0.14, ease: "easeOut" }}
+          animate={
+            prefersReducedMotion || playReveal
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: 14 }
+          }
+          transition={{ duration: 0.68, ease: "easeOut" }}
         >
           <div className="max-w-[31rem]">
             <p className="text-[0.68rem] uppercase tracking-[0.28em] text-black/52 md:text-[0.72rem]">
               Chapter 01 \ Architectural Motion Study
             </p>
 
-            <h3 className="text mt-4 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]">
+            <h3 
+              ref={textContainerRef}
+              className="opacity-0 mt-4 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]"
+            >
               <span className="block">Gaurav Patharey</span>
               <span className="block">Architects</span>
             </h3>
