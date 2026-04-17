@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import useReducedMotion from "./useReducedMotion";
 
 export default function useSectionReveal() {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -12,10 +14,6 @@ export default function useSectionReveal() {
     if (!section) {
       return undefined;
     }
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
 
     if (prefersReducedMotion) {
       setIsVisible(true);
@@ -39,12 +37,14 @@ export default function useSectionReveal() {
     observer.observe(section);
 
     return () => observer.disconnect();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return {
     sectionRef,
-    revealClassName: `transform-gpu transition duration-700 ease-out ${
-      isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-    }`
+    revealClassName: prefersReducedMotion
+      ? "translate-y-0 opacity-100"
+      : `transform-gpu transition duration-700 ease-out ${
+          isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        }`
   };
 }

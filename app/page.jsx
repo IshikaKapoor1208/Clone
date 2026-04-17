@@ -20,7 +20,6 @@ const projects = [
     tags: ["Spatial Sequence", "Light + Thresholds", "Healing Through Transition"],
     imageSrc: "/section.png",
     imageAlt: "Architectural drawing for IN [BE] TWEEN",
-    imagePriority: true,
     backgroundClassName: "bg-[linear-gradient(180deg,#ffffff_0%,#f8f6f1_100%)]"
   },
   {

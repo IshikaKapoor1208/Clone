@@ -12,8 +12,10 @@ module.exports = {
         "paper-soft": "#fbfaf7"
       },
       fontFamily: {
-        sans: ["Montserrat", "Arial", "sans-serif"],
-        signature: ["TheSignature", "Georgia", "serif"]
+        sans: ["var(--font-body)", "Arial", "sans-serif"],
+        body: ["var(--font-body)", "Arial", "sans-serif"],
+        heading: ["var(--font-heading)", "Georgia", "serif"],
+        signature: ["var(--font-heading)", "Georgia", "serif"]
       },
       keyframes: {
         draw: {

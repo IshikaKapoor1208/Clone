@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import useReducedMotion from "./useReducedMotion";
 
 export default function ProjectIndexSection({ projects }) {
   const itemRefs = useRef([]);
@@ -14,6 +11,7 @@ export default function ProjectIndexSection({ projects }) {
   const [revealedProjectIds, setRevealedProjectIds] = useState(
     projects[0]?.id ? [projects[0].id] : []
   );
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -22,40 +20,60 @@ export default function ProjectIndexSection({ projects }) {
       return undefined;
     }
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    let isCancelled = false;
+    let context;
 
-    if (prefersReducedMotion) {
-      gsap.set(section, { clearProps: "all" });
-      return undefined;
-    }
+    const setupAnimation = async () => {
+      const gsap = (await import("gsap")).default;
 
-    const context = gsap.context(() => {
-      gsap.set(section, {
-        yPercent: 14,
-        opacity: 0.98,
-        willChange: "transform"
-      });
+      if (isCancelled) {
+        return;
+      }
 
-      const tween = gsap.to(section, {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.95,
-        ease: "power3.out",
-        paused: true
-      });
+      if (prefersReducedMotion) {
+        gsap.set(section, { clearProps: "all" });
+        return;
+      }
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top bottom-=10%",
-        once: true,
-        onEnter: () => tween.play()
-      });
-    }, section);
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
 
-    return () => context.revert();
-  }, []);
+      if (isCancelled) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      context = gsap.context(() => {
+        gsap.set(section, {
+          yPercent: 14,
+          opacity: 0.98,
+          willChange: "transform"
+        });
+
+        const tween = gsap.to(section, {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.95,
+          ease: "power3.out",
+          paused: true
+        });
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top bottom-=10%",
+          once: true,
+          onEnter: () => tween.play()
+        });
+      }, section);
+    };
+
+    setupAnimation();
+
+    return () => {
+      isCancelled = true;
+      context?.revert();
+    };
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
     if (!projects.length) {
@@ -129,7 +147,7 @@ export default function ProjectIndexSection({ projects }) {
 
       <div className="grid gap-12 md:gap-14 xl:grid-cols-12 xl:gap-16">
         <div className="xl:col-span-4">
-          <div>
+          <div className="xl:sticky xl:top-24">
             <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>
@@ -152,7 +170,7 @@ export default function ProjectIndexSection({ projects }) {
           <nav aria-label="Projects" className="border-t border-[rgba(33,32,32,0.14)]">
             {projects.map((project, index) => {
               const isActive = activeProjectId === project.id;
-              const isRevealed = revealedProjectIds.includes(project.id);
+              const isRevealed = prefersReducedMotion || revealedProjectIds.includes(project.id);
 
               return (
                 <a
