@@ -44,7 +44,7 @@ export default function HeroSection() {
       setPlayReveal(true);
       return;
     }
-    
+
     // Hold video fullscreen for 1 second, then trigger Framer Motion layout shrink
     const t = setTimeout(() => {
       setIsVideoExpanded(false);
@@ -59,7 +59,7 @@ export default function HeroSection() {
 
     // Make the text container visible right before GSAP children animation
     if (textContainerRef.current) gsap.set(textContainerRef.current, { opacity: 1 });
-    
+
     const split = new SplitText(textContainerRef.current, { type: "chars" });
 
     const ctx = gsap.context(() => {
@@ -91,11 +91,10 @@ export default function HeroSection() {
         <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
           <motion.div
             layout
-            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${
-              isVideoExpanded && !prefersReducedMotion
+            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${isVideoExpanded && !prefersReducedMotion
                 ? "fixed inset-0 z-50 rounded-none border-none"
                 : "absolute inset-0 border border-black/10"
-            }`}
+              }`}
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
@@ -109,21 +108,21 @@ export default function HeroSection() {
               ref={heroVideoRef}
               className="h-full w-full object-cover object-center grayscale"
               src="/vid3.mp4"
-            poster="/vid3-poster.jpg"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            onEnded={(event) => {
-              const video = event.currentTarget;
-              video.pause();
-              video.currentTime = Math.max(video.duration - 0.03, 0);
-            }}
-            aria-hidden="true"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.14))]" />
-        </motion.div>
-      </div>
+              poster="/vid3-poster.jpg"
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              onEnded={(event) => {
+                const video = event.currentTarget;
+                video.pause();
+                video.currentTime = Math.max(video.duration - 0.03, 0);
+              }}
+              aria-hidden="true"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.14))]" />
+          </motion.div>
+        </div>
 
         <motion.div
           className="flex items-end pb-8 md:pb-10 lg:border-l lg:border-black/10 lg:pb-14 lg:pl-12"
@@ -140,13 +139,13 @@ export default function HeroSection() {
               Chapter 01 \ Architectural Motion Study
             </p>
 
-            <h3 
+            <h1
               ref={textContainerRef}
               className="opacity-0 mt-4 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]"
             >
               <span className="block">Gaurav Patharey</span>
               <span className="block">Architects</span>
-            </h3>
+            </h1>
 
             <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
               Thin drafting lines move from abstract positions into a clear building
