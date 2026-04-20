@@ -76,6 +76,7 @@ export default function HeroSection() {
 
   return (
     <section
+      id="home"
       ref={sectionRef}
       className={`relative min-h-screen overflow-hidden bg-white ${revealClassName}`}
     >
@@ -156,7 +157,7 @@ export default function HeroSection() {
                 Explore Work
               </a>
               <a
-                href="#portfolio-footer"
+                href="#contact"
                 className="inline-flex items-center justify-center border border-black/22 bg-transparent px-6 py-3 text-[0.66rem] uppercase tracking-[0.24em] text-black/72 transition hover:border-black/45 hover:text-black"
               >
                 Start a Project

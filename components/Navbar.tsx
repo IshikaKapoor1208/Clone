@@ -51,8 +51,8 @@ export default function Navbar() {
 
       <div
         className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${isOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0"
+          ? "pointer-events-auto opacity-100"
+          : "pointer-events-none opacity-0"
           }`}
       >
         <div

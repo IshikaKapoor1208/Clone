@@ -12,7 +12,7 @@ export default function Page() {
     <main className="relative overflow-x-clip bg-[linear-gradient(180deg,#ffffff_0%,#fcfbf9_100%)] text-ink">
       <Navbar />
 
-      <div id="top">
+      <div id="home">
         <HeroSection />
       </div>
 

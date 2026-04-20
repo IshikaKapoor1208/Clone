@@ -23,7 +23,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-24 px-6 md:px-12 bg-paper text-ink">
+    <section id="services" className="py-24 px-6 md:px-12 bg-paper text-ink">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header */}

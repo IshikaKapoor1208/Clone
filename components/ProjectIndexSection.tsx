@@ -120,7 +120,7 @@ export default function ProjectIndexSection({ projects }) {
   return (
     <section
       ref={sectionRef}
-      id="index-section"
+      id="about"
       className="relative overflow-clip bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
     >
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
