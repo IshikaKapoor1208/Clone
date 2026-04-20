@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StaggeredText from "./animations/StaggeredText";
@@ -11,8 +13,25 @@ export default function ProjectIndexSection({ projects }) {
   const itemRefs = useRef([]);
   const sectionRef = useRef(null);
   const listRef = useRef(null);
+  const previewRef = useRef(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [canRenderPreview, setCanRenderPreview] = useState(false);
   // Removed revealed state to avoid 1-by-1 open animation
+
+  const movePreviewToCursor = (event) => {
+    if (!previewRef.current) {
+      return;
+    }
+
+    gsap.to(previewRef.current, {
+      x: event.clientX + 20,
+      y: event.clientY + 20,
+      duration: 0.28,
+      ease: "power3.out",
+      overwrite: true,
+    });
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -118,6 +137,42 @@ export default function ProjectIndexSection({ projects }) {
     };
   }, [projects]);
 
+  useEffect(() => {
+    return () => {
+      if (previewRef.current) {
+        gsap.killTweensOf(previewRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    setCanRenderPreview(true);
+  }, []);
+
+  const previewNode = (
+    <div
+      ref={previewRef}
+      className={`pointer-events-none fixed left-0 top-0 z-[220] overflow-hidden rounded-[0.35rem] border border-black/10 bg-[#f7f5f1] shadow-[0_20px_44px_rgba(16,16,16,0.22)] transition-all duration-300 ease-out ${hoveredProject ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-[0.95] blur-[2px]"
+        }`}
+      style={{ width: 260, height: 178 }}
+      aria-hidden="true"
+    >
+      {hoveredProject?.imageSrc ? (
+        <>
+          <Image
+            src={hoveredProject.imageSrc}
+            alt={hoveredProject.imageAlt || hoveredProject.title}
+            fill
+            sizes="260px"
+            className="h-full w-full object-cover object-center grayscale"
+            priority={false}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(20,20,20,0.1))]" />
+        </>
+      ) : null}
+    </div>
+  );
+
   return (
     <section
       ref={sectionRef}
@@ -165,7 +220,13 @@ export default function ProjectIndexSection({ projects }) {
                   data-project-id={project.id}
                   data-project-index={index}
                   aria-current={isActive ? "true" : undefined}
-                  className={`grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] opacity-100 text-black ${isActive ? "translate-x-1" : "translate-x-0"
+                  onMouseEnter={(event) => {
+                    setHoveredProject(project);
+                    movePreviewToCursor(event);
+                  }}
+                  onMouseMove={movePreviewToCursor}
+                  onMouseLeave={() => setHoveredProject(null)}
+                  className={`cursor-image grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] opacity-100 text-black ${isActive ? "translate-x-1" : "translate-x-0"
                     }`}
                 >
                   <span
@@ -184,7 +245,7 @@ export default function ProjectIndexSection({ projects }) {
                     >
                       {project.title}
                     </h3>
-                    <p
+                    <StaggeredText
                       className={`m-0 max-w-[56ch] text-sm leading-[1.7] transition duration-300 md:text-[0.97rem] ${isActive
                         ? "translate-x-1 text-[rgba(33,32,32,0.72)]"
                         : "text-[rgba(33,32,32,0.62)]"
@@ -208,6 +269,7 @@ export default function ProjectIndexSection({ projects }) {
           </nav>
         </div>
       </div>
+      {canRenderPreview ? createPortal(previewNode, document.body) : null}
     </section>
   );
 }

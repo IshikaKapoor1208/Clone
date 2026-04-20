@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
+import MagneticCursor from "../components/MagneticCursor";
+import PreloaderGate from "../components/animations/PreloaderGate";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -93,7 +95,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <MagneticCursor />
+        <PreloaderGate>{children}</PreloaderGate>
       </body>
     </html>
   );

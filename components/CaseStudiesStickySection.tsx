@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useReducedMotion from "./useReducedMotion";
+import StaggeredText from "./animations/StaggeredText";
 const REVEAL_START = "top 78%";
 const REVEAL_END = "top 28%";
 

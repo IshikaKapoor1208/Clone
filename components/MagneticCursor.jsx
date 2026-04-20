@@ -21,8 +21,13 @@ export default function MagneticCursor() {
 		const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 		const pos = { x: mouse.x, y: mouse.y };
 		const magneticPull = { x: mouse.x, y: mouse.y, strength: 0 };
+		let activeMagneticEl = null;
+		let previousMagneticEl = null;
+		let currentVariant = "default";
+		let currentLabel = "";
 
 		let rafId;
+		let isPressed = false;
 
 		gsap.set(cursorEl, {
 			x: pos.x,
@@ -34,6 +39,13 @@ export default function MagneticCursor() {
 		});
 
 		const setVariant = (variant, text = "") => {
+			if (currentVariant === variant && currentLabel === text) {
+				return;
+			}
+
+			currentVariant = variant;
+			currentLabel = text;
+
 			cursorEl.classList.remove("is-image", "is-arrow");
 
 			if (variant === "image") {
@@ -47,8 +59,28 @@ export default function MagneticCursor() {
 			labelEl.textContent = text;
 
 			gsap.to(cursorEl, {
-				scale: variant === "default" ? 1 : 1.08,
+				scale: variant === "default" ? (isPressed ? 0.88 : 1) : 1.08,
 				duration: 0.25,
+				ease: "power2.out",
+				overwrite: true
+			});
+		};
+
+		const handlePointerDown = () => {
+			isPressed = true;
+			gsap.to(cursorEl, {
+				scale: 0.88,
+				duration: 0.16,
+				ease: "power2.out",
+				overwrite: true
+			});
+		};
+
+		const handlePointerUp = () => {
+			isPressed = false;
+			gsap.to(cursorEl, {
+				scale: 1,
+				duration: 0.18,
 				ease: "power2.out",
 				overwrite: true
 			});
@@ -57,9 +89,80 @@ export default function MagneticCursor() {
 		const onPointerMove = (event) => {
 			mouse.x = event.clientX;
 			mouse.y = event.clientY;
+
+			const hoveredNode = document.elementFromPoint(event.clientX, event.clientY);
+			const arrowEl = hoveredNode?.closest?.(".cursor-arrow");
+			const imageEl = hoveredNode?.closest?.(".cursor-image");
+			const magneticEl = hoveredNode?.closest?.(".magnetic");
+
+			activeMagneticEl = magneticEl instanceof HTMLElement ? magneticEl : null;
+
+			if (arrowEl) {
+				const direction = (arrowEl.getAttribute("data-cursor-arrow") || "right").toLowerCase();
+				setVariant("arrow", direction === "left" ? "←" : "→");
+				return;
+			}
+
+			if (imageEl) {
+				setVariant("image", "View Project");
+				return;
+			}
+
+			setVariant("default");
 		};
 
 		const tick = () => {
+			if (previousMagneticEl && previousMagneticEl !== activeMagneticEl) {
+				gsap.to(previousMagneticEl, {
+					x: 0,
+					y: 0,
+					duration: 0.28,
+					ease: "power3.out",
+					overwrite: true
+				});
+			}
+
+			if (activeMagneticEl) {
+				const rect = activeMagneticEl.getBoundingClientRect();
+				const centerX = rect.left + rect.width / 2;
+				const centerY = rect.top + rect.height / 2;
+				const deltaX = mouse.x - centerX;
+				const deltaY = mouse.y - centerY;
+				const distance = Math.hypot(deltaX, deltaY);
+				const maxDistance = Math.max(rect.width, rect.height) * 1.4;
+
+				if (distance < maxDistance) {
+					const strength = 1 - distance / maxDistance;
+					const moveX = deltaX * 0.18;
+					const moveY = deltaY * 0.18;
+
+					gsap.to(activeMagneticEl, {
+						x: moveX,
+						y: moveY,
+						duration: 0.28,
+						ease: "power3.out",
+						overwrite: true
+					});
+
+					magneticPull.x = centerX + moveX;
+					magneticPull.y = centerY + moveY;
+					magneticPull.strength = 0.34 * strength;
+				} else {
+					magneticPull.strength = 0;
+					gsap.to(activeMagneticEl, {
+						x: 0,
+						y: 0,
+						duration: 0.28,
+						ease: "power3.out",
+						overwrite: true
+					});
+				}
+			} else {
+				magneticPull.strength = 0;
+			}
+
+			previousMagneticEl = activeMagneticEl;
+
 			const targetX = mouse.x + (magneticPull.x - mouse.x) * magneticPull.strength;
 			const targetY = mouse.y + (magneticPull.y - mouse.y) * magneticPull.strength;
 
@@ -70,110 +173,18 @@ export default function MagneticCursor() {
 			rafId = requestAnimationFrame(tick);
 		};
 
-		const imageTargets = Array.from(document.querySelectorAll(".cursor-image"));
-		const arrowTargets = Array.from(document.querySelectorAll(".cursor-arrow"));
-		const magneticTargets = Array.from(document.querySelectorAll(".magnetic"));
-
-		const imageHandlers = imageTargets.map((el) => {
-			const handleEnter = () => setVariant("image", "View Project");
-			const handleLeave = () => setVariant("default");
-
-			el.addEventListener("mouseenter", handleEnter);
-			el.addEventListener("mouseleave", handleLeave);
-
-			return { el, handleEnter, handleLeave };
-		});
-
-		const arrowHandlers = arrowTargets.map((el) => {
-			const handleEnter = () => {
-				const direction = (el.getAttribute("data-cursor-arrow") || "right").toLowerCase();
-				const icon = direction === "left" ? "←" : "→";
-				setVariant("arrow", icon);
-			};
-
-			const handleLeave = () => setVariant("default");
-
-			el.addEventListener("mouseenter", handleEnter);
-			el.addEventListener("mouseleave", handleLeave);
-
-			return { el, handleEnter, handleLeave };
-		});
-
-		const magneticHandlers = magneticTargets.map((el) => {
-			const handleMove = (event) => {
-				const rect = el.getBoundingClientRect();
-				const centerX = rect.left + rect.width / 2;
-				const centerY = rect.top + rect.height / 2;
-				const deltaX = event.clientX - centerX;
-				const deltaY = event.clientY - centerY;
-				const distance = Math.hypot(deltaX, deltaY);
-				const maxDistance = Math.max(rect.width, rect.height) * 1.4;
-
-				if (distance < maxDistance) {
-					const strength = 1 - distance / maxDistance;
-					const moveX = deltaX * 0.18;
-					const moveY = deltaY * 0.18;
-
-					gsap.to(el, {
-						x: moveX,
-						y: moveY,
-						duration: 0.3,
-						ease: "power3.out",
-						overwrite: true
-					});
-
-					magneticPull.x = centerX + moveX;
-					magneticPull.y = centerY + moveY;
-					magneticPull.strength = 0.34 * strength;
-				} else {
-					magneticPull.strength = 0;
-					gsap.to(el, {
-						x: 0,
-						y: 0,
-						duration: 0.3,
-						ease: "power3.out",
-						overwrite: true
-					});
-				}
-			};
-
-			const handleLeave = () => {
-				magneticPull.strength = 0;
-				gsap.to(el, {
-					x: 0,
-					y: 0,
-					duration: 0.3,
-					ease: "power3.out",
-					overwrite: true
-				});
-			};
-
-			el.addEventListener("mousemove", handleMove);
-			el.addEventListener("mouseleave", handleLeave);
-
-			return { el, handleMove, handleLeave };
-		});
-
 		window.addEventListener("pointermove", onPointerMove, { passive: true });
+		window.addEventListener("pointerdown", handlePointerDown, { passive: true });
+		window.addEventListener("pointerup", handlePointerUp, { passive: true });
 		rafId = requestAnimationFrame(tick);
 
 		return () => {
 			cancelAnimationFrame(rafId);
 			window.removeEventListener("pointermove", onPointerMove);
+			window.removeEventListener("pointerdown", handlePointerDown);
+			window.removeEventListener("pointerup", handlePointerUp);
 
-			imageHandlers.forEach(({ el, handleEnter, handleLeave }) => {
-				el.removeEventListener("mouseenter", handleEnter);
-				el.removeEventListener("mouseleave", handleLeave);
-			});
-
-			arrowHandlers.forEach(({ el, handleEnter, handleLeave }) => {
-				el.removeEventListener("mouseenter", handleEnter);
-				el.removeEventListener("mouseleave", handleLeave);
-			});
-
-			magneticHandlers.forEach(({ el, handleMove, handleLeave }) => {
-				el.removeEventListener("mousemove", handleMove);
-				el.removeEventListener("mouseleave", handleLeave);
+			document.querySelectorAll(".magnetic").forEach((el) => {
 				gsap.killTweensOf(el);
 				gsap.set(el, { x: 0, y: 0 });
 			});
