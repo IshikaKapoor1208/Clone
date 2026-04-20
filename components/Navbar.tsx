@@ -7,16 +7,16 @@ const mainLinks = ["Home", "About", "Services", "Contact"];
 const menuColumns = [
   {
     title: "Products",
-    links: ["Residences", "Workspaces", "Hospitality", "Wellness"]
+    links: ["Residences", "Workspaces", "Hospitality", "Wellness"],
   },
   {
     title: "Projects",
-    links: ["Selected Work", "Case Studies", "Process", "Archive"]
+    links: ["Selected Work", "Case Studies", "Process", "Archive"],
   },
   {
     title: "Useful Links",
-    links: ["Studio", "Journal", "Careers", "Enquiries"]
-  }
+    links: ["Studio", "Journal", "Careers", "Enquiries"],
+  },
 ];
 
 export default function Navbar() {

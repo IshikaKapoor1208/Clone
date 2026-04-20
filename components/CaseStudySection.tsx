@@ -14,7 +14,12 @@ export default function CaseStudySection({
   tags,
   imageSrc,
   imageAlt,
+<<<<<<< HEAD
   stackIndex = 0
+=======
+  imagePriority = false,
+  stackIndex = 0,
+>>>>>>> 8a94f3366c507a229a6db82a92e677e4672e2cf2
 }) {
   const sectionRef = useRef(null);
   const imageFrameRef = useRef(null);
@@ -33,8 +38,14 @@ export default function CaseStudySection({
       return undefined;
     }
 
+<<<<<<< HEAD
     let isCancelled = false;
     let mm;
+=======
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+>>>>>>> 8a94f3366c507a229a6db82a92e677e4672e2cf2
 
     const setupAnimation = async () => {
       const gsap = (await import("gsap")).default;
@@ -43,6 +54,7 @@ export default function CaseStudySection({
         return;
       }
 
+<<<<<<< HEAD
       if (prefersReducedMotion) {
         gsap.set([image, revealMask], { clearProps: "all" });
         return;
@@ -56,6 +68,61 @@ export default function CaseStudySection({
 
       gsap.registerPlugin(ScrollTrigger);
       mm = gsap.matchMedia();
+=======
+    mm.add("(min-width: 1024px)", () => {
+      const context = gsap.context(() => {
+        gsap.set(revealMask, {
+          scaleY: 1,
+          transformOrigin: "top center",
+          willChange: "transform",
+        });
+
+        gsap.set(image, {
+          scale: 1.08,
+          objectPosition: "50% 58%",
+          transformOrigin: "center center",
+          willChange: "transform, object-position",
+        });
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 74%",
+              end: "top 20%",
+              scrub: true,
+            },
+          })
+          .to(
+            revealMask,
+            {
+              scaleY: 0,
+              ease: "none",
+              duration: 1,
+            },
+            0,
+          )
+          .to(
+            image,
+            {
+              scale: 1,
+              objectPosition: "50% 44%",
+              ease: "none",
+              duration: 1,
+            },
+            0,
+          )
+          .to(
+            imageFrame,
+            {
+              boxShadow: "0 34px 80px rgba(33,32,32,0.12)",
+              ease: "none",
+              duration: 0.6,
+            },
+            0,
+          );
+      }, section);
+>>>>>>> 8a94f3366c507a229a6db82a92e677e4672e2cf2
 
       mm.add("(min-width: 1024px)", () => {
         const context = gsap.context(() => {
@@ -65,12 +132,27 @@ export default function CaseStudySection({
             willChange: "transform"
           });
 
+<<<<<<< HEAD
           gsap.set(image, {
             scale: 1.08,
             objectPosition: "50% 58%",
             transformOrigin: "center center",
             willChange: "transform, object-position"
           });
+=======
+    mm.add("(max-width: 1023px)", () => {
+      const context = gsap.context(() => {
+        gsap.set(revealMask, {
+          scaleY: 0,
+          clearProps: "transform-origin,will-change",
+        });
+        gsap.set(image, {
+          scale: 1,
+          objectPosition: "50% 50%",
+          clearProps: "will-change",
+        });
+      }, section);
+>>>>>>> 8a94f3366c507a229a6db82a92e677e4672e2cf2
 
           gsap.timeline({
             scrollTrigger: {

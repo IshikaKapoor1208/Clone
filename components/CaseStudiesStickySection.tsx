@@ -57,34 +57,61 @@ export default function CaseStudiesStickySection({ projects }) {
         return;
       }
 
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+        ScrollTrigger.create({
+          trigger: container,
+          start: "top top+=80",
+          end: "bottom bottom-=40",
+          pin: pinnedMedia,
+          pinSpacing: false,
+          invalidateOnRefresh: true,
+        });
 
       gsap.registerPlugin(ScrollTrigger);
       mm = gsap.matchMedia();
 
-      mm.add("(min-width: 1024px)", () => {
-        const context = gsap.context(() => {
-          activeIndexRef.current = 0;
-          setActiveIndex(0);
+        imageLayers.forEach((layer, index) => {
+          gsap.set(layer, {
+            clipPath:
+              index === 0 ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
+            opacity: index === 0 ? 1 : 0.9,
+            zIndex: 10 + index,
+          });
+        });
+
+        sections.forEach((section, index) => {
+          const content = contentRefs.current[index];
+          const layer = imageLayerRefs.current[index];
+
+          if (!content) {
+            return;
+          }
 
           ScrollTrigger.create({
-            trigger: container,
-            start: "top top+=80",
-            end: "bottom bottom-=40",
-            pin: pinnedMedia,
-            pinSpacing: false,
-            invalidateOnRefresh: true
+            trigger: content,
+            start: REVEAL_START,
+            end: REVEAL_END,
+            onEnter: () => setActiveProjectIndex(index),
+            onEnterBack: () => setActiveProjectIndex(index),
           });
 
-          const imageLayers = imageLayerRefs.current.filter(Boolean);
-
-          imageLayers.forEach((layer, index) => {
-            gsap.set(layer, {
-              clipPath: index === 0 ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
-              opacity: index === 0 ? 1 : 0.9,
-              zIndex: 10 + index
-            });
-          });
+          if (layer && index > 0) {
+            gsap
+              .timeline({
+                scrollTrigger: {
+                  trigger: content,
+                  start: REVEAL_START,
+                  end: REVEAL_END,
+                  scrub: true,
+                },
+              })
+              .to(layer, {
+                clipPath: "inset(0% 0% 0% 0%)",
+                opacity: 1,
+                ease: "none",
+              });
+          }
+        });
+      }, container);
 
           sections.forEach((section, index) => {
             const content = contentRefs.current[index];

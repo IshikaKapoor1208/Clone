@@ -15,6 +15,13 @@ export default function useSectionReveal() {
       return undefined;
     }
 
+<<<<<<< HEAD
+=======
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+>>>>>>> 8a94f3366c507a229a6db82a92e677e4672e2cf2
     if (prefersReducedMotion) {
       setIsVisible(true);
       return undefined;
@@ -30,8 +37,8 @@ export default function useSectionReveal() {
       {
         root: null,
         rootMargin: "0px 0px -18% 0px",
-        threshold: 0.25
-      }
+        threshold: 0.25,
+      },
     );
 
     observer.observe(section);
@@ -41,10 +48,16 @@ export default function useSectionReveal() {
 
   return {
     sectionRef,
+<<<<<<< HEAD
     revealClassName: prefersReducedMotion
       ? "translate-y-0 opacity-100"
       : `transform-gpu transition duration-700 ease-out ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`
+=======
+    revealClassName: `transform-gpu transition duration-700 ease-out ${
+      isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+    }`,
+>>>>>>> 8a94f3366c507a229a6db82a92e677e4672e2cf2
   };
 }

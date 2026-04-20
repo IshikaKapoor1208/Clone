@@ -41,14 +41,7 @@ export default function HeroSection() {
     if (prefersReducedMotion) {
       setIsVideoExpanded(false);
       setPlayReveal(true);
-      return;
     }
-
-    // Hold video fullscreen for 1 second, then trigger Framer Motion layout shrink
-    const t = setTimeout(() => {
-      setIsVideoExpanded(false);
-    }, 1000);
-    return () => clearTimeout(t);
   }, [prefersReducedMotion]);
 
   useEffect(() => {
@@ -81,21 +74,21 @@ export default function HeroSection() {
 
       gsap.registerPlugin(SplitText);
 
-      // Make the text container visible right before GSAP children animation
-      gsap.set(textContainer, { opacity: 1 });
+    // Make the text container visible right before GSAP children animation
+    if (textContainerRef.current)
+      gsap.set(textContainerRef.current, { opacity: 1 });
 
       split = new SplitText(textContainer, { type: "chars" });
 
-      ctx = gsap.context(() => {
-        gsap.from(split.chars, {
-          opacity: 0.1,
-          scale: 0.8,
-          filter: "blur(4px)",
-          stagger: { each: 0.06, from: "center" },
-          duration: 0.4,
-          ease: "power2.out",
-          delay: 0.1,
-        });
+    const ctx = gsap.context(() => {
+      gsap.from(split.chars, {
+        opacity: 0.1,
+        scale: 0.8,
+        filter: "blur(4px)",
+        stagger: { each: 0.06, from: "center" },
+        duration: 0.4,
+        ease: "power2.out",
+        delay: 0.1,
       });
     };
 
@@ -119,10 +112,11 @@ export default function HeroSection() {
         <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
           <motion.div
             layout
-            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${isVideoExpanded && !prefersReducedMotion
+            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${
+              isVideoExpanded && !prefersReducedMotion
                 ? "fixed inset-0 z-50 rounded-none border-none"
                 : "absolute inset-0 border border-black/10"
-              }`}
+            }`}
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={
@@ -149,6 +143,7 @@ export default function HeroSection() {
                 const video = event.currentTarget;
                 video.pause();
                 video.currentTime = Math.max(video.duration - 0.03, 0);
+                setIsVideoExpanded(false);
               }}
               aria-hidden="true"
             />
@@ -180,8 +175,9 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
-              Thin drafting lines move from abstract positions into a clear building
-              form, shaping a calm narrative of process, precision, and place.
+              Thin drafting lines move from abstract positions into a clear
+              building form, shaping a calm narrative of process, precision, and
+              place.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">

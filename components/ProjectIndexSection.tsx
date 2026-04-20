@@ -8,10 +8,7 @@ export default function ProjectIndexSection({ projects }) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
-  const [revealedProjectIds, setRevealedProjectIds] = useState(
-    projects[0]?.id ? [projects[0].id] : []
-  );
-  const prefersReducedMotion = useReducedMotion();
+  // Removed revealed state to avoid 1-by-1 open animation
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -20,22 +17,36 @@ export default function ProjectIndexSection({ projects }) {
       return undefined;
     }
 
-    let isCancelled = false;
-    let context;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const setupAnimation = async () => {
       const gsap = (await import("gsap")).default;
 
-      if (isCancelled) {
-        return;
-      }
+    const context = gsap.context(() => {
+      gsap.set(section, {
+        yPercent: 14,
+        opacity: 0.98,
+        willChange: "transform",
+      });
 
-      if (prefersReducedMotion) {
-        gsap.set(section, { clearProps: "all" });
-        return;
-      }
+      const tween = gsap.to(section, {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.95,
+        ease: "power3.out",
+        paused: true,
+        clearProps: "transform,willChange",
+      });
 
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top bottom-=10%",
+        once: true,
+        onEnter: () => tween.play(),
+      });
+    }, section);
 
       if (isCancelled) {
         return;
@@ -86,28 +97,21 @@ export default function ProjectIndexSection({ projects }) {
           .filter((entry) => entry.isIntersecting)
           .sort(
             (a, b) =>
-              Number((a.target as HTMLElement).dataset.projectIndex) -
-              Number((b.target as HTMLElement).dataset.projectIndex)
+              Number(a.target.getAttribute("data-project-index")) -
+              Number(b.target.getAttribute("data-project-index")),
           )[0];
 
         if (visibleEntry) {
-          const projectId = (visibleEntry.target as HTMLElement).dataset.projectId;
-
-          if (!projectId) {
-            return;
-          }
+          const projectId = visibleEntry.target.getAttribute("data-project-id");
 
           setActiveProjectId(projectId);
-          setRevealedProjectIds((currentIds) =>
-            currentIds.includes(projectId) ? currentIds : [...currentIds, projectId]
-          );
         }
       },
       {
         root: null,
         rootMargin: "-24% 0px -48% 0px",
-        threshold: 0
-      }
+        threshold: 0,
+      },
     );
 
     const sectionObserver = new IntersectionObserver(
@@ -123,11 +127,13 @@ export default function ProjectIndexSection({ projects }) {
       {
         root: null,
         rootMargin: "-35% 0px -45% 0px",
-        threshold: [0.2, 0.35, 0.5, 0.65]
-      }
+        threshold: [0.2, 0.35, 0.5, 0.65],
+      },
     );
 
-    itemRefs.current.filter(Boolean).forEach((item) => indexObserver.observe(item));
+    itemRefs.current
+      .filter(Boolean)
+      .forEach((item) => indexObserver.observe(item));
 
     const observedSections = projects
       .map((project) => document.getElementById(project.id))
@@ -145,13 +151,13 @@ export default function ProjectIndexSection({ projects }) {
     <section
       ref={sectionRef}
       id="index-section"
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
+      className="relative overflow-clip bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
     >
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
 
       <div className="grid gap-12 md:gap-14 xl:grid-cols-12 xl:gap-16">
-        <div className="xl:col-span-4">
-          <div className="xl:sticky xl:top-24">
+        <div className="xl:col-span-4 self-start">
+          <div className="sticky top-24 md:top-32 xl:top-40">
             <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>
@@ -171,10 +177,12 @@ export default function ProjectIndexSection({ projects }) {
           ref={listRef}
           className="xl:col-span-7 xl:col-start-6"
         >
-          <nav aria-label="Projects" className="border-t border-[rgba(33,32,32,0.14)]">
+          <nav
+            aria-label="Projects"
+            className="border-t border-[rgba(33,32,32,0.14)]"
+          >
             {projects.map((project, index) => {
               const isActive = activeProjectId === project.id;
-              const isRevealed = prefersReducedMotion || revealedProjectIds.includes(project.id);
 
               return (
                 <a
@@ -186,12 +194,8 @@ export default function ProjectIndexSection({ projects }) {
                   data-project-id={project.id}
                   data-project-index={index}
                   aria-current={isActive ? "true" : undefined}
-                  className={`grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] ${
-                    isRevealed
-                      ? isActive
-                        ? "translate-x-1 text-black opacity-100"
-                        : "translate-x-0 text-black opacity-100"
-                      : "translate-y-6 opacity-0"
+                  className={`grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] opacity-100 text-black ${
+                    isActive ? "translate-x-1" : "translate-x-0"
                   }`}
                 >
                   <span
