@@ -11,9 +11,7 @@ export default function ProjectIndexSection({ projects }) {
   const sectionRef = useRef(null);
   const listRef = useRef(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
-  const [revealedProjectIds, setRevealedProjectIds] = useState(
-    projects[0]?.id ? [projects[0].id] : [],
-  );
+  // Removed revealed state to avoid 1-by-1 open animation
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -44,6 +42,7 @@ export default function ProjectIndexSection({ projects }) {
         duration: 0.95,
         ease: "power3.out",
         paused: true,
+        clearProps: "transform,willChange",
       });
 
       ScrollTrigger.create({
@@ -76,11 +75,6 @@ export default function ProjectIndexSection({ projects }) {
           const projectId = visibleEntry.target.getAttribute("data-project-id");
 
           setActiveProjectId(projectId);
-          setRevealedProjectIds((currentIds) =>
-            currentIds.includes(projectId)
-              ? currentIds
-              : [...currentIds, projectId],
-          );
         }
       },
       {
@@ -159,7 +153,6 @@ export default function ProjectIndexSection({ projects }) {
           >
             {projects.map((project, index) => {
               const isActive = activeProjectId === project.id;
-              const isRevealed = revealedProjectIds.includes(project.id);
 
               return (
                 <a
@@ -171,12 +164,8 @@ export default function ProjectIndexSection({ projects }) {
                   data-project-id={project.id}
                   data-project-index={index}
                   aria-current={isActive ? "true" : undefined}
-                  className={`grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] ${
-                    isRevealed
-                      ? isActive
-                        ? "translate-x-1 text-black opacity-100"
-                        : "translate-x-0 text-black opacity-100"
-                      : "translate-y-6 opacity-0"
+                  className={`grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] opacity-100 text-black ${
+                    isActive ? "translate-x-1" : "translate-x-0"
                   }`}
                 >
                   <span
