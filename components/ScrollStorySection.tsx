@@ -10,22 +10,22 @@ const storyFrames = [
     title: "Light gathers before the room begins.",
     text: "A quiet edge slows the approach, letting shadow, texture, and proportion set the pace of arrival.",
     imageSrc: "/monsoon-court.jpg",
-    imageAlt: "Architectural planning table with drawings and warm light"
+    imageAlt: "Architectural planning table with drawings and warm light",
   },
   {
     eyebrow: "Courtyard",
     title: "Open air becomes the center of the plan.",
     text: "Rooms hold their shape around a calmer middle, where movement, pause, and daylight meet.",
     imageSrc: "/north-gallery-house.jpg",
-    imageAlt: "Architectural team reviewing residential plans"
+    imageAlt: "Architectural team reviewing residential plans",
   },
   {
     eyebrow: "Detail",
     title: "Precision gives the atmosphere its stillness.",
     text: "Edges are resolved carefully so the building feels effortless, grounded, and quietly complete.",
     imageSrc: "/laterite-studio.jpg",
-    imageAlt: "Detailed architectural drawing for a compact studio"
-  }
+    imageAlt: "Detailed architectural drawing for a compact studio",
+  },
 ];
 
 export default function ScrollStorySection() {

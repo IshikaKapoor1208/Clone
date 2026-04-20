@@ -55,16 +55,17 @@ export default function CaseStudiesStickySection({ projects }) {
           end: "bottom bottom-=40",
           pin: pinnedMedia,
           pinSpacing: false,
-          invalidateOnRefresh: true
+          invalidateOnRefresh: true,
         });
 
         const imageLayers = imageLayerRefs.current.filter(Boolean);
 
         imageLayers.forEach((layer, index) => {
           gsap.set(layer, {
-            clipPath: index === 0 ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
+            clipPath:
+              index === 0 ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
             opacity: index === 0 ? 1 : 0.9,
-            zIndex: 10 + index
+            zIndex: 10 + index,
           });
         });
 
@@ -81,22 +82,24 @@ export default function CaseStudiesStickySection({ projects }) {
             start: REVEAL_START,
             end: REVEAL_END,
             onEnter: () => setActiveProjectIndex(index),
-            onEnterBack: () => setActiveProjectIndex(index)
+            onEnterBack: () => setActiveProjectIndex(index),
           });
 
           if (layer && index > 0) {
-            gsap.timeline({
-              scrollTrigger: {
-                trigger: content,
-                start: REVEAL_START,
-                end: REVEAL_END,
-                scrub: true
-              }
-            }).to(layer, {
-              clipPath: "inset(0% 0% 0% 0%)",
-              opacity: 1,
-              ease: "none"
-            });
+            gsap
+              .timeline({
+                scrollTrigger: {
+                  trigger: content,
+                  start: REVEAL_START,
+                  end: REVEAL_END,
+                  scrub: true,
+                },
+              })
+              .to(layer, {
+                clipPath: "inset(0% 0% 0% 0%)",
+                opacity: 1,
+                ease: "none",
+              });
           }
         });
       }, container);

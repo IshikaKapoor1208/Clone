@@ -18,7 +18,7 @@ export default function CaseStudySection({
   imageSrc,
   imageAlt,
   imagePriority = false,
-  stackIndex = 0
+  stackIndex = 0,
 }) {
   const sectionRef = useRef(null);
   const imageFrameRef = useRef(null);
@@ -37,7 +37,7 @@ export default function CaseStudySection({
     }
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion) {
@@ -52,32 +52,33 @@ export default function CaseStudySection({
         gsap.set(revealMask, {
           scaleY: 1,
           transformOrigin: "top center",
-          willChange: "transform"
+          willChange: "transform",
         });
 
         gsap.set(image, {
           scale: 1.08,
           objectPosition: "50% 58%",
           transformOrigin: "center center",
-          willChange: "transform, object-position"
+          willChange: "transform, object-position",
         });
 
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 74%",
-            end: "top 20%",
-            scrub: true
-          }
-        })
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 74%",
+              end: "top 20%",
+              scrub: true,
+            },
+          })
           .to(
             revealMask,
             {
               scaleY: 0,
               ease: "none",
-              duration: 1
+              duration: 1,
             },
-            0
+            0,
           )
           .to(
             image,
@@ -85,20 +86,19 @@ export default function CaseStudySection({
               scale: 1,
               objectPosition: "50% 44%",
               ease: "none",
-              duration: 1
+              duration: 1,
             },
-            0
+            0,
           )
           .to(
             imageFrame,
             {
               boxShadow: "0 34px 80px rgba(33,32,32,0.12)",
               ease: "none",
-              duration: 0.6
+              duration: 0.6,
             },
-            0
+            0,
           );
-
       }, section);
 
       return () => context.revert();
@@ -108,12 +108,12 @@ export default function CaseStudySection({
       const context = gsap.context(() => {
         gsap.set(revealMask, {
           scaleY: 0,
-          clearProps: "transform-origin,will-change"
+          clearProps: "transform-origin,will-change",
         });
         gsap.set(image, {
           scale: 1,
           objectPosition: "50% 50%",
-          clearProps: "will-change"
+          clearProps: "will-change",
         });
       }, section);
 

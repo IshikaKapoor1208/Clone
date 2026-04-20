@@ -12,7 +12,7 @@ export default function ProjectIndexSection({ projects }) {
   const listRef = useRef(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
   const [revealedProjectIds, setRevealedProjectIds] = useState(
-    projects[0]?.id ? [projects[0].id] : []
+    projects[0]?.id ? [projects[0].id] : [],
   );
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function ProjectIndexSection({ projects }) {
     }
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion) {
@@ -35,7 +35,7 @@ export default function ProjectIndexSection({ projects }) {
       gsap.set(section, {
         yPercent: 14,
         opacity: 0.98,
-        willChange: "transform"
+        willChange: "transform",
       });
 
       const tween = gsap.to(section, {
@@ -43,14 +43,14 @@ export default function ProjectIndexSection({ projects }) {
         opacity: 1,
         duration: 0.95,
         ease: "power3.out",
-        paused: true
+        paused: true,
       });
 
       ScrollTrigger.create({
         trigger: section,
         start: "top bottom-=10%",
         once: true,
-        onEnter: () => tween.play()
+        onEnter: () => tween.play(),
       });
     }, section);
 
@@ -68,24 +68,26 @@ export default function ProjectIndexSection({ projects }) {
           .filter((entry) => entry.isIntersecting)
           .sort(
             (a, b) =>
-              Number(a.target.dataset.projectIndex) -
-              Number(b.target.dataset.projectIndex)
+              Number(a.target.getAttribute("data-project-index")) -
+              Number(b.target.getAttribute("data-project-index")),
           )[0];
 
         if (visibleEntry) {
-          const projectId = visibleEntry.target.dataset.projectId;
+          const projectId = visibleEntry.target.getAttribute("data-project-id");
 
           setActiveProjectId(projectId);
           setRevealedProjectIds((currentIds) =>
-            currentIds.includes(projectId) ? currentIds : [...currentIds, projectId]
+            currentIds.includes(projectId)
+              ? currentIds
+              : [...currentIds, projectId],
           );
         }
       },
       {
         root: null,
         rootMargin: "-24% 0px -48% 0px",
-        threshold: 0
-      }
+        threshold: 0,
+      },
     );
 
     const sectionObserver = new IntersectionObserver(
@@ -101,11 +103,13 @@ export default function ProjectIndexSection({ projects }) {
       {
         root: null,
         rootMargin: "-35% 0px -45% 0px",
-        threshold: [0.2, 0.35, 0.5, 0.65]
-      }
+        threshold: [0.2, 0.35, 0.5, 0.65],
+      },
     );
 
-    itemRefs.current.filter(Boolean).forEach((item) => indexObserver.observe(item));
+    itemRefs.current
+      .filter(Boolean)
+      .forEach((item) => indexObserver.observe(item));
 
     const observedSections = projects
       .map((project) => document.getElementById(project.id))
@@ -123,13 +127,13 @@ export default function ProjectIndexSection({ projects }) {
     <section
       ref={sectionRef}
       id="index-section"
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
+      className="relative overflow-clip bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
     >
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
 
       <div className="grid gap-12 md:gap-14 xl:grid-cols-12 xl:gap-16">
-        <div className="xl:col-span-4">
-          <div>
+        <div className="xl:col-span-4 self-start">
+          <div className="sticky top-24 md:top-32 xl:top-40">
             <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>
@@ -149,7 +153,10 @@ export default function ProjectIndexSection({ projects }) {
           ref={listRef}
           className="xl:col-span-7 xl:col-start-6"
         >
-          <nav aria-label="Projects" className="border-t border-[rgba(33,32,32,0.14)]">
+          <nav
+            aria-label="Projects"
+            className="border-t border-[rgba(33,32,32,0.14)]"
+          >
             {projects.map((project, index) => {
               const isActive = activeProjectId === project.id;
               const isRevealed = revealedProjectIds.includes(project.id);
