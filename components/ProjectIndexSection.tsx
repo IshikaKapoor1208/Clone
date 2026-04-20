@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import useReducedMotion from "./useReducedMotion";
 
 export default function ProjectIndexSection({ projects }) {
-  const itemRefs = useRef([]);
-  const sectionRef = useRef(null);
-  const listRef = useRef(null);
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const listRef = useRef<HTMLDivElement | null>(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
   const [revealedProjectIds, setRevealedProjectIds] = useState(
     projects[0]?.id ? [projects[0].id] : []
@@ -86,12 +86,16 @@ export default function ProjectIndexSection({ projects }) {
           .filter((entry) => entry.isIntersecting)
           .sort(
             (a, b) =>
-              Number(a.target.dataset.projectIndex) -
-              Number(b.target.dataset.projectIndex)
+              Number((a.target as HTMLElement).dataset.projectIndex) -
+              Number((b.target as HTMLElement).dataset.projectIndex)
           )[0];
 
         if (visibleEntry) {
-          const projectId = visibleEntry.target.dataset.projectId;
+          const projectId = (visibleEntry.target as HTMLElement).dataset.projectId;
+
+          if (!projectId) {
+            return;
+          }
 
           setActiveProjectId(projectId);
           setRevealedProjectIds((currentIds) =>
@@ -113,7 +117,7 @@ export default function ProjectIndexSection({ projects }) {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
         if (visibleEntry) {
-          setActiveProjectId(visibleEntry.target.id);
+          setActiveProjectId((visibleEntry.target as HTMLElement).id);
         }
       },
       {
