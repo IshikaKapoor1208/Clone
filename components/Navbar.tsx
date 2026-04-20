@@ -24,6 +24,16 @@ export default function Navbar() {
 
   return (
     <>
+      <div className="fixed left-4 top-4 z-[70] md:left-10 lg:left-20 h-12 flex items-center">
+        <a 
+          href="#home" 
+          onClick={() => setIsOpen(false)}
+          className="font-signature text-2xl tracking-[0.02em] text-[#212020] transition duration-300 hover:text-black/60 md:text-3xl"
+        >
+          GP Architecture
+        </a>
+      </div>
+
       <nav className="fixed right-4 top-4 z-[70] md:right-10 lg:right-20">
         <button
           type="button"
