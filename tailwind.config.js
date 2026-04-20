@@ -9,10 +9,10 @@ module.exports = {
         "paper-soft": "#fbfaf7",
       },
       fontFamily: {
-        sans: ["var(--font-body)", "Montserrat", "Arial", "sans-serif"],
-        body: ["var(--font-body)", "Montserrat", "Arial", "sans-serif"],
+        sans: ["var(--font-body)", "Arial", "sans-serif"],
+        body: ["var(--font-body)", "Arial", "sans-serif"],
         heading: ["var(--font-heading)", "Georgia", "serif"],
-        signature: ["TheSignature", "var(--font-heading)", "Georgia", "serif"],
+        signature: ["var(--font-heading)", "Georgia", "serif"],
       },
       keyframes: {
         draw: {
