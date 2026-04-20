@@ -44,7 +44,8 @@ export default function CaseStudiesStickySection({ projects }) {
     let mm;
 
     const setupAnimation = async () => {
-      const gsap = (await import("gsap")).default;
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
 
       if (isCancelled) {
         return;

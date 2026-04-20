@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import useReducedMotion from "./useReducedMotion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectIndexSection({ projects }) {
-  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const listRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const listRef = useRef(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
   // Removed revealed state to avoid 1-by-1 open animation
 
@@ -21,8 +24,10 @@ export default function ProjectIndexSection({ projects }) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    const setupAnimation = async () => {
-      const gsap = (await import("gsap")).default;
+    if (prefersReducedMotion) {
+      gsap.set(section, { clearProps: "all" });
+      return undefined;
+    }
 
     const context = gsap.context(() => {
       gsap.set(section, {
@@ -48,43 +53,8 @@ export default function ProjectIndexSection({ projects }) {
       });
     }, section);
 
-      if (isCancelled) {
-        return;
-      }
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      context = gsap.context(() => {
-        gsap.set(section, {
-          yPercent: 14,
-          opacity: 0.98,
-          willChange: "transform"
-        });
-
-        const tween = gsap.to(section, {
-          yPercent: 0,
-          opacity: 1,
-          duration: 0.95,
-          ease: "power3.out",
-          paused: true
-        });
-
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top bottom-=10%",
-          once: true,
-          onEnter: () => tween.play()
-        });
-      }, section);
-    };
-
-    setupAnimation();
-
-    return () => {
-      isCancelled = true;
-      context?.revert();
-    };
-  }, [prefersReducedMotion]);
+    return () => context.revert();
+  }, []);
 
   useEffect(() => {
     if (!projects.length) {
@@ -121,7 +91,7 @@ export default function ProjectIndexSection({ projects }) {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
         if (visibleEntry) {
-          setActiveProjectId((visibleEntry.target as HTMLElement).id);
+          setActiveProjectId(visibleEntry.target.id);
         }
       },
       {
@@ -194,45 +164,40 @@ export default function ProjectIndexSection({ projects }) {
                   data-project-id={project.id}
                   data-project-index={index}
                   aria-current={isActive ? "true" : undefined}
-                  className={`grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] opacity-100 text-black ${
-                    isActive ? "translate-x-1" : "translate-x-0"
-                  }`}
+                  className={`grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.14)] py-7 transition duration-300 ease-out hover:translate-x-2 hover:text-black md:grid-cols-[72px_minmax(0,1fr)_minmax(140px,180px)] md:gap-5 xl:grid-cols-[80px_minmax(0,1fr)_minmax(170px,210px)] opacity-100 text-black ${isActive ? "translate-x-1" : "translate-x-0"
+                    }`}
                 >
                   <span
-                    className={`text-[0.82rem] uppercase tracking-[0.18em] transition duration-300 ${
-                      isActive
-                        ? "font-medium text-[rgba(33,32,32,0.9)]"
-                        : "text-[rgba(33,32,32,0.58)]"
-                    }`}
+                    className={`text-[0.82rem] uppercase tracking-[0.18em] transition duration-300 ${isActive
+                      ? "font-medium text-[rgba(33,32,32,0.9)]"
+                      : "text-[rgba(33,32,32,0.58)]"
+                      }`}
                   >
                     {project.number}
                   </span>
 
                   <span className="grid gap-2">
                     <h3
-                      className={`project-name relative m-0 w-fit text-xl font-medium leading-[1.1] transition duration-300 md:text-2xl lg:text-[1.95rem] ${
-                        isActive ? "translate-x-1 text-black" : "text-black/70"
-                      }`}
+                      className={`project-name relative m-0 w-fit text-xl font-medium leading-[1.1] transition duration-300 md:text-2xl lg:text-[1.95rem] ${isActive ? "translate-x-1 text-black" : "text-black/70"
+                        }`}
                     >
                       {project.title}
                     </h3>
                     <p
-                      className={`m-0 max-w-[56ch] text-sm leading-[1.7] transition duration-300 md:text-[0.97rem] ${
-                        isActive
-                          ? "translate-x-1 text-[rgba(33,32,32,0.72)]"
-                          : "text-[rgba(33,32,32,0.62)]"
-                      }`}
+                      className={`m-0 max-w-[56ch] text-sm leading-[1.7] transition duration-300 md:text-[0.97rem] ${isActive
+                        ? "translate-x-1 text-[rgba(33,32,32,0.72)]"
+                        : "text-[rgba(33,32,32,0.62)]"
+                        }`}
                     >
                       {project.description}
                     </p>
                   </span>
 
                   <span
-                    className={`break-words text-[0.76rem] uppercase tracking-[0.16em] transition duration-300 md:text-[0.82rem] md:tracking-[0.18em] ${
-                      isActive
-                        ? "font-medium text-[rgba(33,32,32,0.82)]"
-                        : "text-[rgba(33,32,32,0.58)]"
-                    }`}
+                    className={`break-words text-[0.76rem] uppercase tracking-[0.16em] transition duration-300 md:text-[0.82rem] md:tracking-[0.18em] ${isActive
+                      ? "font-medium text-[rgba(33,32,32,0.82)]"
+                      : "text-[rgba(33,32,32,0.58)]"
+                      }`}
                   >
                     {project.meta}
                   </span>
