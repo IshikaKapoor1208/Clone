@@ -85,11 +85,10 @@ export default function HeroSection() {
         <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
           <motion.div
             layout
-            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${
-              isVideoExpanded && !prefersReducedMotion
-                ? "fixed inset-0 z-50 rounded-none border-none"
-                : "absolute inset-0 border border-black/10"
-            }`}
+            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${isVideoExpanded && !prefersReducedMotion
+              ? "fixed inset-0 z-50 rounded-none border-none"
+              : "absolute inset-0 border border-black/10"
+              }`}
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}

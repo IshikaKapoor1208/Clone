@@ -18,7 +18,7 @@ const menuColumns = [
     links: ["Studio", "Journal", "Careers", "Enquiries"],
   },
 ];
-
+//dndhjs
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,35 +34,30 @@ export default function Navbar() {
         >
           <span className="grid w-6 gap-1.5">
             <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${
-                isOpen ? "translate-y-2 rotate-45" : ""
-              }`}
+              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "translate-y-2 rotate-45" : ""
+                }`}
             />
             <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${
-                isOpen ? "opacity-0" : "opacity-100"
-              }`}
+              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "opacity-0" : "opacity-100"
+                }`}
             />
             <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${
-                isOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
+              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "-translate-y-2 -rotate-45" : ""
+                }`}
             />
           </span>
         </button>
       </nav>
 
       <div
-        className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${
-          isOpen
+        className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${isOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
-        }`}
+          }`}
       >
         <div
-          className={`grid min-h-[calc(100vh-12rem)] gap-12 transition duration-300 md:grid-cols-[minmax(0,1.1fr)_1px_minmax(0,0.9fr)] md:gap-12 lg:gap-16 ${
-            isOpen ? "translate-y-0" : "translate-y-4"
-          }`}
+          className={`grid min-h-[calc(100vh-12rem)] gap-12 transition duration-300 md:grid-cols-[minmax(0,1.1fr)_1px_minmax(0,0.9fr)] md:gap-12 lg:gap-16 ${isOpen ? "translate-y-0" : "translate-y-4"
+            }`}
         >
           <div className="flex items-center">
             <ul className="space-y-5 md:space-y-7">

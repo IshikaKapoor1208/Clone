@@ -2,7 +2,10 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
-import useReducedMotion from "./useReducedMotion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CaseStudySection({
   id,
@@ -20,7 +23,6 @@ export default function CaseStudySection({
   const sectionRef = useRef(null);
   const imageFrameRef = useRef(null);
   const revealMaskRef = useRef(null);
-  const prefersReducedMotion = useReducedMotion();
 
   const summaryParagraphs = useMemo(() => paragraphs.slice(0, 1), [paragraphs]);
 
@@ -34,110 +36,92 @@ export default function CaseStudySection({
       return undefined;
     }
 
-    let isCancelled = false;
-    let mm;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
-    const setupAnimation = async () => {
-      const gsap = (await import("gsap")).default;
+    if (prefersReducedMotion) {
+      gsap.set([image, revealMask], { clearProps: "all" });
+      return undefined;
+    }
 
-      if (isCancelled) {
-        return;
-      }
+    const mm = gsap.matchMedia();
 
-      if (prefersReducedMotion) {
-        gsap.set([image, revealMask], { clearProps: "all" });
-        return;
-      }
+    mm.add("(min-width: 1024px)", () => {
+      const context = gsap.context(() => {
+        gsap.set(revealMask, {
+          scaleY: 1,
+          transformOrigin: "top center",
+          willChange: "transform",
+        });
 
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+        gsap.set(image, {
+          scale: 1.08,
+          objectPosition: "50% 58%",
+          transformOrigin: "center center",
+          willChange: "transform, object-position",
+        });
 
-      if (isCancelled) {
-        return;
-      }
-
-      gsap.registerPlugin(ScrollTrigger);
-      mm = gsap.matchMedia();
-
-      mm.add("(min-width: 1024px)", () => {
-        const context = gsap.context(() => {
-          gsap.set(revealMask, {
-            scaleY: 1,
-            transformOrigin: "top center",
-            willChange: "transform"
-          });
-
-          gsap.set(image, {
-            scale: 1.08,
-            objectPosition: "50% 58%",
-            transformOrigin: "center center",
-            willChange: "transform, object-position"
-          });
-
-          gsap.timeline({
+        gsap
+          .timeline({
             scrollTrigger: {
               trigger: section,
               start: "top 74%",
               end: "top 20%",
-              scrub: true
-            }
+              scrub: true,
+            },
           })
-            .to(
-              revealMask,
-              {
-                scaleY: 0,
-                ease: "none",
-                duration: 1
-              },
-              0
-            )
-            .to(
-              image,
-              {
-                scale: 1,
-                objectPosition: "50% 44%",
-                ease: "none",
-                duration: 1
-              },
-              0
-            )
-            .to(
-              imageFrame,
-              {
-                boxShadow: "0 34px 80px rgba(33,32,32,0.12)",
-                ease: "none",
-                duration: 0.6
-              },
-              0
-            );
-        }, section);
+          .to(
+            revealMask,
+            {
+              scaleY: 0,
+              ease: "none",
+              duration: 1,
+            },
+            0,
+          )
+          .to(
+            image,
+            {
+              scale: 1,
+              objectPosition: "50% 44%",
+              ease: "none",
+              duration: 1,
+            },
+            0,
+          )
+          .to(
+            imageFrame,
+            {
+              boxShadow: "0 34px 80px rgba(33,32,32,0.12)",
+              ease: "none",
+              duration: 0.6,
+            },
+            0,
+          );
+      }, section);
 
-        return () => context.revert();
-      });
+      return () => context.revert();
+    });
 
-      mm.add("(max-width: 1023px)", () => {
-        const context = gsap.context(() => {
-          gsap.set(revealMask, {
-            scaleY: 0,
-            clearProps: "transform-origin,will-change"
-          });
-          gsap.set(image, {
-            scale: 1,
-            objectPosition: "50% 50%",
-            clearProps: "will-change"
-          });
-        }, section);
+    mm.add("(max-width: 1023px)", () => {
+      const context = gsap.context(() => {
+        gsap.set(revealMask, {
+          scaleY: 0,
+          clearProps: "transform-origin,will-change",
+        });
+        gsap.set(image, {
+          scale: 1,
+          objectPosition: "50% 50%",
+          clearProps: "will-change",
+        });
+      }, section);
 
-        return () => context.revert();
-      });
-    };
+      return () => context.revert();
+    });
 
-    setupAnimation();
-
-    return () => {
-      isCancelled = true;
-      mm?.revert();
-    };
-  }, [prefersReducedMotion]);
+    return () => mm.revert();
+  }, []);
 
   return (
     <section
@@ -199,8 +183,8 @@ export default function CaseStudySection({
                 alt={imageAlt}
                 fill
                 priority={imagePriority}
-                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 56vw"
-                className="w-full h-auto object-cover object-center grayscale"
+                sizes="(max-width: 1023px) 100vw, 56vw"
+                className="h-auto w-full object-cover object-center grayscale"
               />
               <div
                 ref={revealMaskRef}

@@ -15,6 +15,10 @@ export default function useSectionReveal() {
       return undefined;
     }
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     if (prefersReducedMotion) {
       setIsVisible(true);
       return undefined;
@@ -41,10 +45,7 @@ export default function useSectionReveal() {
 
   return {
     sectionRef,
-    revealClassName: prefersReducedMotion
-      ? "translate-y-0 opacity-100"
-      : `transform-gpu transition duration-700 ease-out ${
-          isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-        }`,
+    revealClassName: `transform-gpu transition duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+      }`,
   };
 }
