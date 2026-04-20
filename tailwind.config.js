@@ -9,17 +9,10 @@ module.exports = {
         "paper-soft": "#fbfaf7",
       },
       fontFamily: {
-<<<<<<< HEAD
         sans: ["var(--font-body)", "Arial", "sans-serif"],
         body: ["var(--font-body)", "Arial", "sans-serif"],
         heading: ["var(--font-heading)", "Georgia", "serif"],
         signature: ["var(--font-heading)", "Georgia", "serif"],
-=======
-        sans: ["var(--font-body)", "Montserrat", "Arial", "sans-serif"],
-        body: ["var(--font-body)", "Montserrat", "Arial", "sans-serif"],
-        heading: ["var(--font-heading)", "Georgia", "serif"],
-        signature: ["TheSignature", "var(--font-heading)", "Georgia", "serif"],
->>>>>>> 2d6eb76f69f0291814239226cf6a87de1ab040d6
       },
       keyframes: {
         draw: {

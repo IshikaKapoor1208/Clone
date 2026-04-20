@@ -13,7 +13,7 @@
     "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -23,7 +23,6 @@
       }
     ]
   },
-<<<<<<< HEAD
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
@@ -33,11 +32,5 @@
     "**/*.ts",
     "**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
-=======
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
->>>>>>> 8a94f3366c507a229a6db82a92e677e4672e2cf2
 }
