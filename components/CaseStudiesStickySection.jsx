@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import StaggeredText from "./animations/StaggeredText";
 
 gsap.registerPlugin(ScrollTrigger);
 const REVEAL_START = "top 78%";
@@ -160,9 +161,9 @@ export default function CaseStudiesStickySection({ projects }) {
                   {project.meta}
                 </p>
 
-                <p className="text-[0.96rem] leading-8 text-black/68">
+                <StaggeredText className="text-[0.96rem] leading-8 text-black/68">
                   {project.paragraphs[0]}
-                </p>
+                </StaggeredText>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (

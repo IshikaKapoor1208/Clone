@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import StaggeredText from "./animations/StaggeredText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -136,11 +137,11 @@ export default function ProjectIndexSection({ projects }) {
             <h2 className="mt-4 max-w-[8ch] text-[2.9rem] leading-[0.9] tracking-[0.03em] md:text-[4.4rem] lg:text-[5.4rem] xl:text-[6.4rem]">
               Project Index
             </h2>
-            <p className="mt-6 max-w-[24rem] text-sm leading-7 text-black/60 md:text-[0.98rem]">
+            <StaggeredText className="mt-6 max-w-[24rem] text-sm leading-7 text-black/60 md:text-[0.98rem]">
               A curated sequence of residential, hospitality, and wellness work
               presented through drawings, process studies, and spatial
               narratives.
-            </p>
+            </StaggeredText>
           </div>
         </div>
 
@@ -190,7 +191,7 @@ export default function ProjectIndexSection({ projects }) {
                     >
                       {project.title}
                     </h3>
-                    <p
+                    <StaggeredText
                       className={`m-0 max-w-[56ch] text-sm leading-[1.7] transition duration-300 md:text-[0.97rem] ${
                         isActive
                           ? "translate-x-1 text-[rgba(33,32,32,0.72)]"
@@ -198,7 +199,7 @@ export default function ProjectIndexSection({ projects }) {
                       }`}
                     >
                       {project.description}
-                    </p>
+                    </StaggeredText>
                   </span>
 
                   <span

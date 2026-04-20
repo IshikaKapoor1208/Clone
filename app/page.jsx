@@ -2,6 +2,7 @@ import HeroSection from "../components/HeroSection";
 import CaseStudiesStickySection from "../components/CaseStudiesStickySection";
 import Navbar from "../components/Navbar";
 import ProjectIndexSection from "../components/ProjectIndexSection";
+import StaggeredText from "../components/animations/StaggeredText";
 //jdjdjdjd
 const projects = [
   {
@@ -128,11 +129,11 @@ export default function Page() {
           </div>
 
           <div className="grid gap-2 md:justify-items-end">
-            <p className="max-w-[28rem] text-sm leading-6 text-black/62 md:text-right md:text-[0.9rem]">
+            <StaggeredText className="max-w-[28rem] text-sm leading-6 text-black/62 md:text-right md:text-[0.9rem]">
               Residential, hospitality, and wellness environments shaped through
               thoughtful planning, restrained material language, and architectural
               clarity.
-            </p>
+            </StaggeredText>
             <a
               href="mailto:studio@example.com"
               className="text-[0.72rem] uppercase tracking-[0.22em] text-black/58 transition hover:text-black"

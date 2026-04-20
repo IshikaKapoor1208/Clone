@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import StaggeredText from "./animations/StaggeredText";
 import useSectionReveal from "./useSectionReveal";
 
 const HERO_VIDEO_PLAYBACK_RATE = 1.35;
@@ -81,10 +82,10 @@ export default function HeroSection() {
               <span className="block">Architects</span>
             </h1>
 
-            <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
+            <StaggeredText className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
               Thin drafting lines move from abstract positions into a clear building
               form, shaping a calm narrative of process, precision, and place.
-            </p>
+            </StaggeredText>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a

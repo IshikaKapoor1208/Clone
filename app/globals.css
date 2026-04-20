@@ -179,3 +179,112 @@ a:hover .project-name::after {
     padding: 0;
   }
 }
+
+.magnetic-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 11px;
+  height: 11px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #3a3a3a 0%, #111111 72%);
+  color: #f7f6f2;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 20px rgba(0, 0, 0, 0.28);
+  will-change: transform, width, height, opacity;
+  transition:
+    width 0.25s ease,
+    height 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.magnetic-cursor::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.22);
+  opacity: 0.55;
+  animation: cursor-halo 2.2s ease-in-out infinite;
+}
+
+.magnetic-cursor__label {
+  opacity: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.magnetic-cursor.is-image,
+.magnetic-cursor.is-arrow {
+  width: 110px;
+  height: 110px;
+  background: rgba(18, 18, 18, 0.88);
+  border: 1px solid rgba(247, 246, 242, 0.35);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  animation: none;
+}
+
+.magnetic-cursor.is-image::after,
+.magnetic-cursor.is-arrow::after {
+  opacity: 0;
+}
+
+.magnetic-cursor.is-arrow {
+  width: 72px;
+  height: 72px;
+}
+
+.magnetic-cursor.is-image .magnetic-cursor__label,
+.magnetic-cursor.is-arrow .magnetic-cursor__label {
+  opacity: 1;
+}
+
+@keyframes cursor-halo {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.42;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.12;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .magnetic-cursor {
+    display: inline-flex;
+  }
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  .cursor-image,
+  .magnetic,
+  .cursor-arrow {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-cursor,
+  .magnetic-cursor::after {
+    animation: none;
+  }
+}
