@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import useReducedMotion from "./useReducedMotion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 const REVEAL_START = "top 78%";
 const REVEAL_END = "top 28%";
 
@@ -14,7 +17,6 @@ export default function CaseStudiesStickySection({ projects }) {
   const imageLayerRefs = useRef([]);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  const prefersReducedMotion = useReducedMotion();
 
   const setActiveProjectIndex = (nextIndex) => {
     if (nextIndex === activeIndexRef.current) {
@@ -40,22 +42,12 @@ export default function CaseStudiesStickySection({ projects }) {
       return undefined;
     }
 
-    let isCancelled = false;
-    let mm;
+    const mm = gsap.matchMedia();
 
-    const setupAnimation = async () => {
-      const gsap = (await import("gsap")).default;
-
-      if (isCancelled) {
-        return;
-      }
-
-      if (prefersReducedMotion) {
+    mm.add("(min-width: 1024px)", () => {
+      const context = gsap.context(() => {
         activeIndexRef.current = 0;
         setActiveIndex(0);
-        gsap.set(imageLayerRefs.current.filter(Boolean), { clearProps: "all" });
-        return;
-      }
 
         ScrollTrigger.create({
           trigger: container,
@@ -66,8 +58,7 @@ export default function CaseStudiesStickySection({ projects }) {
           invalidateOnRefresh: true,
         });
 
-      gsap.registerPlugin(ScrollTrigger);
-      mm = gsap.matchMedia();
+        const imageLayers = imageLayerRefs.current.filter(Boolean);
 
         imageLayers.forEach((layer, index) => {
           gsap.set(layer, {
@@ -113,59 +104,20 @@ export default function CaseStudiesStickySection({ projects }) {
         });
       }, container);
 
-          sections.forEach((section, index) => {
-            const content = contentRefs.current[index];
-            const layer = imageLayerRefs.current[index];
+      return () => context.revert();
+    });
 
-            if (!content) {
-              return;
-            }
+    mm.add("(max-width: 1023px)", () => {
+      const context = gsap.context(() => {
+        activeIndexRef.current = 0;
+        setActiveIndex(0);
+      }, container);
 
-            ScrollTrigger.create({
-              trigger: content,
-              start: REVEAL_START,
-              end: REVEAL_END,
-              onEnter: () => setActiveProjectIndex(index),
-              onEnterBack: () => setActiveProjectIndex(index)
-            });
+      return () => context.revert();
+    });
 
-            if (layer && index > 0) {
-              gsap.timeline({
-                scrollTrigger: {
-                  trigger: content,
-                  start: REVEAL_START,
-                  end: REVEAL_END,
-                  scrub: true
-                }
-              }).to(layer, {
-                clipPath: "inset(0% 0% 0% 0%)",
-                opacity: 1,
-                ease: "none"
-              });
-            }
-          });
-        }, container);
-
-        return () => context.revert();
-      });
-
-      mm.add("(max-width: 1023px)", () => {
-        const context = gsap.context(() => {
-          activeIndexRef.current = 0;
-          setActiveIndex(0);
-        }, container);
-
-        return () => context.revert();
-      });
-    };
-
-    setupAnimation();
-
-    return () => {
-      isCancelled = true;
-      mm?.revert();
-    };
-  }, [prefersReducedMotion, projects.length]);
+    return () => mm.revert();
+  }, [projects.length]);
 
   const activeProject = projects[activeIndex] ?? projects[0];
 
@@ -231,8 +183,8 @@ export default function CaseStudiesStickySection({ projects }) {
                     src={project.imageSrc}
                     alt={project.imageAlt}
                     fill
-                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                    className="w-full h-auto object-cover object-center grayscale"
+                    sizes="100vw"
+                    className="h-auto w-full object-cover object-center grayscale"
                   />
                 </div>
               </div>
@@ -258,8 +210,9 @@ export default function CaseStudiesStickySection({ projects }) {
                     src={project.imageSrc}
                     alt={project.imageAlt}
                     fill
-                    sizes="(max-width: 1279px) 56vw, 42rem"
-                    className="w-full h-auto object-cover object-center grayscale"
+                    priority={Boolean(project.imagePriority)}
+                    sizes="56vw"
+                    className="h-auto w-full object-cover object-center grayscale"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.18))]" />
                 </div>

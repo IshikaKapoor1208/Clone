@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import useReducedMotion from "./useReducedMotion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectIndexSection({ projects }) {
-  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const listRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const listRef = useRef(null);
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
   // Removed revealed state to avoid 1-by-1 open animation
 
@@ -21,8 +24,10 @@ export default function ProjectIndexSection({ projects }) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    const setupAnimation = async () => {
-      const gsap = (await import("gsap")).default;
+    if (prefersReducedMotion) {
+      gsap.set(section, { clearProps: "all" });
+      return undefined;
+    }
 
     const context = gsap.context(() => {
       gsap.set(section, {
@@ -48,43 +53,8 @@ export default function ProjectIndexSection({ projects }) {
       });
     }, section);
 
-      if (isCancelled) {
-        return;
-      }
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      context = gsap.context(() => {
-        gsap.set(section, {
-          yPercent: 14,
-          opacity: 0.98,
-          willChange: "transform"
-        });
-
-        const tween = gsap.to(section, {
-          yPercent: 0,
-          opacity: 1,
-          duration: 0.95,
-          ease: "power3.out",
-          paused: true
-        });
-
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top bottom-=10%",
-          once: true,
-          onEnter: () => tween.play()
-        });
-      }, section);
-    };
-
-    setupAnimation();
-
-    return () => {
-      isCancelled = true;
-      context?.revert();
-    };
-  }, [prefersReducedMotion]);
+    return () => context.revert();
+  }, []);
 
   useEffect(() => {
     if (!projects.length) {
@@ -121,7 +91,7 @@ export default function ProjectIndexSection({ projects }) {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
         if (visibleEntry) {
-          setActiveProjectId((visibleEntry.target as HTMLElement).id);
+          setActiveProjectId(visibleEntry.target.id);
         }
       },
       {
