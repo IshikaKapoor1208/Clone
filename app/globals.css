@@ -2,30 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "TheSignature";
-  src: url("../assets/fonts/Thesignature-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../assets/fonts/Montserrat-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../assets/fonts/Montserrat-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   color-scheme: light;
   scroll-behavior: auto;
@@ -41,7 +17,6 @@ body {
 
 body {
   box-sizing: border-box;
-  font-family: "Montserrat", Arial, sans-serif;
   overflow-x: hidden;
   padding: 0;
 }
@@ -56,48 +31,52 @@ a,
 p,
 h3,
 h4 {
-  font-family: "Montserrat", Arial, sans-serif;
+  @apply font-body;
 }
 
 h1,
 h2 {
-  font-family: "TheSignature", Georgia, serif;
+  @apply font-heading;
   font-weight: 400;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .hero-video-feather {
   --hero-video-feather: clamp(40px, 5vw, 80px);
   -webkit-mask-image:
-    linear-gradient(
-      to right,
+    linear-gradient(to right,
       transparent 0,
       #000 var(--hero-video-feather),
       #000 calc(100% - var(--hero-video-feather)),
-      transparent 100%
-    ),
-    linear-gradient(
-      to bottom,
+      transparent 100%),
+    linear-gradient(to bottom,
       transparent 0,
       #000 var(--hero-video-feather),
       #000 calc(100% - var(--hero-video-feather)),
-      transparent 100%
-    );
+      transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(
-      to right,
+    linear-gradient(to right,
       transparent 0,
       #000 var(--hero-video-feather),
       #000 calc(100% - var(--hero-video-feather)),
-      transparent 100%
-    ),
-    linear-gradient(
-      to bottom,
+      transparent 100%),
+    linear-gradient(to bottom,
       transparent 0,
       #000 var(--hero-video-feather),
       #000 calc(100% - var(--hero-video-feather)),
-      transparent 100%
-    );
+      transparent 100%);
   mask-composite: intersect;
 }
 
@@ -166,6 +145,12 @@ a:hover .project-name::after {
     scroll-behavior: auto;
   }
 
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
   .sketch path,
   .sketch line,
   .sketch rect {
@@ -177,114 +162,5 @@ a:hover .project-name::after {
 @media (max-width: 767px) {
   body {
     padding: 0;
-  }
-}
-
-.magnetic-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10000;
-  width: 11px;
-  height: 11px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #3a3a3a 0%, #111111 72%);
-  color: #f7f6f2;
-  pointer-events: none;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 8px 20px rgba(0, 0, 0, 0.28);
-  will-change: transform, width, height, opacity;
-  transition:
-    width 0.25s ease,
-    height 0.25s ease,
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.magnetic-cursor::after {
-  content: "";
-  position: absolute;
-  inset: -5px;
-  border-radius: 999px;
-  border: 1px solid rgba(17, 17, 17, 0.22);
-  opacity: 0.55;
-  animation: cursor-halo 2.2s ease-in-out infinite;
-}
-
-.magnetic-cursor__label {
-  opacity: 0;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-align: center;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
-}
-
-.magnetic-cursor.is-image,
-.magnetic-cursor.is-arrow {
-  width: 110px;
-  height: 110px;
-  background: rgba(18, 18, 18, 0.88);
-  border: 1px solid rgba(247, 246, 242, 0.35);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
-  animation: none;
-}
-
-.magnetic-cursor.is-image::after,
-.magnetic-cursor.is-arrow::after {
-  opacity: 0;
-}
-
-.magnetic-cursor.is-arrow {
-  width: 72px;
-  height: 72px;
-}
-
-.magnetic-cursor.is-image .magnetic-cursor__label,
-.magnetic-cursor.is-arrow .magnetic-cursor__label {
-  opacity: 1;
-}
-
-@keyframes cursor-halo {
-  0%,
-  100% {
-    transform: scale(0.95);
-    opacity: 0.42;
-  }
-  50% {
-    transform: scale(1.12);
-    opacity: 0.12;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .magnetic-cursor {
-    display: inline-flex;
-  }
-
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  [role="button"],
-  .cursor-image,
-  .magnetic,
-  .cursor-arrow {
-    cursor: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .magnetic-cursor,
-  .magnetic-cursor::after {
-    animation: none;
   }
 }

@@ -7,23 +7,33 @@ const mainLinks = ["Home", "About", "Services", "Contact"];
 const menuColumns = [
   {
     title: "Products",
-    links: ["Residences", "Workspaces", "Hospitality", "Wellness"]
+    links: ["Residences", "Workspaces", "Hospitality", "Wellness"],
   },
   {
     title: "Projects",
-    links: ["Selected Work", "Case Studies", "Process", "Archive"]
+    links: ["Selected Work", "Case Studies", "Process", "Archive"],
   },
   {
     title: "Useful Links",
-    links: ["Studio", "Journal", "Careers", "Enquiries"]
-  }
+    links: ["Studio", "Journal", "Careers", "Enquiries"],
+  },
 ];
-
+//dndhjs
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
+      <div className="fixed left-4 top-4 z-[70] md:left-10 lg:left-20 h-12 flex items-center">
+        <a 
+          href="#home" 
+          onClick={() => setIsOpen(false)}
+          className="font-signature text-2xl tracking-[0.02em] text-[#212020] transition duration-300 hover:text-black/60 md:text-3xl"
+        >
+          GP Architecture
+        </a>
+      </div>
+
       <nav className="fixed right-4 top-4 z-[70] md:right-10 lg:right-20">
         <button
           type="button"
@@ -34,35 +44,30 @@ export default function Navbar() {
         >
           <span className="grid w-6 gap-1.5">
             <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${
-                isOpen ? "translate-y-2 rotate-45" : ""
-              }`}
+              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "translate-y-2 rotate-45" : ""
+                }`}
             />
             <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${
-                isOpen ? "opacity-0" : "opacity-100"
-              }`}
+              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "opacity-0" : "opacity-100"
+                }`}
             />
             <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${
-                isOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
+              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "-translate-y-2 -rotate-45" : ""
+                }`}
             />
           </span>
         </button>
       </nav>
 
       <div
-        className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${
-          isOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0"
-        }`}
+        className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${isOpen
+          ? "pointer-events-auto opacity-100"
+          : "pointer-events-none opacity-0"
+          }`}
       >
         <div
-          className={`grid min-h-[calc(100vh-12rem)] gap-12 transition duration-300 md:grid-cols-[minmax(0,1.1fr)_1px_minmax(0,0.9fr)] md:gap-12 lg:gap-16 ${
-            isOpen ? "translate-y-0" : "translate-y-4"
-          }`}
+          className={`grid min-h-[calc(100vh-12rem)] gap-12 transition duration-300 md:grid-cols-[minmax(0,1.1fr)_1px_minmax(0,0.9fr)] md:gap-12 lg:gap-16 ${isOpen ? "translate-y-0" : "translate-y-4"
+            }`}
         >
           <div className="flex items-center">
             <ul className="space-y-5 md:space-y-7">
