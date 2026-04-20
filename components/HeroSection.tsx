@@ -1,17 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import useSectionReveal from "./useSectionReveal";
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
+import useReducedMotion from "./useReducedMotion";
 
 const HERO_VIDEO_PLAYBACK_RATE = 1.35;
 
 export default function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
   const { sectionRef, revealClassName } = useSectionReveal();
-  const heroVideoRef = useRef(null);
+  const heroVideoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const video = heroVideoRef.current;
@@ -36,7 +35,7 @@ export default function HeroSection() {
 
   const [isVideoExpanded, setIsVideoExpanded] = useState(true);
   const [playReveal, setPlayReveal] = useState(false);
-  const textContainerRef = useRef(null);
+  const textContainerRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -46,15 +45,40 @@ export default function HeroSection() {
   }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (!playReveal) return;
+    if (!playReveal) {
+      return undefined;
+    }
 
-    gsap.registerPlugin(SplitText);
+    let isCancelled = false;
+    let split: { chars: Element[]; revert: () => void } | undefined;
+    let ctx: { revert: () => void } | undefined;
+
+    const setupAnimation = async () => {
+      const textContainer = textContainerRef.current;
+
+      if (!textContainer) {
+        return;
+      }
+
+      if (prefersReducedMotion) {
+        textContainer.style.opacity = "1";
+        return;
+      }
+
+      const gsap = (await import("gsap")).default;
+      const { SplitText } = await import("gsap/SplitText");
+
+      if (isCancelled) {
+        return;
+      }
+
+      gsap.registerPlugin(SplitText);
 
     // Make the text container visible right before GSAP children animation
     if (textContainerRef.current)
       gsap.set(textContainerRef.current, { opacity: 1 });
 
-    const split = new SplitText(textContainerRef.current, { type: "chars" });
+      split = new SplitText(textContainer, { type: "chars" });
 
     const ctx = gsap.context(() => {
       gsap.from(split.chars, {
@@ -66,11 +90,14 @@ export default function HeroSection() {
         ease: "power2.out",
         delay: 0.1,
       });
-    });
+    };
+
+    setupAnimation();
 
     return () => {
-      split.revert();
-      ctx.revert();
+      isCancelled = true;
+      split?.revert();
+      ctx?.revert();
     };
   }, [playReveal, prefersReducedMotion]);
 
@@ -92,7 +119,11 @@ export default function HeroSection() {
             }`}
             initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+            }
             onLayoutAnimationComplete={() => {
               if (!isVideoExpanded && !prefersReducedMotion) {
                 setPlayReveal(true);
@@ -128,7 +159,7 @@ export default function HeroSection() {
               ? { opacity: 1, y: 0 }
               : { opacity: 0, y: 14 }
           }
-          transition={{ duration: 0.68, ease: "easeOut" }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.68, ease: "easeOut" }}
         >
           <div className="max-w-[31rem]">
             <p className="text-[0.68rem] uppercase tracking-[0.28em] text-black/52 md:text-[0.72rem]">
@@ -137,7 +168,7 @@ export default function HeroSection() {
 
             <h1
               ref={textContainerRef}
-              className="opacity-0 mt-4 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]"
+              className="mt-4 opacity-0 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]"
             >
               <span className="block">Gaurav Patharey</span>
               <span className="block">Architects</span>

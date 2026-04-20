@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import useSectionReveal from "./useSectionReveal";
+import useReducedMotion from "./useReducedMotion";
 
 const storyFrames = [
   {
@@ -59,9 +60,9 @@ export default function ScrollStorySection() {
               key={frame.title}
               className="grid min-h-[100vh] content-center gap-6"
               initial={prefersReducedMotion ? false : { opacity: 0, y: 36 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.45 }}
-              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="space-y-4 border-t border-black/10 pt-5">
                 <div className="flex items-center gap-4">
@@ -85,16 +86,16 @@ export default function ScrollStorySection() {
               <motion.div
                 className="relative aspect-[4/5] w-full overflow-hidden border border-black/8 bg-[#f1ede6] md:aspect-[4/4.6] lg:aspect-[4/3.6]"
                 initial={prefersReducedMotion ? false : { scale: 0.98 }}
-                whileInView={{ scale: 1 }}
+                whileInView={prefersReducedMotion ? undefined : { scale: 1 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Image
                   src={frame.imageSrc}
                   alt={frame.imageAlt}
                   fill
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                  className="h-auto w-full object-cover object-center grayscale transition duration-700"
+                  sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 48vw"
+                  className="w-full h-auto object-cover object-center grayscale transition duration-700"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(0,0,0,0.08))]" />
               </motion.div>

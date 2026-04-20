@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+const headingFont = localFont({
+  src: "../assets/fonts/Thesignature-Regular.otf",
+  display: "swap",
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gauravpathareyarchitects.com"), // Placeholder domain
@@ -71,7 +86,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="overflow-x-hidden">
+      <body
+        className={`${montserrat.variable} ${headingFont.variable} font-body overflow-x-hidden`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
