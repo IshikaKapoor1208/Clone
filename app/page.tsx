@@ -9,6 +9,7 @@ import CTASection from "../components/CTASection";
 import CustomCursor from "../components/CustomCursor";
 import SmoothScroll from "../components/SmoothScroll";
 import ComparisonSlider from "../components/ComparisonSlider";
+import IdentitySection from "../components/IdentitySection";
 
 export default function Page() {
   return (
@@ -38,6 +39,8 @@ export default function Page() {
           />
         </div>
       </section>
+
+      <IdentitySection />
 
       <ServicesSection />
 
