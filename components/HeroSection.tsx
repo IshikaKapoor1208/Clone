@@ -99,8 +99,7 @@ export default function HeroSection() {
               }
             }}
           >
-            <motion.video
-              layout
+            <video
               ref={heroVideoRef}
               className="h-full w-full object-cover object-center grayscale"
               src="/vid3.mp4"
@@ -117,7 +116,7 @@ export default function HeroSection() {
               }}
               aria-hidden="true"
             />
-            <motion.div layout className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.14))]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.14))]" />
           </motion.div>
         </div>
 
