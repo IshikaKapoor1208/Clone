@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const mainLinks = ["Home", "About", "Services", "Contact"];
@@ -22,20 +22,33 @@ const menuColumns = [
 //dndhjs
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [shouldShow, setShouldShow] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShouldShow(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
-      <div className="fixed left-4 top-4 z-[70] md:left-10 lg:left-20 h-12 flex items-center">
+      <div 
+        className={`fixed left-4 top-4 z-[70] md:left-10 lg:left-20 h-12 flex items-center transition-all duration-1000 ease-in-out ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+      >
         <Link
           href="/"
           onClick={() => setIsOpen(false)}
+          data-cursor="view"
           className="font-signature text-2xl tracking-[0.02em] text-[#212020] transition duration-300 hover:text-black/60 md:text-3xl"
         >
           GP Architecture
         </Link>
       </div>
 
-      <nav className="fixed right-4 top-4 z-[70] md:right-10 lg:right-20">
+      <nav 
+        className={`fixed right-4 top-4 z-[70] md:right-10 lg:right-20 transition-all duration-1000 ease-in-out ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+      >
         <button
           type="button"
           aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -77,6 +90,7 @@ export default function Navbar() {
                   <Link
                     href={link === "Home" ? "/" : link === "Contact" ? "/contact" : `/#${link.toLowerCase()}`}
                     onClick={() => setIsOpen(false)}
+                    data-cursor="view"
                     className="block text-5xl font-semibold uppercase leading-none tracking-[0.08em] transition duration-300 hover:translate-x-2 hover:text-black/55 md:text-7xl lg:text-8xl"
                   >
                     {link}
