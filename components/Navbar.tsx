@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const mainLinks = ["Home", "About", "Services", "Contact"];
 
@@ -25,13 +26,13 @@ export default function Navbar() {
   return (
     <>
       <div className="fixed left-4 top-4 z-[70] md:left-10 lg:left-20 h-12 flex items-center">
-        <a 
-          href="#home" 
+        <Link
+          href="/"
           onClick={() => setIsOpen(false)}
           className="font-signature text-2xl tracking-[0.02em] text-[#212020] transition duration-300 hover:text-black/60 md:text-3xl"
         >
           GP Architecture
-        </a>
+        </Link>
       </div>
 
       <nav className="fixed right-4 top-4 z-[70] md:right-10 lg:right-20">
@@ -73,13 +74,13 @@ export default function Navbar() {
             <ul className="space-y-5 md:space-y-7">
               {mainLinks.map((link) => (
                 <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
+                  <Link
+                    href={link === "Home" ? "/" : link === "Contact" ? "/contact" : `/#${link.toLowerCase()}`}
                     onClick={() => setIsOpen(false)}
                     className="block text-5xl font-semibold uppercase leading-none tracking-[0.08em] transition duration-300 hover:translate-x-2 hover:text-black/55 md:text-7xl lg:text-8xl"
                   >
                     {link}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -6,6 +6,7 @@ import ServicesSection from "../components/ServicesSection";
 import Footer from "../components/Footer";
 import { projects } from "../lib/data/projects";
 import CaseStudiesStickySection from "../components/CaseStudiesStickySection";
+import CTASection from "../components/CTASection";
 
 export default function Page() {
   return (
@@ -24,7 +25,7 @@ export default function Page() {
 
       <CaseStudiesStickySection projects={projects} />
 
-
+      <CTASection />
 
       <Footer />
     </main>
