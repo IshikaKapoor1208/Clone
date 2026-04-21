@@ -33,7 +33,7 @@ export default function ComparisonSlider({
   return (
     <div 
       ref={containerRef}
-      className="relative aspect-[16/9] w-full overflow-hidden border border-black/10 transition-shadow hover:shadow-2xl cursor-none"
+      className="relative aspect-[16/9] max-h-[500px] w-full overflow-hidden border border-black/10 transition-shadow hover:shadow-2xl cursor-none"
       onPointerMove={handleMove}
       data-cursor="view"
     >

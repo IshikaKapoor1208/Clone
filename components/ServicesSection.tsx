@@ -1,25 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-const services = [
-  {
-    title: "Architecture",
-    description: "From conceptualization to execution, we craft iconic structures that blend aesthetics, sustainability, and purpose.",
-    img: "/service-architecture.png",
-  },
-  {
-    title: "Interior Design",
-    description: "Transforming empty spaces into living experiences. We design interiors that perfectly balance form and function.",
-    img: "/service-interiors.png",
-  },
-  {
-    title: "Urban Planning",
-    description: "Designing the future of our cities with comprehensive master planning and sustainable urban development strategies.",
-    img: "/service-urban.png",
-  },
-];
+import { services } from "../lib/data/services";
 
 export default function ServicesSection() {
   return (
@@ -39,8 +23,9 @@ export default function ServicesSection() {
         {/* Accordion / Cards */}
         <div className="flex flex-col lg:flex-row gap-4 h-[800px] lg:h-[600px] w-full">
           {services.map((service, idx) => (
-            <div
+            <Link
               key={idx}
+              href={`/services/${service.slug}`}
               className="group relative flex-1 hover:flex-[2.5_2.5_0%] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer overflow-hidden rounded-2xl bg-ink/10"
             >
               <Image
@@ -67,7 +52,7 @@ export default function ServicesSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

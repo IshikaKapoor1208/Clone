@@ -12,11 +12,11 @@ const images = [
 
 export default function IdentitySection() {
   return (
-    <section className="bg-white py-20 md:py-32 lg:py-40 px-6 md:px-52">
+    <section className="bg-white px-6 py-12 md:px-52 md:py-16 lg:py-20">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
 
         {/* Headline */}
-        <div className="mb-16 text-center md:mb-24">
+        <div className="mb-10 text-center md:mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ export default function IdentitySection() {
         </div>
 
         {/* Slanted Image Grid */}
-        <div className="mb-16 flex h-[200px] items-center justify-center gap-1 overflow-hidden md:h-[300px] lg:h-[400px]">
+        <div className="mb-10 flex h-[200px] items-center justify-center gap-1 overflow-hidden md:h-[300px] lg:h-[360px]">
           {images.map((img, idx) => (
             <motion.div
               key={idx}

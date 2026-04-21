@@ -22,10 +22,10 @@ export default function Page() {
         <HeroSection />
       </div>
 
-      <ProjectIndexSection projects={projects} />
+      <ServicesSection />
 
       <section className="py-24 px-4 md:px-10 lg:px-20 bg-paper-soft">
-        <div className="mx-auto max-w-[1400px]">
+        <div className="mx-auto max-w-[900px]">
           <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <h2 className="font-signature text-5xl md:text-7xl">The Process.</h2>
             <p className="max-w-md text-ink/60 leading-relaxed uppercase text-[0.65rem] tracking-[0.2em] font-medium">
@@ -42,7 +42,7 @@ export default function Page() {
 
       <IdentitySection />
 
-      <ServicesSection />
+      <ProjectIndexSection projects={projects} />
 
       <CaseStudiesStickySection projects={projects} />
 

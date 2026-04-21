@@ -220,14 +220,10 @@ export default function HeroSection() {
           ref={sideContentRef}
           className="flex items-end pb-8 opacity-0 md:pb-10 lg:border-l lg:border-black/10 lg:pb-14 lg:pl-12"
         >
-          <div className="max-w-[31rem]">
-            <p className="text-[0.68rem] uppercase tracking-[0.28em] text-black/52 md:text-[0.72rem]">
-              Chapter 01 \ Architectural Motion Study
-            </p>
-
+          <div className="max-w-[34rem]">
             <h1
               ref={textContainerRef}
-              className="cursor-image opacity-0 mt-4 font-signature text-[2.2rem] leading-[0.96] tracking-[0.02em] text-[#212020] md:text-[3.15rem] lg:text-[4rem]"
+              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] text-[#212020] opacity-0 md:text-[4.2rem] lg:text-[5rem]"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);
@@ -235,15 +231,15 @@ export default function HeroSection() {
               onMouseMove={moveTitlePreview}
               onMouseLeave={() => setShowTitlePreview(false)}
             >
-              <span className="block">Gaurav Patharey</span>
+              <span className="block whitespace-nowrap">Gaurav Patharey</span>
               <span className="block">Architects</span>
             </h1>
 
-            <StaggeredText className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
+            <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
               Thin drafting lines move from abstract positions into a clear
               building form, shaping a calm narrative of process, precision, and
               place.
-            </StaggeredText>
+            </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a
