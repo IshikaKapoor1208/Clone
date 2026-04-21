@@ -13,6 +13,7 @@ export default function CaseStudySection({
   title,
   subtitle,
   meta,
+  description,
   paragraphs,
   tags,
   imageSrc,
@@ -24,7 +25,10 @@ export default function CaseStudySection({
   const imageFrameRef = useRef(null);
   const revealMaskRef = useRef(null);
 
-  const summaryParagraphs = useMemo(() => paragraphs.slice(0, 1), [paragraphs]);
+  const summaryParagraphs = useMemo(
+    () => [description, ...paragraphs.slice(0, 1)].filter(Boolean),
+    [description, paragraphs],
+  );
 
   useEffect(() => {
     const section = sectionRef.current;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CaseStudySection from "../../../components/CaseStudySection";
-import { projectBySlug } from "../../../data/projects";
+import { projectBySlug } from "../../../lib/data/projects";
 
 export function generateStaticParams() {
   return Object.keys(projectBySlug).map((slug) => ({ slug }));

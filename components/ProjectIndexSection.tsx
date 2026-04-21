@@ -177,13 +177,13 @@ export default function ProjectIndexSection({ projects }) {
     <section
       ref={sectionRef}
       id="about"
-      className="relative overflow-clip bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
+      className="relative bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 py-20 md:px-10 md:py-24 lg:px-20 xl:py-28"
     >
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
 
       <div className="grid gap-12 md:gap-14 xl:grid-cols-12 xl:gap-16">
-        <div className="xl:col-span-4 self-start">
-          <div className="sticky top-24 md:top-32 xl:top-40">
+        <div className="self-start xl:col-span-4">
+          <div className="sticky top-24 md:top-28 xl:top-32">
             <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>

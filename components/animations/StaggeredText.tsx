@@ -3,7 +3,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,32 +24,10 @@ export default function StaggeredText({
       return undefined;
     }
 
-    const split = new SplitType(element, { types: "lines" });
-    const lines = split.lines || [];
-
-    if (!lines.length) {
-      return () => {
-        split.revert();
-      };
-    }
-
-    lines.forEach((line) => {
-      const wrapper = document.createElement("div");
-
-      // Clip each line to keep the upward movement hidden before reveal.
-      wrapper.style.overflow = "hidden";
-      wrapper.style.display = "block";
-      line.parentNode?.insertBefore(wrapper, line);
-      wrapper.appendChild(line);
-      line.style.display = "block";
-      line.style.willChange = "transform, opacity";
-    });
-
-    const animation = gsap.from(lines, {
+    const animation = gsap.from(element, {
       y: 72,
       opacity: 0,
       filter: "blur(6px)",
-      stagger: 0.2,
       duration: 1.5,
       ease: "expo.out",
       paused: true,
@@ -74,7 +51,6 @@ export default function StaggeredText({
     return () => {
       trigger.kill();
       animation.kill();
-      split.revert();
     };
   }, [children]);
 

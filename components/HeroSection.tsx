@@ -8,7 +8,7 @@ import useReducedMotion from "./useReducedMotion";
 import StaggeredText from "./animations/StaggeredText";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { Flip } from "gsap/Flip";
+import { Flip } from "gsap/dist/Flip";
 
 const HERO_VIDEO_PLAYBACK_RATE = 1.35;
 

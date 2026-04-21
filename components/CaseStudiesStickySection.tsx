@@ -183,9 +183,10 @@ export default function CaseStudiesStickySection({ projects }) {
                   {project.meta}
                 </p>
 
-                <StaggeredText className="text-[0.96rem] leading-8 text-black/68">
-                  {project.paragraphs[0]}
-                </StaggeredText>
+                <div className="space-y-4 text-[0.96rem] leading-8 text-black/68">
+                  <p>{project.description}</p>
+                  <p>{project.paragraphs[0]}</p>
+                </div>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (

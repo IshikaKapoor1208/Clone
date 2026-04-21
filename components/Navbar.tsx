@@ -33,14 +33,14 @@ export default function Navbar() {
 
   return (
     <>
-      <div 
-        className={`fixed left-4 top-4 z-[70] md:left-10 lg:left-20 h-12 flex items-center transition-all duration-1000 ease-in-out ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+      <div
+        className={`fixed left-4 top-4 z-[70] flex h-12 items-center border border-black/10 bg-white/96 px-4 backdrop-blur-md transition-all duration-1000 ease-in-out md:left-10 lg:left-20 ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <Link
           href="/"
           onClick={() => setIsOpen(false)}
           data-cursor="view"
-          className="font-signature text-2xl tracking-[0.02em] text-[#212020] transition duration-300 hover:text-black/60 md:text-3xl"
+          className="font-signature text-2xl leading-none tracking-[0.02em] text-[#212020] transition duration-300 hover:text-black/60 md:text-3xl"
         >
           GP Architecture
         </Link>
