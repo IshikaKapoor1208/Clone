@@ -223,7 +223,7 @@ export default function HeroSection() {
           <div className="max-w-[34rem]">
             <h1
               ref={textContainerRef}
-              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] text-[#212020] opacity-0 md:text-[4.2rem] lg:text-[5rem]"
+              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] text-rustic-red opacity-0 md:text-[8.2rem] lg:text-[5rem]"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);

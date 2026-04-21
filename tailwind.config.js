@@ -7,6 +7,7 @@ module.exports = {
         ink: "#212020",
         paper: "#ffffff",
         "paper-soft": "#fbfaf7",
+        "rustic-red": "#832F23",
       },
       fontFamily: {
         sans: ["var(--font-body)", "Arial", "sans-serif"],
