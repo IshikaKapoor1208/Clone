@@ -45,7 +45,7 @@ export default function ServiceDetailPage({ service }) {
             className="relative min-h-[62vh] overflow-hidden rounded-[2rem] bg-ink/10 shadow-[0_34px_90px_rgba(33,32,32,0.14)]"
           >
             <Image
-              src={service.heroImage}
+              src={service.img || service.heroImage}
               alt={`${service.title} design reference`}
               fill
               priority
@@ -59,6 +59,29 @@ export default function ServiceDetailPage({ service }) {
           </motion.div>
         </div>
       </section>
+
+      {service.highlights?.length ? (
+        <section className="px-5 pb-8 md:px-10 lg:px-20">
+          <div className="mx-auto grid max-w-[1500px] gap-3 border-y border-ink/10 py-6 sm:grid-cols-2 lg:grid-cols-4">
+            {service.highlights.map((highlight, index) => (
+              <motion.div
+                key={highlight}
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.2 + index * 0.08 }}
+                className="flex items-center justify-between bg-paper-soft px-5 py-4"
+              >
+                <span className="text-sm uppercase tracking-[0.2em] text-ink/62">
+                  {highlight}
+                </span>
+                <span className="text-xs text-ink/35">
+                  0{index + 1}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="px-5 py-14 md:px-10 lg:px-20">
         <div className="mx-auto grid max-w-[1500px] gap-10 border-y border-ink/10 py-12 lg:grid-cols-[0.7fr_1.3fr]">
@@ -94,7 +117,7 @@ export default function ServiceDetailPage({ service }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group overflow-hidden rounded-[1.5rem] border border-ink/10 bg-paper-soft"
+              className="group overflow-hidden border border-ink/10 bg-paper-soft"
             >
               <div className="relative h-[32rem] overflow-hidden bg-ink/10">
                 <Image
@@ -106,6 +129,9 @@ export default function ServiceDetailPage({ service }) {
                 />
               </div>
               <div className="p-6 md:p-8">
+                <p className="mb-4 text-xs uppercase tracking-[0.24em] text-ink/42">
+                  Study 0{index + 1}
+                </p>
                 <h2 className="text-3xl font-light tracking-[-0.03em] md:text-4xl">
                   {item.title}
                 </h2>
