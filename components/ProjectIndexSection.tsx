@@ -189,7 +189,8 @@ export default function ProjectIndexSection({ projects }) {
               Selected Work
             </p>
             <h2 className="mt-4 max-w-[8ch] text-[2.9rem] leading-[0.9] tracking-[0.03em] md:text-[4.4rem] lg:text-[5.4rem] xl:text-[6.4rem]">
-              Project Index
+              <span className="text-rustic-red">Project </span>
+              <span className="text-[#A34E24]">Index</span>
             </h2>
             <StaggeredText className="mt-6 max-w-[24rem] text-sm leading-7 text-black/60 md:text-[0.98rem]">
               A curated sequence of residential, hospitality, and wellness work
@@ -241,10 +242,18 @@ export default function ProjectIndexSection({ projects }) {
 
                   <span className="grid min-w-0 gap-2">
                     <h3
-                      className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-[1.55rem] font-normal leading-[1.08] tracking-[0.02em] transition duration-300 sm:whitespace-nowrap md:text-[1.85rem] lg:text-[2.1rem] ${isActive ? "translate-x-1 text-[#050505]" : "text-[#565656]"
-                        }`}
+                      className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-[1.55rem] font-normal leading-[1.08] tracking-[0.02em] transition duration-300 sm:whitespace-nowrap md:text-[1.85rem] lg:text-[2.1rem] ${isActive ? "translate-x-1" : ""}`}
                     >
-                      {project.title}
+                      {(() => {
+                        const words = project.title.trim().split(" ");
+                        const last = words.pop();
+                        return (
+                          <>
+                            <span className="text-rustic-red">{words.join(" ")} </span>
+                            <span className="text-[#A34E24]">{last}</span>
+                          </>
+                        );
+                      })()}
                     </h3>
                     <p
                       className={`m-0 max-w-[58ch] font-body text-[0.9rem] font-normal leading-[1.65] tracking-[0.02em] transition duration-300 md:text-[0.98rem] lg:text-[1.02rem] ${isActive

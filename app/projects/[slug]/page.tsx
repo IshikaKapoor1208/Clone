@@ -38,7 +38,16 @@ export default async function ProjectPage({ params }) {
             {project.meta}
           </p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-[0.02em] mb-6">
-            {project.title}
+            {(() => {
+              const words = project.title.trim().split(" ");
+              const last = words.pop();
+              return (
+                <>
+                  <span className="text-rustic-red">{words.join(" ")} </span>
+                  <span className="text-[#A34E24]">{last}</span>
+                </>
+              );
+            })()}
           </h1>
           <p className="text-xl md:text-2xl text-ink/70 max-w-2xl font-light">
             {project.subtitle}
@@ -118,7 +127,16 @@ export default async function ProjectPage({ params }) {
         <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50 mb-6">Next Project</p>
         <Link href={`/projects/${nextProject.slug}`} className="group inline-block mb-16">
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight group-hover:opacity-70 transition-opacity duration-300">
-            {nextProject.title}
+            {(() => {
+              const words = nextProject.title.trim().split(" ");
+              const last = words.pop();
+              return (
+                <>
+                  <span className="text-white/80">{words.join(" ")} </span>
+                  <span className="text-white/50">{last}</span>
+                </>
+              );
+            })()}
           </h2>
         </Link>
         <div>

@@ -9,14 +9,15 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-24 px-6 md:px-12 bg-paper text-ink">
       <div className="max-w-[1400px] mx-auto">
-        
+
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div className="text-xs md:text-sm uppercase tracking-[0.2em] text-ink/60 font-semibold shrink-0">
             Services
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight max-w-3xl text-right md:text-left">
-            How GP Architects <span className="font-medium italic">Can Help You</span>
+            <span className="text-rustic-red">How GP Architects </span>
+            <span className="text-[#A34E24] font-medium italic">Can Help You</span>
           </h2>
         </div>
 
@@ -36,7 +37,7 @@ export default function ServicesSection() {
               />
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-              
+
               {/* Content */}
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end h-full">
                 <div className="overflow-hidden">
@@ -44,7 +45,7 @@ export default function ServicesSection() {
                     {service.description}
                   </p>
                 </div>
-                
+
                 <div className="flex items-center justify-between text-paper border-t border-paper/30 pt-6 group-hover:border-paper/60 transition-colors duration-500">
                   <span className="text-xl md:text-2xl tracking-wide font-medium">{service.title}</span>
                   <div className="bg-paper text-ink w-10 h-10 rounded-full flex items-center justify-center transform -rotate-45 group-hover:rotate-0 transition-transform duration-500">
@@ -64,7 +65,7 @@ export default function ServicesSection() {
           <button className="group shrink-0 rounded-full bg-ink text-paper px-8 py-4 flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95">
             <span className="font-medium tracking-wide">Get Started</span>
             <div className="w-8 h-8 rounded-full bg-paper/20 flex items-center justify-center transform group-hover:translate-x-1 transition-transform">
-                <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4" />
             </div>
           </button>
         </div>
