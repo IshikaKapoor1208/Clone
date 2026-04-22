@@ -178,7 +178,7 @@ export default function ProjectIndexSection({ projects }) {
     <section
       ref={sectionRef}
       id="about"
-      className="relative bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 pb-20 pt-20 md:px-10 md:pb-24 md:pt-24 lg:px-20 lg:pb-24 lg:pt-28 xl:pt-28"
+      className="relative bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 pb-20 pt-20 md:px-10 md:pb-24 md:pt-24 lg:px-20 lg:pb-24 lg:pt-28 xl:pt-32 xl:px-28"
     >
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
 
@@ -188,15 +188,15 @@ export default function ProjectIndexSection({ projects }) {
             <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>
-            <h2 className="mt-4 max-w-[8ch] text-[2.9rem] leading-[0.9] tracking-[0.03em] md:text-[4.4rem] lg:text-[5.4rem] xl:text-[6.4rem]">
-              <span className="text-rustic-red">Project </span>
-              <span className="text-[#A34E24]">Index</span>
+            <h2 className="mt-6 font-signature text-[3.2rem] leading-[0.9] tracking-[0.03em] md:text-[4.4rem] lg:text-[5.4rem] xl:text-[6.4rem]">
+              <span className="block whitespace-nowrap text-rustic-red">Project</span>
+              <span className="block text-[#A34E24]">Index</span>
             </h2>
-            <StaggeredText className="mt-6 max-w-[24rem] text-sm leading-7 text-black/60 md:text-[0.98rem]">
+            <p className="mt-6 max-w-[24rem] text-sm leading-7 text-black/60 md:text-[0.98rem]">
               A curated sequence of residential, hospitality, and wellness work
               presented through drawings, process studies, and spatial
               narratives.
-            </StaggeredText>
+            </p>
           </div>
         </div>
 
@@ -242,7 +242,7 @@ export default function ProjectIndexSection({ projects }) {
 
                   <span className="grid min-w-0 gap-2">
                     <h3
-                      className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-[1.55rem] font-normal leading-[1.08] tracking-[0.02em] transition duration-300 sm:whitespace-nowrap md:text-[1.85rem] lg:text-[2.1rem] ${isActive ? "translate-x-1" : ""}`}
+                      className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-[1.55rem] font-normal leading-[1.08] tracking-[0.02em] transition duration-300 sm:whitespace-nowrap md:text-[1.85rem] lg:text-[2.1rem] xl:text-[2.4rem] ${isActive ? "translate-x-1" : ""}`}
                     >
                       {(() => {
                         const words = project.title.trim().split(" ");

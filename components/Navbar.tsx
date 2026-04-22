@@ -106,15 +106,15 @@ export default function Navbar() {
           className={`grid min-h-[calc(100vh-12rem)] gap-12 transition duration-300 md:grid-cols-[minmax(0,1.1fr)_1px_minmax(0,0.9fr)] md:gap-12 lg:gap-16 ${isOpen ? "translate-y-0" : "translate-y-4"
             }`}
         >
-          <div className="flex items-center">
-            <ul className="space-y-5 md:space-y-7">
+          <div className="flex w-full items-center justify-center md:justify-start">
+            <ul className="w-full space-y-5 text-center md:space-y-7 md:text-left">
               {mainLinks.map((link) => (
                 <li key={link}>
                   <Link
                     href={link === "Home" ? "/" : link === "Contact" ? "/contact" : `/#${link.toLowerCase()}`}
                     onClick={() => setIsOpen(false)}
                     data-cursor="view"
-                    className="block text-5xl font-semibold uppercase leading-none tracking-[0.08em] transition duration-300 hover:translate-x-2 hover:text-black/55 md:text-7xl lg:text-8xl"
+                    className="block w-full text-5xl font-semibold uppercase leading-none tracking-[0.08em] transition duration-300 hover:text-black/55 md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
                   >
                     {link}
                   </Link>
@@ -125,7 +125,7 @@ export default function Navbar() {
 
           <div className="hidden bg-black/10 md:block" />
 
-          <div className="grid content-center gap-10 border-t border-black/10 pt-10 md:border-t-0 md:pt-0">
+          <div className="hidden md:grid content-center gap-10 border-t border-black/10 pt-10 md:border-t-0 md:pt-0">
             <div className="grid gap-8 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3">
               {menuColumns.map((column) => (
                 <div key={column.title} className="space-y-5">

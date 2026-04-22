@@ -79,17 +79,7 @@ export default function ComparisonSlider({
         </div>
       </div>
 
-      {/* Title / Info */}
-      <div className="absolute top-6 left-6 z-30 pointer-events-none">
-        <p className="text-[0.6rem] uppercase tracking-[0.3em] mb-2">
-          <span className="text-rustic-red">Process </span>
-          <span className="text-[#A34E24]">Study</span>
-        </p>
-        <h3 className="font-signature text-3xl text-white">
-          <span className="text-rustic-red">Vision to </span>
-          <span className="text-[#A34E24]">Reality</span>
-        </h3>
-      </div>
+
     </div>
   );
 }

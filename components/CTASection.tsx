@@ -29,7 +29,7 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mb-8 max-w-4xl font-signature text-[3rem] leading-[1.04] tracking-tight text-ink md:text-[5.2rem] lg:text-[6.5rem]"
+            className="font-signature text-[3.5rem] leading-[1.1] tracking-tight text-ink md:text-[6rem] lg:text-[8rem] xl:text-[8rem] max-w-5xl mb-12"
           >
             <span className="text-rustic-red">Let&apos;s shape your </span>
             <span className="text-[#A34E24] italic font-medium">vision into reality.</span>

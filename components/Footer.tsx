@@ -19,25 +19,30 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-4 py-10 md:px-10 md:py-12 lg:px-20"
+      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-4 py-10 md:px-10 md:py-12 lg:px-20 xl:px-32"
     >
-      <div className="grid gap-10 border-b border-black/8 pb-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-        <div className="space-y-5">
-          <Image
-            src="/Logo-03.png"
-            alt="Gaurav Patharey Architects"
-            width={160}
-            height={48}
-            className="h-10 w-auto object-contain"
-          />
+      {/* Centered Logo */}
+      <div className="mb-12 flex w-full justify-center">
+        <Image
+          src="/Logo-03.png"
+          alt="Gaurav Patthare Architects"
+          width={240}
+          height={72}
+          className="h-16 w-auto object-contain md:h-20"
+        />
+      </div>
 
-          <h2 className="max-w-[8ch] text-[2.2rem] leading-[0.92] tracking-[0.03em] md:text-[3rem] lg:text-[4rem]">
+      <div className="grid gap-6 md:grid-cols-2 md:items-end">
+        <div className="space-y-4">
+
+          <h2 className="max-w-[8ch] text-[2.2rem] leading-[0.92] tracking-[0.03em] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]">
             <span className="block whitespace-nowrap text-rustic-red">Calm spaces,</span>
             <span className="block text-rustic-red">drawn</span>
             <span className="block whitespace-nowrap text-[#A34E24]">with precision.</span>
           </h2>
 
-          <p className="max-w-[34rem] text-sm leading-7 text-black/62 md:text-[0.98rem]">
+        <div className="grid gap-2 md:justify-items-end">
+          <p className="max-w-[28rem] text-sm leading-6 text-black/62 md:text-right md:text-[0.9rem] xl:text-[1.1rem] xl:max-w-[34rem]">
             Residential, hospitality, and wellness environments shaped through
             thoughtful planning, restrained material language, and architectural
             clarity.
