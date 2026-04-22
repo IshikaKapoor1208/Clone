@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
 
 const BRAND_TEXT = "Gaurav Patthare Architects";
 const TYPE_DURATION_MS = 1200;
@@ -17,6 +16,8 @@ export default function Preloader({ onComplete }) {
 			return undefined;
 		}
 
+		let isDisposed = false;
+		let gsap;
 		const canUseDom = typeof window !== "undefined";
 		const body = canUseDom ? document.body : null;
 		const previousOverflow = body?.style.overflow;
@@ -38,15 +39,28 @@ export default function Preloader({ onComplete }) {
 			}
 		}, stepMs);
 
-		const doneTimer = window.setTimeout(() => {
+		const restoreBody = () => {
+			if (body) {
+				body.style.overflow = previousOverflow || "";
+			}
+		};
+
+		const finishLoading = async () => {
+			if (!gsap) {
+				const module = await import("gsap");
+				gsap = module.gsap;
+			}
+
+			if (isDisposed) {
+				return;
+			}
+
 			const overlay = overlayRef.current;
 
 			if (!overlay) {
 				setIsLoading(false);
 				onComplete?.();
-				if (body) {
-					body.style.overflow = previousOverflow || "";
-				}
+				restoreBody();
 				return;
 			}
 
@@ -57,24 +71,25 @@ export default function Preloader({ onComplete }) {
 				onComplete: () => {
 					setIsLoading(false);
 					onComplete?.();
-					if (body) {
-						body.style.overflow = previousOverflow || "";
-					}
+					restoreBody();
 				},
 			});
+		};
+
+		const doneTimer = window.setTimeout(() => {
+			void finishLoading();
 		}, TOTAL_VISIBLE_MS);
 
 		return () => {
+			isDisposed = true;
 			window.clearInterval(typingTimer);
 			window.clearTimeout(doneTimer);
 
-			if (overlayRef.current) {
+			if (overlayRef.current && gsap) {
 				gsap.killTweensOf(overlayRef.current);
 			}
 
-			if (body) {
-				body.style.overflow = previousOverflow || "";
-			}
+			restoreBody();
 		};
 	}, [isLoading, onComplete]);
 
