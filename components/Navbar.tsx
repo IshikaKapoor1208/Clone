@@ -39,6 +39,8 @@ const menuColumns: { title: string; links: { label: string; href: string }[] }[]
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [shouldShow, setShouldShow] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -47,10 +49,30 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show if scrolling up, hide if scrolling down (and not at the very top)
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const navTransform = isVisible ? "translate-y-0" : "-translate-y-24";
+
   return (
     <>
       <div
-        className={`fixed left-4 top-4 z-[70] flex h-12 items-start  bg-white/96 px-4  transition-all duration-1000 ease-in-out md:left-10 lg:left-5 ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`fixed left-4 top-4 z-[70] flex h-12 items-start bg-white/96 px-4 transition-all duration-500 ease-in-out md:left-10 lg:left-8 ${shouldShow ? `opacity-100 ${navTransform}` : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <Link
           href="/"
@@ -70,7 +92,7 @@ export default function Navbar() {
       </div>
 
       <nav
-        className={`fixed right-4 top-4 z-[70] md:right-10 lg:right-8 transition-all duration-1000 ease-in-out ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`fixed right-4 top-4 z-[70] md:right-10 lg:right-8 transition-all duration-500 ease-in-out ${shouldShow ? `opacity-100 ${navTransform}` : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <button
           type="button"

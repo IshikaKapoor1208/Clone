@@ -225,7 +225,7 @@ export default function MagneticCursor() {
 	}
 
 	return (
-		<div ref={cursorRef} className="magnetic-cursor" aria-hidden="true">
+		<div ref={cursorRef} className="magnetic-cursor hidden md:block" aria-hidden="true">
 			<span ref={labelRef} className="magnetic-cursor__label" />
 		</div>
 	);

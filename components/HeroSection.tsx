@@ -164,7 +164,7 @@ export default function HeroSection() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-4 pb-8 pt-24 md:px-10 md:pb-10 lg:grid-cols-[1.18fr_0.82fr] lg:gap-0 lg:px-16 lg:pt-20">
+      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-section-px pb-8 pt-24 md:px-section-px-md md:pb-10 lg:grid-cols-[1.18fr_0.82fr] lg:gap-0 lg:px-section-px-lg lg:pt-20">
         <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
           <div
             ref={videoShellRef}
@@ -226,7 +226,7 @@ export default function HeroSection() {
             </p>
             <h1
               ref={textContainerRef}
-              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] opacity-0 md:text-[5rem] lg:text-[6rem] xl:text-[5rem]"
+              className="cursor-image font-signature text-h1-hero opacity-0"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);
@@ -238,7 +238,7 @@ export default function HeroSection() {
               <span className="block text-[#A34E24]">Architects</span>
             </h1>
 
-            <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem]">
+            <p className="mt-5 max-w-[33ch] text-body-lg text-black/64">
               Thin drafting lines move from abstract positions into a clear
               building form, shaping a calm narrative of process, precision, and
               place.

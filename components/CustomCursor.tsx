@@ -45,7 +45,7 @@ export default function CustomCursor() {
   if (!mounted) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[999] mix-blend-difference">
+    <div className="custom-cursor-container pointer-events-none fixed inset-0 z-[999] mix-blend-difference hidden md:block">
       {/* Outer Cursor / Crosshair */}
       <motion.div
         className="fixed left-0 top-0 flex items-center justify-center border border-white"

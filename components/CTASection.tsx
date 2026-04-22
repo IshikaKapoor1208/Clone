@@ -5,18 +5,18 @@ import { ArrowRight } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section id="cta-section" className="relative overflow-hidden bg-white py-24 md:py-24 lg:py-24">
+    <section id="cta-section" className="relative overflow-hidden bg-white py-section-py">
       {/* Background Decorative Element */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_100px)]" />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
+      <div className="relative mx-auto max-w-[1400px] px-section-px md:px-section-px-md lg:px-section-px-lg">
         <div className="flex flex-col items-center text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-[0.7rem] uppercase tracking-[0.3em] text-ink/50 mb-8"
+            className="text-label-xs text-ink/50 mb-8"
           >
             Ready to build?
           </motion.p>
@@ -26,7 +26,7 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
-            className="font-signature text-[3.5rem] leading-[1.1] tracking-tight text-ink md:text-[6rem] lg:text-[8rem] xl:text-[8rem] max-w-5xl mb-12"
+            className="font-signature text-h1-hero text-ink max-w-5xl mb-12"
           >
             <span className="text-rustic-red">Let&apos;s shape your </span>
             <span className="text-[#A34E24] italic font-medium">vision into reality.</span>
@@ -37,7 +37,7 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-lg md:text-xl text-ink/60 max-w-2xl leading-relaxed mb-16"
+            className="text-body-lg text-ink/60 max-w-2xl leading-relaxed mb-16"
           >
             Whether it&apos;s a residential retreat or a commercial landmark, we bring precision,
             measured details, and architectural clarity to every project.

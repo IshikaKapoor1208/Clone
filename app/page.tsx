@@ -24,14 +24,14 @@ export default function Page() {
 
       <ServicesSection />
 
-      <section className="py-24 px-4 md:px-10 lg:px-20 bg-paper-soft">
+      <section className="py-section-py px-section-px md:px-section-px-md lg:px-section-px-lg bg-paper-soft">
         <div className="mx-auto max-w-[900px]">
           <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-            <h2 className="font-signature text-5xl md:text-7xl">
+            <h2 className="font-signature text-h2-section">
               <span className="text-rustic-red">The </span>
               <span className="text-[#A34E24]">Process.</span>
             </h2>
-            <p className="max-w-md text-ink/60 leading-relaxed uppercase text-[0.65rem] tracking-[0.2em] font-medium">
+            <p className="max-w-md text-label-xs text-ink/60">
               Every built form begins as a dialogue on paper. We translate
               abstract sketches into precise architectural expressions.
             </p>

@@ -174,6 +174,16 @@ a:hover .project-name::after {
   animation: cursor-breathe 2.1s ease-in-out infinite;
 }
 
+/* Force hide on mobile/touch devices */
+@media (max-width: 1024px), (pointer: coarse) {
+  .magnetic-cursor,
+  .custom-cursor-container {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+}
+
 .magnetic-cursor::before {
   content: "";
   position: absolute;

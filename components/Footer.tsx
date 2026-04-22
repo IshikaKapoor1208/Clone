@@ -11,38 +11,37 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-4 py-10 md:px-10 md:py-12 lg:px-20 xl:px-32"
+      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-section-px py-10 md:px-section-px-md lg:px-section-px-lg lg:py-16"
     >
       {/* Centered Logo */}
       <div className="mb-12 flex w-full justify-center">
         <Image
-          src="/Logo-03.png"
+          src="/Logo-01.png"
           alt="Gaurav Patthare Architects"
           width={240}
           height={72}
-          className="h-16 w-auto object-contain md:h-20"
+          className="h-16 w-auto object-contain md:h-20 grayscale hover:grayscale-0 transition-all duration-500"
         />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 md:items-end">
-        <div className="space-y-4">
-
-          <h2 className="max-w-[8ch] text-[2.2rem] leading-[0.92] tracking-[0.03em] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]">
+        <div className="space-y-4 text-center md:text-left">
+          <h2 className="mx-auto md:mx-0 max-w-[12ch] text-h2-section font-signature">
             <span className="block whitespace-nowrap text-rustic-red">Calm spaces,</span>
             <span className="block text-rustic-red">drawn</span>
             <span className="block whitespace-nowrap text-[#A34E24]">with precision.</span>
           </h2>
         </div>
 
-        <div className="grid gap-2 md:justify-items-end">
-          <p className="max-w-[28rem] text-sm leading-6 text-black/62 md:text-right md:text-[0.9rem] xl:text-[1.1rem] xl:max-w-[34rem]">
+        <div className="grid gap-4 text-center md:text-right md:justify-items-end">
+          <p className="mx-auto md:mx-0 max-w-[34rem] text-body-base text-black/62">
             Residential, hospitality, and wellness environments shaped through
             thoughtful planning, restrained material language, and architectural
             clarity.
           </p>
           <a
             href="mailto:gauravpattharearchitects@gmail.com"
-            className="text-[0.72rem] uppercase tracking-[0.22em] text-black/58 transition hover:text-black"
+            className="text-label-xs text-black/58 transition hover:text-black"
           >
             gauravpattharearchitects@gmail.com
           </a>
@@ -51,16 +50,16 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="mt-10 flex flex-col gap-4 border-t border-black/8 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-[0.68rem] uppercase tracking-[0.22em] text-black/40">
+        <p className="text-center md:text-left text-label-xs text-black/40">
           ©2026 Gaurav Patthare Architects. All rights reserved.
         </p>
-        <nav aria-label="Footer navigation">
+        <nav aria-label="Footer navigation" className="mx-auto md:mx-0">
           <ul className="flex gap-6">
             {footerLinks.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="text-[0.68rem] uppercase tracking-[0.22em] text-black/48 transition hover:text-black"
+                  className="text-label-xs text-black/48 transition hover:text-black"
                 >
                   {link.label}
                 </Link>

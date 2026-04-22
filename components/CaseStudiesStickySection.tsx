@@ -146,7 +146,7 @@ export default function CaseStudiesStickySection({ projects }) {
     <section
       id="case-studies"
       ref={containerRef}
-      className="relative bg-white px-4 md:px-10 lg:px-16"
+      className="relative bg-white px-section-px md:px-section-px-md lg:px-section-px-lg"
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
@@ -169,7 +169,7 @@ export default function CaseStudiesStickySection({ projects }) {
                 className="max-w-[34rem] space-y-6"
               >
                 <div className="space-y-3">
-                  <h2 className="text-[clamp(2rem,5vw,6rem)] leading-[0.9] tracking-[0.02em]">
+                  <h2 className="text-h2-section">
                     {(() => {
                       const words = project.title.trim().split(" ");
                       const last = words.pop();
@@ -181,16 +181,16 @@ export default function CaseStudiesStickySection({ projects }) {
                       );
                     })()}
                   </h2>
-                  <p className="text-base tracking-[0.04em] text-black/62 md:text-lg">
+                  <p className="text-body-lg text-black/62">
                     {project.subtitle}
                   </p>
                 </div>
 
-                <p className="text-[0.72rem] uppercase tracking-[0.2em] text-black/46 md:text-[0.76rem]">
+                <p className="text-label-xs text-black/46">
                   {project.meta}
                 </p>
 
-                <div className="space-y-4 text-[0.96rem] leading-8 text-black/68">
+                <div className="space-y-4 text-body-base text-black/68">
                   <p>{project.description}</p>
                   <p>{project.paragraphs[0]}</p>
                 </div>
@@ -209,7 +209,7 @@ export default function CaseStudiesStickySection({ projects }) {
                 <div className="pt-6">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="inline-block border border-black/10 px-6 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-black hover:bg-black hover:text-white transition-colors duration-300"
+                    className="inline-block border border-black/10 px-6 py-3 text-label-xs text-black hover:bg-black hover:text-white transition-colors duration-300"
                   >
                     Read Full Case Study
                   </Link>
@@ -221,7 +221,7 @@ export default function CaseStudiesStickySection({ projects }) {
                     alt={project.imageAlt}
                     fill
                     sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                    className="w-full h-auto object-cover object-center grayscale"
+                    className="w-full h-auto object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
               </div>

@@ -7,15 +7,15 @@ import { services } from "../lib/data/services";
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 px-6 md:px-12 bg-paper text-ink xl:px-24">
+    <section id="services" className="py-section-py px-section-px md:px-section-px-md lg:px-section-px-lg bg-paper text-ink">
       <div className="max-w-[1400px] mx-auto">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-          <div className="text-xs md:text-sm uppercase tracking-[0.2em] text-ink/60 font-semibold shrink-0">
+          <div className="text-label-xs text-ink/60 font-semibold shrink-0">
             Services
           </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-6xl font-light tracking-tight max-w-3xl text-right md:text-left">
+          <h2 className="text-h2-section font-light max-w-3xl text-right md:text-left">
             <span className="text-rustic-red">How GP Architects </span>
             <span className="text-[#A34E24] font-medium italic">Can Help You</span>
           </h2>
