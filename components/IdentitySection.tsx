@@ -12,7 +12,7 @@ const images = [
 
 export default function IdentitySection() {
   return (
-    <section className="bg-white px-6 py-12 md:px-52 md:py-16 lg:py-20">
+    <section className="bg-white px-6 py-12 md:px-12 md:py-16 lg:px-24 lg:py-20 xl:px-0">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
 
         {/* Headline */}
@@ -22,7 +22,7 @@ export default function IdentitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-[2.2rem] font-medium leading-[1.1] tracking-tight text-ink md:text-[4rem] lg:text-[4.5rem]"
+            className="text-[2.2rem] font-medium leading-[1.1] tracking-tight text-ink md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem]"
           >
             <span className="text-rustic-red">This isn&apos;t just </span>
             <span className="text-[#A34E24]">about real estate.</span>
@@ -63,7 +63,7 @@ export default function IdentitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="space-y-2 text-lg font-medium leading-relaxed md:text-2xl lg:text-[1.75rem]"
+            className="space-y-2 text-lg font-medium leading-relaxed md:text-2xl lg:text-[1.75rem] xl:text-[2rem]"
           >
             <p className="text-ink">
               It’s about identity. Progress. Getting unstuck.

@@ -218,7 +218,7 @@ export default function HeroSection() {
 
         <div
           ref={sideContentRef}
-          className="flex items-end pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pb-34 lg:pl-12"
+          className="flex items-end pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pb-34 lg:pl-12 xl:pl-12 xl:pb-34"
         >
           <div className="max-w-[34rem]">
             <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.26em] text-black/40 md:mb-5">
@@ -226,7 +226,7 @@ export default function HeroSection() {
             </p>
             <h1
               ref={textContainerRef}
-              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] opacity-0 md:text-[8.2rem] lg:text-[6rem]"
+              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] opacity-0 md:text-[5rem] lg:text-[6rem] xl:text-[5rem]"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);
@@ -238,24 +238,24 @@ export default function HeroSection() {
               <span className="block text-[#A34E24]">Architects</span>
             </h1>
 
-            <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">
+            <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem]">
               Thin drafting lines move from abstract positions into a clear
               building form, shaping a calm narrative of process, precision, and
               place.
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap gap-3 xl:gap-5">
               <a
                 href="#project-01"
                 data-cursor="view"
-                className="inline-flex items-center justify-center border border-[#212020] bg-[#212020] px-6 py-3 text-[0.66rem] uppercase tracking-[0.24em] text-white transition hover:bg-[#111111]"
+                className="inline-flex items-center justify-center border border-[#212020] bg-[#212020] px-6 py-3 text-[0.66rem] uppercase tracking-[0.24em] text-white transition hover:bg-[#111111] md:px-8 md:py-4 xl:px-10 xl:py-5 xl:text-[0.75rem]"
               >
                 Explore Work
               </a>
               <a
                 href="#cta-section"
                 data-cursor="view"
-                className="inline-flex items-center justify-center border border-black/22 bg-transparent px-6 py-3 text-[0.66rem] uppercase tracking-[0.24em] text-black/72 transition hover:border-black/45 hover:text-black"
+                className="inline-flex items-center justify-center border border-black/22 bg-transparent px-6 py-3 text-[0.66rem] uppercase tracking-[0.24em] text-black/72 transition hover:border-black/45 hover:text-black md:px-8 md:py-4 xl:px-10 xl:py-5 xl:text-[0.75rem]"
               >
                 Start a Project
               </a>

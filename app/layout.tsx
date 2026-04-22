@@ -20,27 +20,27 @@ const headingFont = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gauravpattharearchitects.com"), // Placeholder domain
-  title: "Gaurav Patthare Architects | Calm spaces, drawn with precision",
+  title: "Gaurav Patthare Architectss | Calm spaces, drawn with precision",
   description:
-    "Architectural portfolio for Gaurav Patthare Architects. Residential, hospitality, and wellness environments shaped through thoughtful planning, restrained material language, and architectural clarity.",
+    "Architectural portfolio for Gaurav Patthare Architectss. Residential, hospitality, and wellness environments shaped through thoughtful planning, restrained material language, and architectural clarity.",
   keywords: [
-    "Gaurav Patthare Architects",
+    "Gaurav Patthare Architectss",
     "Architecture",
     "Indian Architecture",
     "Residential Architecture",
     "Hospitality Design",
     "Pune Architects",
   ],
-  authors: [{ name: "Gaurav Patthare Architects" }],
+  authors: [{ name: "Gaurav Patthare Architectss" }],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Gaurav Patthare Architects",
+    title: "Gaurav Patthare Architectss",
     description:
-      "Architectural portfolio for Gaurav Patthare Architects. Residential, hospitality, and wellness environments.",
+      "Architectural portfolio for Gaurav Patthare Architectss. Residential, hospitality, and wellness environments.",
     url: "https://gauravpattharearchitects.com",
-    siteName: "Gaurav Patthare Architects",
+    siteName: "Gaurav Patthare Architectss",
     images: [
       {
         url: "/Logo-02.png",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gaurav Patthare Architects",
+    title: "Gaurav Patthare Architectss",
     description:
       "Architectural portfolio for Gaurav Patthare Architects. Residential, hospitality, and wellness environments.",
     images: ["/Logo-02.png"],
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ArchitecturalFirm",
-  name: "Gaurav Patthare Architects",
+  name: "Gaurav Patthare Architectss",
   url: "https://gauravpattharearchitects.com",
   logo: "https://gauravpattharearchitects.com/Logo-02.png",
   description:
