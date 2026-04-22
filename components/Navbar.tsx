@@ -50,7 +50,7 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`fixed left-4 top-4 z-[70] flex h-12 items-start  bg-white/96 px-4 backdrop-blur-md transition-all duration-1000 ease-in-out md:left-10 lg:left-5 ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`fixed left-4 top-4 z-[70] flex h-12 items-start  bg-white/96 px-4  transition-all duration-1000 ease-in-out md:left-10 lg:left-5 ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <Link
           href="/"
