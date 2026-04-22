@@ -105,6 +105,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      </div>
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[0.68rem] uppercase tracking-[0.22em] text-black/40">
