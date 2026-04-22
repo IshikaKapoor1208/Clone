@@ -44,7 +44,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <p className="text-[0.65rem] uppercase tracking-widest text-ink/40 mb-1">Email Enquiry</p>
-                                        <a href="mailto:studio@example.com" className="text-xl hover:text-ink/60 transition-colors">studio@example.com</a>
+                                        <a href="mailto:gauravpathareyarchitects@gmail.com" className="text-xl hover:text-ink/60 transition-colors">gauravpathareyarchitects@gmail.com</a>
                                     </div>
                                 </div>
 
@@ -54,7 +54,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <p className="text-[0.65rem] uppercase tracking-widest text-ink/40 mb-1">Call Us</p>
-                                        <a href="tel:+9100000000" className="text-xl hover:text-ink/60 transition-colors">+91 9999 888 777</a>
+                                        <a href="tel:+917420857333" className="text-xl hover:text-ink/60 transition-colors">7420-857333</a>
                                     </div>
                                 </div>
 
@@ -65,8 +65,9 @@ export default function ContactPage() {
                                     <div>
                                         <p className="text-[0.65rem] uppercase tracking-widest text-ink/40 mb-1">Studio Address</p>
                                         <p className="text-xl leading-relaxed">
-                                            Studio 402, Blueprint Plaza,<br />
-                                            Near MG Road, Pune 411001
+                                            Office - 328 &amp; 329, 3rd Floor, Gera Imperium Gateway,<br />
+                                            Metro Station Road of Nashik Phata, Opp. Bhosari,<br />
+                                            Pune, Maharashtra 411034
                                         </p>
                                     </div>
                                 </div>
@@ -102,7 +103,7 @@ export default function ContactPage() {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="John Doe"
+                                        placeholder="Your full name"
                                         className="w-full bg-transparent border-b border-ink/10 py-4 outline-none focus:border-ink transition-colors placeholder:text-ink/10"
                                     />
                                 </div>
@@ -113,7 +114,7 @@ export default function ContactPage() {
                                     </label>
                                     <input
                                         type="email"
-                                        placeholder="john@example.com"
+                                        placeholder="gauravpathareyarchitects@gmail.com"
                                         className="w-full bg-transparent border-b border-ink/10 py-4 outline-none focus:border-ink transition-colors placeholder:text-ink/10"
                                     />
                                 </div>

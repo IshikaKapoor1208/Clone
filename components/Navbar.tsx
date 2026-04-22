@@ -40,7 +40,7 @@ export default function Navbar() {
           href="/"
           onClick={() => setIsOpen(false)}
           data-cursor="view"
-          className="font-signature text-2xl leading-none tracking-[0.02em] text-[#212020] transition duration-300 hover:text-black/60 md:text-3xl"
+          className="font-signature text-2xl leading-none tracking-[0.02em] text-rustic-red transition duration-300 hover:text-rustic-red/80 md:text-3xl"
         >
           GP Architecture
         </Link>

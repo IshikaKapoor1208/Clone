@@ -23,10 +23,10 @@ export default function Footer() {
             clarity.
           </p>
           <a
-            href="mailto:studio@example.com"
+            href="mailto:gauravpathareyarchitects@gmail.com"
             className="text-[0.72rem] uppercase tracking-[0.22em] text-black/58 transition hover:text-black"
           >
-            studio@example.com
+            gauravpathareyarchitects@gmail.com
           </a>
         </div>
       </div>

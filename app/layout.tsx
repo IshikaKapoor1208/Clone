@@ -76,8 +76,9 @@ const jsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    email: "studio@example.com",
-    contactType: "Customer Support",
+    email: "gauravpathareyarchitects@gmail.com",
+    telephone: "+91-7420-857333",
+    contactType: "studio",
   },
 };
 
