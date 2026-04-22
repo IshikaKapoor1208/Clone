@@ -16,17 +16,18 @@ export default function Footer() {
       {/* Centered Logo */}
       <div className="mb-12 flex w-full justify-center">
         <Image
-          src="/Logo-01.png"
+          src="/Logo-03.png"
           alt="Gaurav Patthare Architects"
           width={240}
           height={72}
-          className="h-16 w-auto object-contain md:h-20 grayscale hover:grayscale-0 transition-all duration-500"
+          className="h-16 w-auto object-contain md:h-20  transition-all duration-500"
         />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 md:items-end">
-        <div className="space-y-4 text-center md:text-left">
-          <h2 className="mx-auto md:mx-0 max-w-[12ch] text-h2-section font-signature">
+        <div className="space-y-4">
+
+          <h2 className="max-w-[8ch] text-[2.2rem] leading-[0.92] tracking-[0.03em] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]">
             <span className="block whitespace-nowrap text-rustic-red">Calm spaces,</span>
             <span className="block text-rustic-red">drawn</span>
             <span className="block whitespace-nowrap text-[#A34E24]">with precision.</span>

@@ -7,7 +7,7 @@ import { services } from "../lib/data/services";
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-section-py px-section-px md:px-section-px-md lg:px-section-px-lg bg-paper text-ink">
+    <section id="services" className="py-24 px-6 md:px-12 bg-paper text-ink xl:px-24">
       <div className="max-w-[1400px] mx-auto">
 
         {/* Header */}
