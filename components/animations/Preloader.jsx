@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const BRAND_TEXT = "Gaurav Patharey Architects";
+const BRAND_TEXT = "Gaurav Patthare Architects";
 const TYPE_DURATION_MS = 1200;
 const TOTAL_VISIBLE_MS = 1800;
 

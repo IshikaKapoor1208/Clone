@@ -25,7 +25,8 @@ export default function ContactPage() {
                             Connect with us
                         </p>
                         <h1 className="font-signature text-[4rem] leading-[0.9] tracking-tight md:text-[7rem] lg:text-[9rem]">
-                            Get in <span className="italic font-medium">Touch.</span>
+                            <span className="text-rustic-red">Get in </span>
+                            <span className="text-[#A34E24] italic font-medium">Touch.</span>
                         </h1>
                     </motion.div>
 

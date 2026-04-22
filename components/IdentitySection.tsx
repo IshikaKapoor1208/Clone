@@ -24,7 +24,8 @@ export default function IdentitySection() {
             viewport={{ once: true }}
             className="text-[2.2rem] font-medium leading-[1.1] tracking-tight text-ink md:text-[4rem] lg:text-[4.5rem]"
           >
-            This isn&apos;t just <span className="text-ink/30">about real estate.</span>
+            <span className="text-rustic-red">This isn&apos;t just </span>
+            <span className="text-[#A34E24]">about real estate.</span>
           </motion.h2>
         </div>
 

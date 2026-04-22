@@ -31,7 +31,7 @@ export default function ComparisonSlider({
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="relative aspect-[16/9] max-h-[500px] w-full overflow-hidden border border-black/10 transition-shadow hover:shadow-2xl cursor-none"
       onPointerMove={handleMove}
@@ -51,7 +51,7 @@ export default function ComparisonSlider({
       </div>
 
       {/* Before Image (Clipped) */}
-      <div 
+      <div
         className="absolute inset-0 z-10"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
@@ -67,7 +67,7 @@ export default function ComparisonSlider({
       </div>
 
       {/* Slider Handle */}
-      <div 
+      <div
         className="absolute inset-y-0 z-20 w-px bg-white/50"
         style={{ left: `${sliderPosition}%` }}
       >
@@ -81,8 +81,14 @@ export default function ComparisonSlider({
 
       {/* Title / Info */}
       <div className="absolute top-6 left-6 z-30 pointer-events-none">
-        <p className="text-[0.6rem] uppercase tracking-[0.3em] text-white/60 mb-2">Process Study</p>
-        <h3 className="font-signature text-3xl text-white">Vision to Reality</h3>
+        <p className="text-[0.6rem] uppercase tracking-[0.3em] mb-2">
+          <span className="text-rustic-red">Process </span>
+          <span className="text-[#A34E24]">Study</span>
+        </p>
+        <h3 className="font-signature text-3xl text-white">
+          <span className="text-rustic-red">Vision to </span>
+          <span className="text-[#A34E24]">Reality</span>
+        </h3>
       </div>
     </div>
   );

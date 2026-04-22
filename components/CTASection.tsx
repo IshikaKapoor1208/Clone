@@ -28,7 +28,8 @@ export default function CTASection() {
             viewport={{ once: true }}
             className="font-signature text-[3.5rem] leading-[1.1] tracking-tight text-ink md:text-[6rem] lg:text-[8rem] max-w-5xl mb-12"
           >
-            Let&apos;s shape your <span className="italic font-medium">vision into reality.</span>
+            <span className="text-rustic-red">Let&apos;s shape your </span>
+            <span className="text-[#A34E24] italic font-medium">vision into reality.</span>
           </motion.h2>
 
           <motion.p

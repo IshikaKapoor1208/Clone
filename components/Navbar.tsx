@@ -2,21 +2,37 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const mainLinks = ["Home", "About", "Services", "Contact"];
 
-const menuColumns = [
+const menuColumns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Products",
-    links: ["Residences", "Workspaces", "Hospitality", "Wellness"],
+    links: [
+      { label: "Residences", href: "/#services" },
+      { label: "Workspaces", href: "/#services" },
+      { label: "Hospitality", href: "/#services" },
+      { label: "Wellness", href: "/#services" },
+    ],
   },
   {
     title: "Projects",
-    links: ["Selected Work", "Case Studies", "Process", "Archive"],
+    links: [
+      { label: "Selected Work", href: "/projects" },
+      { label: "Case Studies", href: "/projects" },
+      { label: "Process", href: "/projects" },
+      { label: "Archive", href: "/projects" },
+    ],
   },
   {
     title: "Useful Links",
-    links: ["Studio", "Journal", "Careers", "Enquiries"],
+    links: [
+      { label: "Studio", href: "/#about" },
+      { label: "Journal", href: "/#about" },
+      { label: "Careers", href: "/contact" },
+      { label: "Enquiries", href: "/contact" },
+    ],
   },
 ];
 //dndhjs
@@ -34,20 +50,27 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`fixed left-4 top-4 z-[70] flex h-12 items-center border border-black/10 bg-white/96 px-4 backdrop-blur-md transition-all duration-1000 ease-in-out md:left-10 lg:left-20 ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`fixed left-4 top-4 z-[70] flex h-12 items-start  bg-white/96 px-4  transition-all duration-1000 ease-in-out md:left-10 lg:left-5 ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <Link
           href="/"
           onClick={() => setIsOpen(false)}
           data-cursor="view"
-          className="font-signature text-2xl leading-none tracking-[0.02em] text-rustic-red transition duration-300 hover:text-rustic-red/80 md:text-3xl"
+          className="flex items-center transition duration-300 hover:opacity-70"
         >
-          GP Architecture
+          <Image
+            src="/Logo-01.png"
+            alt="Gaurav Patthare Architects"
+            width={120}
+            height={36}
+            className="h-25 w-auto object-contain"
+            priority
+          />
         </Link>
       </div>
 
-      <nav 
-        className={`fixed right-4 top-4 z-[70] md:right-10 lg:right-20 transition-all duration-1000 ease-in-out ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+      <nav
+        className={`fixed right-4 top-4 z-[70] md:right-10 lg:right-8 transition-all duration-1000 ease-in-out ${shouldShow ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <button
           type="button"
@@ -111,14 +134,14 @@ export default function Navbar() {
                   </p>
                   <ul className="space-y-3">
                     {column.links.map((link) => (
-                      <li key={link}>
-                        <a
-                          href={`#${link.toLowerCase().replaceAll(" ", "-")}`}
+                      <li key={link.label}>
+                        <Link
+                          href={link.href}
                           onClick={() => setIsOpen(false)}
                           className="text-sm uppercase tracking-[0.18em] text-black/62 transition duration-300 hover:text-black md:text-[0.82rem]"
                         >
-                          {link}
-                        </a>
+                          {link.label}
+                        </Link>
                       </li>
                     ))}
                   </ul>

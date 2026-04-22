@@ -19,34 +19,34 @@ const headingFont = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gauravpathareyarchitects.com"), // Placeholder domain
-  title: "Gaurav Patharey Architects | Calm spaces, drawn with precision",
+  metadataBase: new URL("https://gauravpattharearchitects.com"), // Placeholder domain
+  title: "Gaurav Patthare Architects | Calm spaces, drawn with precision",
   description:
-    "Architectural portfolio for Gaurav Patharey Architects. Residential, hospitality, and wellness environments shaped through thoughtful planning, restrained material language, and architectural clarity.",
+    "Architectural portfolio for Gaurav Patthare Architects. Residential, hospitality, and wellness environments shaped through thoughtful planning, restrained material language, and architectural clarity.",
   keywords: [
-    "Gaurav Patharey Architects",
+    "Gaurav Patthare Architects",
     "Architecture",
     "Indian Architecture",
     "Residential Architecture",
     "Hospitality Design",
     "Pune Architects",
   ],
-  authors: [{ name: "Gaurav Patharey Architects" }],
+  authors: [{ name: "Gaurav Patthare Architects" }],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Gaurav Patharey Architects",
+    title: "Gaurav Patthare Architects",
     description:
-      "Architectural portfolio for Gaurav Patharey Architects. Residential, hospitality, and wellness environments.",
-    url: "https://gauravpathareyarchitects.com",
-    siteName: "Gaurav Patharey Architects",
+      "Architectural portfolio for Gaurav Patthare Architects. Residential, hospitality, and wellness environments.",
+    url: "https://gauravpattharearchitects.com",
+    siteName: "Gaurav Patthare Architects",
     images: [
       {
-        url: "/og-image.jpg", // Ensure you add an actual og-image.jpg in the public folder eventually
+        url: "/Logo-02.png",
         width: 1200,
         height: 630,
-        alt: "Gaurav Patharey Architects Portfolio",
+        alt: "Gaurav Patthare Architects Portfolio",
       },
     ],
     locale: "en_US",
@@ -54,19 +54,23 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gaurav Patharey Architects",
+    title: "Gaurav Patthare Architects",
     description:
-      "Architectural portfolio for Gaurav Patharey Architects. Residential, hospitality, and wellness environments.",
-    images: ["/og-image.jpg"],
+      "Architectural portfolio for Gaurav Patthare Architects. Residential, hospitality, and wellness environments.",
+    images: ["/Logo-02.png"],
+  },
+  icons: {
+    icon: "/Logo-02.png",
+    apple: "/Logo-02.png",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ArchitecturalFirm",
-  name: "Gaurav Patharey Architects",
-  url: "https://gauravpathareyarchitects.com",
-  logo: "https://gauravpathareyarchitects.com/logo.png",
+  name: "Gaurav Patthare Architects",
+  url: "https://gauravpattharearchitects.com",
+  logo: "https://gauravpattharearchitects.com/Logo-02.png",
   description:
     "Residential, hospitality, and wellness environments shaped through thoughtful planning, restrained material language, and architectural clarity.",
   address: {
@@ -76,9 +80,8 @@ const jsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    email: "gauravpathareyarchitects@gmail.com",
-    telephone: "+91-7420-857333",
-    contactType: "studio",
+    email: "gauravpattharearchitects@gmail.com",
+    contactType: "Customer Support",
   },
 };
 

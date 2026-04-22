@@ -218,12 +218,15 @@ export default function HeroSection() {
 
         <div
           ref={sideContentRef}
-          className="flex items-end pb-8 opacity-0 md:pb-10 lg:border-l lg:border-black/10 lg:pb-14 lg:pl-12"
+          className="flex items-end pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pb-34 lg:pl-12"
         >
           <div className="max-w-[34rem]">
+            <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.26em] text-black/40 md:mb-5">
+              Architecture & Interior Design Studio
+            </p>
             <h1
               ref={textContainerRef}
-              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] text-rustic-red opacity-0 md:text-[8.2rem] lg:text-[5rem]"
+              className="cursor-image font-signature text-[3rem] leading-[0.92] tracking-[0.02em] opacity-0 md:text-[8.2rem] lg:text-[6rem]"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);
@@ -231,8 +234,8 @@ export default function HeroSection() {
               onMouseMove={moveTitlePreview}
               onMouseLeave={() => setShowTitlePreview(false)}
             >
-              <span className="block whitespace-nowrap">Gaurav Patharey</span>
-              <span className="block">Architects</span>
+              <span className="block whitespace-nowrap text-rustic-red">Gaurav Patthare</span>
+              <span className="block text-[#A34E24]">Architects</span>
             </h1>
 
             <p className="mt-5 max-w-[33ch] text-[0.98rem] leading-8 text-black/64 md:text-[1rem]">

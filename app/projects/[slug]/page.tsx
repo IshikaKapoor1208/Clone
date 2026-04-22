@@ -37,8 +37,17 @@ export default async function ProjectPage({ params }) {
           <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)] mb-6">
             {project.meta}
           </p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-[0.02em] mb-6">
-            {project.title}
+          <h1 className="text-[clamp(2rem,5vw,6rem)] leading-[0.9] tracking-[0.02em] mb-6">
+            {(() => {
+              const words = project.title.trim().split(" ");
+              const last = words.pop();
+              return (
+                <>
+                  <span className="text-rustic-red">{words.join(" ")} </span>
+                  <span className="text-[#A34E24]">{last}</span>
+                </>
+              );
+            })()}
           </h1>
           <p className="text-xl md:text-2xl text-ink/70 max-w-2xl font-light">
             {project.subtitle}
@@ -117,8 +126,17 @@ export default async function ProjectPage({ params }) {
       <section className="px-4 md:px-10 lg:px-20 py-32 bg-ink text-white text-center flex flex-col items-center justify-center min-h-[60vh]">
         <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50 mb-6">Next Project</p>
         <Link href={`/projects/${nextProject.slug}`} className="group inline-block mb-16">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight group-hover:opacity-70 transition-opacity duration-300">
-            {nextProject.title}
+          <h2 className="text-[clamp(2rem,5vw,6rem)] font-light tracking-tight group-hover:opacity-70 transition-opacity duration-300">
+            {(() => {
+              const words = nextProject.title.trim().split(" ");
+              const last = words.pop();
+              return (
+                <>
+                  <span className="text-white/80">{words.join(" ")} </span>
+                  <span className="text-white/50">{last}</span>
+                </>
+              );
+            })()}
           </h2>
         </Link>
         <div>

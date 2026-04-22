@@ -7,6 +7,10 @@
   scroll-behavior: auto;
 }
 
+#services {
+  scroll-margin-top: 72px;
+}
+
 html,
 body {
   margin: 0;
