@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -211,12 +212,12 @@ export default function ProjectIndexSection({ projects }) {
               const isActive = activeProjectId === project.id;
 
               return (
-                <a
+                <Link
                   ref={(element) => {
                     itemRefs.current[index] = element;
                   }}
                   key={project.id}
-                  href={`#${project.id}`}
+                  href={`/projects/${project.slug}`}
                   data-project-id={project.id}
                   data-project-index={index}
                   aria-current={isActive ? "true" : undefined}
@@ -263,7 +264,7 @@ export default function ProjectIndexSection({ projects }) {
                   >
                     {project.meta}
                   </span>
-                </a>
+                </Link>
               );
             })}
           </nav>

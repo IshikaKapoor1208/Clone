@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import useReducedMotion from "./useReducedMotion";
 import StaggeredText from "./animations/StaggeredText";
 const REVEAL_START = "top 78%";
@@ -196,9 +197,18 @@ export default function CaseStudiesStickySection({ projects }) {
                   ))}
                 </div>
 
+                <div className="pt-6">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-block border border-black/10 px-6 py-3 text-[0.7rem] uppercase tracking-[0.2em] text-black hover:bg-black hover:text-white transition-colors duration-300"
+                  >
+                    Read Full Case Study
+                  </Link>
+                </div>
+
                 <div className="relative mt-4 aspect-[16/10] overflow-hidden border border-black/10 lg:hidden">
                   <Image
-                    src={project.imageSrc}
+                    src={project.stickyImageSrc || project.imageSrc}
                     alt={project.imageAlt}
                     fill
                     sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
@@ -225,7 +235,7 @@ export default function CaseStudiesStickySection({ projects }) {
                   className="absolute inset-0 will-change-[clip-path,opacity]"
                 >
                   <Image
-                    src={project.imageSrc}
+                    src={project.stickyImageSrc || project.imageSrc}
                     alt={project.imageAlt}
                     fill
                     sizes="(max-width: 1279px) 56vw, 42rem"

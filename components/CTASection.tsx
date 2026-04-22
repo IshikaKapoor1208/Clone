@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section id="cta-section" className="relative overflow-hidden bg-white py-24 md:py-32 lg:py-40">
+    <section id="cta-section" className="relative overflow-hidden bg-white py-24 md:py-24 lg:py-24">
       {/* Background Decorative Element */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_100px)]" />
 
