@@ -11,7 +11,7 @@ export default function ServicesPage() {
       <SmoothScroll />
       <Navbar />
 
-      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="px-6 py-16 md:px-12 md:py-24 pt-24">
         <div className="mx-auto max-w-[1100px]">
           <p className="text-[0.72rem] uppercase tracking-[0.3em] text-ink/48">
             Services
