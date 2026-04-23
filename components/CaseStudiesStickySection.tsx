@@ -146,11 +146,11 @@ export default function CaseStudiesStickySection({ projects }) {
     <section
       id="case-studies"
       ref={containerRef}
-      className="relative bg-white px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg"
+      className="relative bg-white px-6 py-16 md:px-12 md:py-24"
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="relative mx-auto grid max-w-[96rem] gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+        <div className="relative mx-auto grid max-w-[96rem] gap-10 md:gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
         <div>
           {projects.map((project, index) => (
             <article
@@ -160,7 +160,7 @@ export default function CaseStudiesStickySection({ projects }) {
               ref={(element) => {
                 sectionRefs.current[index] = element;
               }}
-              className="flex min-h-[92vh] items-center border-t border-black/8 py-section-py md:min-h-screen"
+              className="flex min-h-[92vh] items-center border-t border-black/8 py-16 md:min-h-screen"
             >
               <div
                 ref={(element) => {
@@ -221,7 +221,7 @@ export default function CaseStudiesStickySection({ projects }) {
                     alt={project.imageAlt}
                     fill
                     sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                    className="w-full h-auto object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
+                     className="w-full h-auto object-cover object-center grayscale group active:scale-95 group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out"
                   />
                 </div>
               </div>
@@ -232,7 +232,7 @@ export default function CaseStudiesStickySection({ projects }) {
         <div className="hidden lg:block">
           <div
             ref={pinnedMediaRef}
-            className="mx-auto h-[calc(100vh-12rem)] max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
+             className="mx-auto h-[calc(100vh-12rem)] md:sticky md:top-24 max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
           >
             <div className="relative h-full w-full overflow-hidden">
               {projects.map((project, index) => (
@@ -241,14 +241,14 @@ export default function CaseStudiesStickySection({ projects }) {
                   ref={(element) => {
                     imageLayerRefs.current[index] = element;
                   }}
-                  className="absolute inset-0 will-change-[clip-path,opacity]"
+                   className="absolute inset-0 will-change-[clip-path,opacity] transition-all duration-500 ease-out"
                 >
                   <Image
                     src={project.stickyImageSrc || project.imageSrc}
                     alt={project.imageAlt}
                     fill
                     sizes="(max-width: 1279px) 56vw, 42rem"
-                    className="w-full h-auto object-cover object-center grayscale"
+                     className="w-full h-auto object-cover object-center grayscale transition-all duration-500 ease-out"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.18))]" />
                 </div>

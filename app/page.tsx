@@ -24,7 +24,7 @@ export default function Page() {
 
       <ServicesSection />
 
-      <section className="py-section-py px-section-px md:px-section-px-md lg:px-section-px-lg bg-paper-soft">
+      <section className="px-6 py-16 md:px-12 md:py-24 bg-paper-soft">
         <div className="mx-auto max-w-[900px]">
           <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <h2 className="font-signature text-h2-section">

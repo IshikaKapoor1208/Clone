@@ -9,7 +9,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-paper px-section-px py-section-py text-ink md:px-section-px-md lg:px-section-px-lg"
+      className="bg-paper px-6 py-16 md:px-12 md:py-24 text-ink"
     >
       <div className="max-w-[1400px] mx-auto">
 

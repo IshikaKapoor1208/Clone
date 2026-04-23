@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }) {
       <Navbar />
 
       {/* Project Hero */}
-      <section className="min-h-[60vh] px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg flex flex-col justify-end">
+      <section className="min-h-[60vh] px-6 py-16 md:px-12 md:py-24 pt-24 flex flex-col justify-end">
         <div className="max-w-5xl mx-auto w-full">
           <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)] mb-6">
             {project.meta}
@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* Image */}
-      <section className="mb-20 px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="mb-20 px-6 py-16 md:px-12 md:py-24">
         <div className="max-w-7xl mx-auto w-full relative aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-black/10">
           <Image
             src={project.imageSrc}
@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* Content */}
-      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="px-6 py-16 md:px-12 md:py-24">
         <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-[1fr_2.5fr] gap-12 md:gap-20">
           <div>
             <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ink/50 mb-6 border-b border-ink/10 pb-4">
@@ -100,30 +100,30 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* Process / Gallery Grid */}
-      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="px-6 py-16 md:px-12 md:py-24">
         <div className="max-w-7xl mx-auto w-full">
           <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ink/50 mb-10 border-b border-ink/10 pb-4">
             Visual Studies & Details
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-4 md:gap-y-8">
-             <div className="relative aspect-[4/5] overflow-hidden border border-black/10 group">
-                <Image src="/interior-detail-lounge.jpg" alt="Interior detail" fill className="object-cover grayscale transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+             <div className="relative aspect-[4/5] overflow-hidden border border-black/10 group active:scale-95 transition-all duration-500 ease-out">
+               <Image src="/interior-detail-lounge.jpg" alt="Interior detail" fill className="object-cover grayscale group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
+               <div className="absolute inset-0 bg-black/0 group-active:bg-black/5 group-hover:bg-black/5 transition-colors duration-500" />
              </div>
-             <div className="relative aspect-[4/5] overflow-hidden border border-black/10 group">
-                <Image src="/interior-detail-residence.jpg" alt="Residence detail" fill className="object-cover grayscale transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+             <div className="relative aspect-[4/5] overflow-hidden border border-black/10 group active:scale-95 transition-all duration-500 ease-out">
+               <Image src="/interior-detail-residence.jpg" alt="Residence detail" fill className="object-cover grayscale group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
+               <div className="absolute inset-0 bg-black/0 group-active:bg-black/5 group-hover:bg-black/5 transition-colors duration-500" />
              </div>
           </div>
-          <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-black/10 group mt-4 md:mt-8">
-             <Image src="/process-final.png" alt="Process detail" fill className="object-cover grayscale transition-transform duration-700 group-hover:scale-105" />
-             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+           <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-black/10 group active:scale-95 transition-all duration-500 ease-out mt-4 md:mt-8">
+             <Image src="/process-final.png" alt="Process detail" fill className="object-cover grayscale group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
+             <div className="absolute inset-0 bg-black/0 group-active:bg-black/5 group-hover:bg-black/5 transition-colors duration-500" />
           </div>
         </div>
       </section>
       
       {/* Next Project CTA */}
-      <section className="bg-ink px-section-px py-section-py text-center text-white md:px-section-px-md lg:px-section-px-lg flex min-h-[60vh] flex-col items-center justify-center">
+      <section className="bg-ink px-6 py-16 md:px-12 md:py-24 text-center text-white flex min-h-[60vh] flex-col items-center justify-center">
         <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50 mb-6">Next Project</p>
         <Link href={`/projects/${nextProject.slug}`} className="group inline-block mb-16">
           <h2 className="max-w-[12ch] break-words text-[clamp(2.25rem,6vw,5.5rem)] font-light leading-[0.94] tracking-tight transition-opacity duration-300 group-hover:opacity-70">

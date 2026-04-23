@@ -160,11 +160,11 @@ export default function HeroSection() {
     <section
       id="home"
       ref={sectionRef}
-      className={`relative min-h-screen overflow-hidden bg-white ${revealClassName}`}
+      className={`relative min-h-screen overflow-hidden bg-white pt-24 ${revealClassName}`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-section-px py-section-py md:px-section-px-md lg:grid-cols-[1.18fr_0.82fr] lg:gap-0 lg:px-section-px-lg">
+      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-6 py-16 md:px-12 md:py-24 lg:grid-cols-[1.18fr_0.82fr] lg:gap-0">
         <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
           <div
             ref={videoShellRef}

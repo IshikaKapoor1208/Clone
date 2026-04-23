@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg"
+      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-6 py-10 md:px-12 md:py-24"
     >
       {/* Centered Logo */}
       <div className="mb-12 flex w-full justify-center">
@@ -24,9 +24,8 @@ export default function Footer() {
         />
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 md:items-end">
+      <div className="flex flex-col items-center text-center gap-6 md:grid md:grid-cols-2 md:items-end md:text-left">
         <div className="space-y-4">
-
           <h2 className="max-w-[8ch] text-[2.2rem] leading-[0.92] tracking-[0.03em] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]">
             <span className="block whitespace-nowrap text-rustic-red">Calm spaces,</span>
             <span className="block text-rustic-red">drawn</span>
@@ -34,8 +33,8 @@ export default function Footer() {
           </h2>
         </div>
 
-        <div className="grid gap-4 text-center md:text-right md:justify-items-end">
-          <p className="mx-auto md:mx-0 max-w-[34rem] text-body-base text-black/62">
+        <div className="grid gap-4 md:text-right md:justify-items-end">
+          <p className="max-w-[34rem] text-body-base text-black/62">
             Residential, hospitality, and wellness environments shaped through
             thoughtful planning, restrained material language, and architectural
             clarity.
@@ -50,11 +49,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="mt-10 flex flex-col gap-4 border-t border-black/8 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-center md:text-left text-label-xs text-black/40">
+      <div className="mt-10 flex flex-col items-center text-center gap-4 border-t border-black/8 pt-6 md:flex-row md:items-center md:justify-between md:text-left">
+        <p className="text-label-xs text-black/40">
           ©2026 Gaurav Patthare Architects. All rights reserved.
         </p>
-        <nav aria-label="Footer navigation" className="mx-auto md:mx-0">
+        <nav aria-label="Footer navigation">
           <ul className="flex gap-6">
             {footerLinks.map((link) => (
               <li key={link.label}>
