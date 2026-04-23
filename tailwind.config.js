@@ -29,15 +29,15 @@ module.exports = {
         "h1-hero": ["clamp(3rem, 10vw, 7rem)", { lineHeight: "0.92", letterSpacing: "0.02em" }],
         "h2-section": ["clamp(2.2rem, 8vw, 5.5rem)", { lineHeight: "1.1", letterSpacing: "0.03em" }],
         "h3-title": ["clamp(1.5rem, 4vw, 2.4rem)", { lineHeight: "1.2", letterSpacing: "0.02em" }],
-        "body-lg": ["clamp(1rem, 1.5vw, 1.25rem)", { lineHeight: "1.6" }],
+        "body-lg": ["clamp(0.875rem, 1vw, 1rem)", { lineHeight: "1.6" }],
         "body-base": ["clamp(0.875rem, 1vw, 1rem)", { lineHeight: "1.6" }],
         "label-xs": ["0.65rem", { lineHeight: "1.2", letterSpacing: "0.28em" }],
       },
       spacing: {
-        "section-py": "6rem", // 24 in tailwind
-        "section-px": "1.5rem", // 6 in tailwind
-        "section-px-md": "3rem", // 12 in tailwind
-        "section-px-lg": "5rem", // 20 in tailwind
+        "section-py": "2rem", // 8 in tailwind
+        "section-px": "2.5rem", // 10 in tailwind
+        "section-px-md": "2.5rem", // 10 in tailwind
+        "section-px-lg": "2.5rem", // 10 in tailwind
       },
       keyframes: {
         draw: {

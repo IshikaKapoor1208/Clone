@@ -131,12 +131,12 @@ export default function CaseStudySection({
     <section
       ref={sectionRef}
       id={id}
-      className="relative border-t border-black/8 bg-white px-4 py-14 md:sticky md:top-0 md:min-h-[130vh] md:px-10 md:py-0 lg:min-h-[140vh] lg:px-16"
+      className="relative border-t border-black/8 bg-white px-section-px py-section-py md:sticky md:top-0 md:min-h-[130vh] md:px-section-px-md md:py-0 lg:min-h-[140vh] lg:px-section-px-lg"
       style={{ zIndex: 30 + stackIndex }}
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="relative mx-auto grid max-w-[96rem] grid-cols-1 gap-10 py-14 md:h-screen md:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12 lg:py-20">
+      <div className="relative mx-auto grid max-w-[96rem] grid-cols-1 gap-10 py-section-py md:h-screen md:py-section-py lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12 lg:py-section-py">
         <div>
           <div>
             <div className="max-w-[33rem] space-y-6">
@@ -147,7 +147,7 @@ export default function CaseStudySection({
                 <h2 className="text-[2.6rem] leading-[0.9] tracking-[0.02em] text-[#1f1d1b] md:text-[4rem] lg:text-[5rem]">
                   {title}
                 </h2>
-                <p className="text-base tracking-[0.04em] text-black/62 md:text-lg">
+                <p className="text-body-base text-black/62">
                   {subtitle}
                 </p>
               </div>
@@ -156,7 +156,7 @@ export default function CaseStudySection({
                 {meta}
               </p>
 
-              <div className="space-y-4 text-[0.96rem] leading-8 text-black/68">
+              <div className="space-y-4 text-body-base text-black/68">
                 {summaryParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}

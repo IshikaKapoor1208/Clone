@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }) {
       <Navbar />
 
       {/* Project Hero */}
-      <section className="pt-40 pb-16 px-4 md:px-10 lg:px-20 min-h-[60vh] flex flex-col justify-end">
+      <section className="min-h-[60vh] px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg flex flex-col justify-end">
         <div className="max-w-5xl mx-auto w-full">
           <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)] mb-6">
             {project.meta}
@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* Image */}
-      <section className="px-4 md:px-10 lg:px-20 mb-20">
+      <section className="mb-20 px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
         <div className="max-w-7xl mx-auto w-full relative aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-black/10">
           <Image
             src={project.imageSrc}
@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* Content */}
-      <section className="px-4 md:px-10 lg:px-20 pb-32">
+      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
         <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-[1fr_2.5fr] gap-12 md:gap-20">
           <div>
             <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ink/50 mb-6 border-b border-ink/10 pb-4">
@@ -100,7 +100,7 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* Process / Gallery Grid */}
-      <section className="px-4 md:px-10 lg:px-20 pb-32">
+      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
         <div className="max-w-7xl mx-auto w-full">
           <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ink/50 mb-10 border-b border-ink/10 pb-4">
             Visual Studies & Details
@@ -123,7 +123,7 @@ export default async function ProjectPage({ params }) {
       </section>
       
       {/* Next Project CTA */}
-      <section className="px-4 md:px-10 lg:px-20 py-32 bg-ink text-white text-center flex flex-col items-center justify-center min-h-[60vh]">
+      <section className="bg-ink px-section-px py-section-py text-center text-white md:px-section-px-md lg:px-section-px-lg flex min-h-[60vh] flex-col items-center justify-center">
         <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50 mb-6">Next Project</p>
         <Link href={`/projects/${nextProject.slug}`} className="group inline-block mb-16">
           <h2 className="max-w-[12ch] break-words text-[clamp(2.25rem,6vw,5.5rem)] font-light leading-[0.94] tracking-tight transition-opacity duration-300 group-hover:opacity-70">
@@ -140,7 +140,7 @@ export default async function ProjectPage({ params }) {
           </h2>
         </Link>
         <div>
-          <Link href="/#projects-overview" className="inline-block border border-white/30 px-10 py-5 uppercase tracking-[0.2em] text-xs hover:bg-white hover:text-ink transition-colors duration-300">
+          <Link href="/#projects-overview" className="inline-block border border-white/30 px-8 py-4 uppercase tracking-[0.2em] text-xs hover:bg-white hover:text-ink transition-colors duration-300">
             Back to All Projects
           </Link>
         </div>

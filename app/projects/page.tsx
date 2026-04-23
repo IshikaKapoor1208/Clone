@@ -12,7 +12,7 @@ export default function ProjectsPage() {
       <SmoothScroll />
       <Navbar />
 
-      <section className="px-4 pb-16 pt-40 md:px-10 lg:px-20">
+      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
         <div className="mx-auto max-w-[1100px]">
           <p className="text-[0.72rem] uppercase tracking-[0.3em] text-ink/48">
             Projects
@@ -20,7 +20,7 @@ export default function ProjectsPage() {
           <h1 className="mt-6 max-w-[10ch] text-5xl leading-[0.9] tracking-[0.02em] md:text-7xl lg:text-8xl">
             A measured portfolio of built narratives.
           </h1>
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-ink/65 md:text-xl">
+          <p className="mt-8 max-w-2xl text-body-base text-ink/65">
             Residential, hospitality, and wellness work presented through
             drawings, process studies, and spatial detail.
           </p>

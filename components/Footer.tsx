@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-section-px py-10 md:px-section-px-md lg:px-section-px-lg lg:py-16"
+      className="border-t border-black/8 bg-[linear-gradient(180deg,#fcfbf9_0%,#f4f0e8_100%)] px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg"
     >
       {/* Centered Logo */}
       <div className="mb-12 flex w-full justify-center">

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -11,13 +12,15 @@ const images = [
 ];
 
 export default function IdentitySection() {
+  const [isGalleryHovered, setIsGalleryHovered] = useState(false);
+
   return (
     <section className="bg-white px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
       <div className="mx-auto max-w-[1400px]">
 
         {/* Headline */}
-        <section className="bg-white px-6 py-12 md:px-12 md:py-16 lg:px-24 lg:py-20 xl:px-0">
-          <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+        <section className="bg-white py-section-py xl:px-0">
+          <div className="mx-auto max-w-[1400px]">
             <div className="mb-10 text-center md:mb-12">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -31,7 +34,11 @@ export default function IdentitySection() {
               </motion.h2>
             </div>
 
-            <div className="mb-10 flex h-[200px] items-center justify-center gap-1 overflow-hidden md:h-[300px] lg:h-[360px]">
+            <div
+              className="mb-10 flex h-[200px] items-center justify-center gap-1 overflow-hidden md:h-[300px] lg:h-[360px]"
+              onMouseEnter={() => setIsGalleryHovered(true)}
+              onMouseLeave={() => setIsGalleryHovered(false)}
+            >
               {images.map((img, idx) => (
                 <motion.div
                   key={idx}
@@ -40,6 +47,8 @@ export default function IdentitySection() {
                   transition={{ duration: 0.8, delay: idx * 0.1 }}
                   viewport={{ once: true }}
                   className="relative aspect-[4/5] flex-1 overflow-hidden"
+                  onMouseEnter={() => setIsGalleryHovered(true)}
+                  onMouseLeave={() => setIsGalleryHovered(false)}
                   style={{
                     clipPath:
                       "polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%)",
@@ -51,7 +60,9 @@ export default function IdentitySection() {
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className="object-cover grayscale transition-all duration-700 hover:grayscale-0"
+                      className={`object-cover transition-all duration-700 ${
+                        isGalleryHovered ? "grayscale-0" : "grayscale"
+                      }`}
                     />
                   </div>
                 </motion.div>

@@ -7,7 +7,10 @@ import { services } from "../lib/data/services";
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 px-6 md:px-12 bg-paper text-ink xl:px-24">
+    <section
+      id="services"
+      className="bg-paper px-section-px py-section-py text-ink md:px-section-px-md lg:px-section-px-lg"
+    >
       <div className="max-w-[1400px] mx-auto">
 
         {/* Header */}
@@ -27,7 +30,7 @@ export default function ServicesSection() {
             <Link
               key={idx}
               href={`/services/${service.slug}`}
-              className="group relative flex-1 hover:flex-[2.5_2.5_0%] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer overflow-hidden rounded-2xl bg-ink/10"
+              className="group relative flex-1 hover:flex-[2.5_2.5_0%] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer overflow-hidden bg-ink/10"
             >
               <Image
                 src={service.img}
@@ -46,9 +49,11 @@ export default function ServicesSection() {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between text-paper border-t border-paper/30 pt-6 group-hover:border-paper/60 transition-colors duration-500">
-                  <span className="text-xl md:text-2xl xl:text-3xl tracking-wide font-medium">{service.title}</span>
-                  <div className="bg-paper text-ink w-10 h-10 rounded-full flex items-center justify-center transform -rotate-45 group-hover:rotate-0 transition-transform duration-500">
+                <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 text-paper border-t border-paper/30 pt-6 group-hover:border-paper/60 transition-colors duration-500">
+                  <span className="text-xl md:text-2xl xl:text-3xl tracking-wide font-medium">
+                    {service.title}
+                  </span>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-paper text-ink">
                     <ArrowRight className="w-5 h-5" />
                   </div>
                 </div>
@@ -62,9 +67,9 @@ export default function ServicesSection() {
           <div className="text-xl md:text-2xl xl:text-3xl font-light max-w-3xl leading-relaxed">
             Our certified architects guide you through every stage of development <span className="font-medium italic">with expert knowledge and innovative solutions.</span>
           </div>
-          <button className="group shrink-0 rounded-full bg-ink text-paper px-8 py-4 flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95">
+          <button className="group shrink-0 bg-ink px-8 py-4 text-paper flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95">
             <span className="font-medium tracking-wide">Get Started</span>
-            <div className="w-8 h-8 rounded-full bg-paper/20 flex items-center justify-center transform group-hover:translate-x-1 transition-transform">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper/20 transform group-hover:translate-x-1 transition-transform">
               <ArrowRight className="w-4 h-4" />
             </div>
           </button>

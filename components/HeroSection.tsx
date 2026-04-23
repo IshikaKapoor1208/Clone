@@ -164,7 +164,7 @@ export default function HeroSection() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-section-px pb-8 pt-24 md:px-section-px-md md:pb-10 lg:grid-cols-[1.18fr_0.82fr] lg:gap-0 lg:px-section-px-lg lg:pt-20">
+      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-section-px py-section-py md:px-section-px-md lg:grid-cols-[1.18fr_0.82fr] lg:gap-0 lg:px-section-px-lg">
         <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
           <div
             ref={videoShellRef}
@@ -226,7 +226,7 @@ export default function HeroSection() {
             </p>
             <h1
               ref={textContainerRef}
-              className="cursor-image font-signature text-h1-hero opacity-0"
+              className="cursor-image font-signature text-[clamp(2.45rem,8.2vw,5.7rem)] leading-[0.92] tracking-[0.02em] opacity-0"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);
