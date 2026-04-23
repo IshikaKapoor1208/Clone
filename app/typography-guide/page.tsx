@@ -65,7 +65,7 @@ export default function TypographyGuide() {
             Typography <span className="text-rustic-red">&</span> Hierarchy
           </h1>
           <p className="text-body-lg text-ink/60 mt-6 max-w-2xl font-body">
-            A guide to the typographic scale and font pairings for Gaurav Patthare Architectss. 
+            A guide to the typographic scale and font pairings for Gaurav Patthare Architectss.
             Designed to ensure consistency, readability, and a premium architectural aesthetic.
           </p>
         </div>
