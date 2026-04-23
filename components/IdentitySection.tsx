@@ -15,11 +15,11 @@ export default function IdentitySection() {
   const [isGalleryHovered, setIsGalleryHovered] = useState(false);
 
   return (
-    <section className="bg-white px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+    <section className="bg-white px-6 py-16 md:px-12 md:py-24">
       <div className="mx-auto max-w-[1400px]">
 
         {/* Headline */}
-        <section className="bg-white py-section-py xl:px-0">
+        <section className="bg-white py-16 md:py-24 xl:px-0">
           <div className="mx-auto max-w-[1400px]">
             <div className="mb-10 text-center md:mb-12">
               <motion.h2

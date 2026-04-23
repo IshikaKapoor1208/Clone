@@ -39,7 +39,7 @@ const menuColumns: { title: string; links: { label: string; href: string }[] }[]
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [shouldShow, setShouldShow] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
@@ -52,71 +52,72 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Show if scrolling up, hide if scrolling down (and not at the very top)
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
+
+      setLastScrollY((previousScrollY) => {
+        if (currentScrollY > previousScrollY && currentScrollY > 100) {
+          setShowNavbar(false);
+        } else {
+          setShowNavbar(true);
+        }
+
+        return currentScrollY;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
-  const navTransform = isVisible ? "translate-y-0" : "-translate-y-24";
+  }, []);
 
   return (
     <>
-      <div
-        className={`fixed left-4 top-4 z-[70] flex h-12 items-start bg-white/96 px-4 transition-all duration-500 ease-in-out md:left-10 lg:left-8 ${shouldShow ? `opacity-100 ${navTransform}` : "opacity-0 -translate-y-4 pointer-events-none"}`}
+      <header
+        className={`fixed top-0 z-[70] w-full bg-white/98 backdrop-blur-sm transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"} ${shouldShow ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
-        <Link
-          href="/"
-          onClick={() => setIsOpen(false)}
-          data-cursor="view"
-          className="flex items-center transition duration-300 hover:opacity-70"
-        >
-          <Image
-            src="/Logo-01.png"
-            alt="Gaurav Patthare Architects"
-            width={120}
-            height={36}
-            className="h-25 w-auto object-contain"
-            priority
-          />
-        </Link>
-      </div>
+        <div className="flex items-start justify-between px-4 pt-4 md:px-10 lg:px-8">
+          <div className="flex h-12 items-start bg-white/96 px-4 transition duration-300 ease-in-out">
+            <Link
+              href="/"
+              onClick={() => setIsOpen(false)}
+              data-cursor="view"
+              className="flex items-center transition duration-300 hover:opacity-70"
+            >
+              <Image
+                src="/Logo-01.png"
+                alt="Gaurav Patthare Architects"
+                width={120}
+                height={36}
+                className="h-25 w-auto object-contain"
+                priority
+              />
+            </Link>
+          </div>
 
-      <nav
-        className={`fixed right-4 top-4 z-[70] md:right-10 lg:right-8 transition-all duration-500 ease-in-out ${shouldShow ? `opacity-100 ${navTransform}` : "opacity-0 -translate-y-4 pointer-events-none"}`}
-      >
-        <button
-          type="button"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-          onClick={() => setIsOpen((current) => !current)}
-          className="group grid h-12 w-12 place-items-center border border-black/10 bg-white/96 backdrop-blur-md transition duration-300 hover:bg-white"
-        >
-          <span className="grid w-6 gap-1.5">
-            <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "translate-y-2 rotate-45" : ""
-                }`}
-            />
-            <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "opacity-0" : "opacity-100"
-                }`}
-            />
-            <span
-              className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "-translate-y-2 -rotate-45" : ""
-                }`}
-            />
-          </span>
-        </button>
-      </nav>
+          <nav>
+            <button
+              type="button"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen((current) => !current)}
+              className="group grid h-12 w-12 place-items-center border border-black/10 bg-white/96 backdrop-blur-md transition duration-300 hover:bg-white"
+            >
+              <span className="grid w-6 gap-1.5">
+                <span
+                  className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "translate-y-2 rotate-45" : ""
+                    }`}
+                />
+                <span
+                  className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "opacity-0" : "opacity-100"
+                    }`}
+                />
+                <span
+                  className={`h-px w-full bg-[#212020] transition duration-300 ${isOpen ? "-translate-y-2 -rotate-45" : ""
+                    }`}
+                />
+              </span>
+            </button>
+          </nav>
+        </div>
+      </header>
 
       <div
         className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${isOpen

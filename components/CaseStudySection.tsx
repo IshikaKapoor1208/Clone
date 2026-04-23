@@ -20,11 +20,11 @@ export default function CaseStudySection({
   imageAlt,
   imagePriority = false,
   stackIndex = 0,
-}) {
+                 className="h-auto w-full object-cover object-center grayscale transition-all duration-500 ease-out"
   const sectionRef = useRef(null);
   const imageFrameRef = useRef(null);
   const revealMaskRef = useRef(null);
-
+                 className="pointer-events-none absolute inset-0 z-20 origin-top scale-y-0 bg-white transition-transform duration-700 ease-out"
   const summaryParagraphs = useMemo(
     () => [description, ...paragraphs.slice(0, 1)].filter(Boolean),
     [description, paragraphs],
@@ -131,12 +131,12 @@ export default function CaseStudySection({
     <section
       ref={sectionRef}
       id={id}
-      className="relative border-t border-black/8 bg-white px-section-px py-section-py md:sticky md:top-0 md:min-h-[130vh] md:px-section-px-md md:py-0 lg:min-h-[140vh] lg:px-section-px-lg"
+      className="relative border-t border-black/8 bg-white px-6 py-16 md:sticky md:top-0 md:min-h-[130vh] md:px-12 md:py-0 lg:min-h-[140vh]"
       style={{ zIndex: 30 + stackIndex }}
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="relative mx-auto grid max-w-[96rem] grid-cols-1 gap-10 py-section-py md:h-screen md:py-section-py lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12 lg:py-section-py">
+      <div className="relative mx-auto grid max-w-[96rem] grid-cols-1 gap-10 py-16 md:h-screen md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12">
         <div>
           <div>
             <div className="max-w-[33rem] space-y-6">

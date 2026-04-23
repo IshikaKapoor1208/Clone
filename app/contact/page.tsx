@@ -10,7 +10,7 @@ export default function ContactPage() {
         <main className="relative min-h-screen bg-white text-ink overflow-x-hidden">
             <Navbar />
 
-            <section className="relative px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+            <section className="relative px-6 py-16 md:px-12 md:py-24 pt-24">
                 {/* Background Pattern */}
                 <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_86px)]" />
 

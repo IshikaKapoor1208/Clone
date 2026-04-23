@@ -36,7 +36,7 @@ export default function ScrollStorySection() {
   return (
     <section
       ref={sectionRef}
-      className={`relative overflow-hidden bg-[#fbfaf7] px-section-px py-section-py text-[#212020] md:px-section-px-md lg:px-section-px-lg ${revealClassName}`}
+      className={`relative overflow-hidden bg-[#fbfaf7] px-6 py-16 md:px-12 md:py-24 text-[#212020] ${revealClassName}`}
     >
       <div className="grid gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
         <div className="md:sticky md:top-24 md:flex md:h-[calc(100vh-6rem)] md:items-center">

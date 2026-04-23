@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 export default function ServiceDetailPage({ service }) {
   return (
     <main className="min-h-screen overflow-x-hidden bg-paper text-ink">
-      <section className="relative px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="relative px-6 py-16 md:px-12 md:py-24 pt-24">
         <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
         <div className="relative mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
@@ -45,7 +45,7 @@ export default function ServiceDetailPage({ service }) {
       </section>
 
       {service.highlights?.length ? (
-        <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+        <section className="px-6 py-16 md:px-12 md:py-24">
           <div className="mx-auto grid max-w-[1500px] gap-3 border-y border-ink/10 py-6 sm:grid-cols-2 lg:grid-cols-4">
             {service.highlights.map((highlight, index) => (
               <div
@@ -64,7 +64,7 @@ export default function ServiceDetailPage({ service }) {
         </section>
       ) : null}
 
-      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="px-6 py-16 md:px-12 md:py-24">
         <div className="mx-auto grid max-w-[1500px] gap-10 border-y border-ink/10 py-12 lg:grid-cols-[0.7fr_1.3fr]">
           <p className="text-xs font-semibold uppercase tracking-[0.34em] text-ink/45">
             Design Intent
@@ -75,7 +75,7 @@ export default function ServiceDetailPage({ service }) {
         </div>
       </section>
 
-      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="px-6 py-16 md:px-12 md:py-24">
         <div className="mx-auto grid max-w-[1500px] gap-6 lg:grid-cols-2">
           {service.gallery.map((item, index) => (
             <article
@@ -107,7 +107,7 @@ export default function ServiceDetailPage({ service }) {
         </div>
       </section>
 
-      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+      <section className="px-6 py-16 md:px-12 md:py-24">
         <div className="mx-auto grid max-w-[1500px] gap-6 rounded-[1.5rem] bg-ink p-6 text-paper md:grid-cols-[0.7fr_1.3fr] md:p-10">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-paper/45">
