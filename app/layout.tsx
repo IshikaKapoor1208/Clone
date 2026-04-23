@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import MagneticCursor from "../components/MagneticCursor";
 import PreloaderGate from "../components/animations/PreloaderGate";
@@ -7,9 +7,17 @@ import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500", "700"],
   display: "swap",
   variable: "--font-body",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-serif",
 });
 
 const headingFont = localFont({
@@ -93,7 +101,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${headingFont.variable} font-body overflow-x-hidden`}
+        className={`${montserrat.variable} ${headingFont.variable} ${cormorant.variable} font-body overflow-x-hidden`}
       >
         <script
           type="application/ld+json"

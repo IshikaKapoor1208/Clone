@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="mb-12 flex w-full justify-center">
         <Image
           src="/Logo-03.png"
-          alt="Gaurav Patthare Architects"
+          alt="Gaurav Patthare Architectss"
           width={240}
           height={72}
           className="h-16 w-auto object-contain md:h-20  transition-all duration-500"

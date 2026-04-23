@@ -246,14 +246,14 @@ export default function HeroSection() {
 
             <div className="mt-7 flex flex-wrap gap-3 xl:gap-5">
               <a
-                href="#project-01"
+                href="/typography-guide"
                 data-cursor="view"
                 className="inline-flex items-center justify-center border border-[#212020] bg-[#212020] px-6 py-3 text-[0.66rem] uppercase tracking-[0.24em] text-white transition hover:bg-[#111111] md:px-8 md:py-4 xl:px-10 xl:py-5 xl:text-[0.75rem]"
               >
                 Explore Work
               </a>
               <a
-                href="#cta-section"
+                href="/font-test"
                 data-cursor="view"
                 className="inline-flex items-center justify-center border border-black/22 bg-transparent px-6 py-3 text-[0.66rem] uppercase tracking-[0.24em] text-black/72 transition hover:border-black/45 hover:text-black md:px-8 md:py-4 xl:px-10 xl:py-5 xl:text-[0.75rem]"
               >

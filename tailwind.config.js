@@ -13,6 +13,7 @@ module.exports = {
         sans: ["var(--font-body)", "Arial", "sans-serif"],
         body: ["var(--font-body)", "Arial", "sans-serif"],
         heading: ["var(--font-heading)", "Georgia", "serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
         signature: ["var(--font-heading)", "Georgia", "serif"],
       },
       fontSize: {
