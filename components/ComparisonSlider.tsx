@@ -43,7 +43,7 @@ export default function ComparisonSlider({
           src={afterImage}
           alt={afterLabel}
           fill
-          className="object-cover grayscale"
+          className="object-cover"
         />
         <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 text-[10px] uppercase tracking-widest font-bold">
           {afterLabel}
