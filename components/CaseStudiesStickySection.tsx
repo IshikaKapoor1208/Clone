@@ -146,11 +146,11 @@ export default function CaseStudiesStickySection({ projects }) {
     <section
       id="case-studies"
       ref={containerRef}
-      className="relative bg-white px-6 py-16 md:px-12 md:py-24"
+      className="relative bg-white px-10 py-8"
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-        <div className="relative mx-auto grid max-w-[96rem] gap-10 md:gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+        <div className="relative mx-auto grid max-w-[96rem] gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
         <div>
           {projects.map((project, index) => (
             <article
@@ -160,7 +160,7 @@ export default function CaseStudiesStickySection({ projects }) {
               ref={(element) => {
                 sectionRefs.current[index] = element;
               }}
-              className="flex min-h-[92vh] items-center border-t border-black/8 py-16 md:min-h-screen"
+              className="flex min-h-[92vh] items-center border-t border-black/8 py-8 md:min-h-screen"
             >
               <div
                 ref={(element) => {
