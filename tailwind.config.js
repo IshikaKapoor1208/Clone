@@ -15,6 +15,14 @@ module.exports = {
         heading: ["var(--font-heading)", "Georgia", "serif"],
         serif: ["var(--font-serif)", "Georgia", "serif"],
         signature: ["var(--font-heading)", "Georgia", "serif"],
+        // Demo Fonts
+        allison: ["var(--font-allison)", "cursive"],
+        samarata: ["var(--font-satisfy)", "cursive"], // Proxy
+        paragraph: ["var(--font-mr-de-haviland)", "cursive"], // Proxy
+        vistachopers: ["var(--font-kalam)", "cursive"], // Proxy
+        gustera: ["var(--font-monsieur-la-doulaise)", "cursive"], // Proxy
+        gwathlyn: ["var(--font-sacramento)", "cursive"], // Proxy
+        breakline: ["var(--font-great-vibes)", "cursive"], // Proxy
       },
       fontSize: {
         // Standard Typography System

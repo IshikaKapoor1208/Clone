@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Cormorant_Garamond } from "next/font/google";
+import { Montserrat, Cormorant_Garamond, Allison, Satisfy, Mr_De_Haviland, Kalam, Monsieur_La_Doulaise, Sacramento, Great_Vibes } from "next/font/google";
 import localFont from "next/font/local";
 import MagneticCursor from "../components/MagneticCursor";
 import PreloaderGate from "../components/animations/PreloaderGate";
@@ -24,6 +24,48 @@ const headingFont = localFont({
   src: "../assets/fonts/Thesignature-Regular.otf",
   display: "swap",
   variable: "--font-heading",
+});
+
+const allison = Allison({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-allison",
+});
+
+const satisfy = Satisfy({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-satisfy",
+});
+
+const mrDeHaviland = Mr_De_Haviland({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-mr-de-haviland",
+});
+
+const kalam = Kalam({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+  variable: "--font-kalam",
+});
+
+const monsieurLaDoulaise = Monsieur_La_Doulaise({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-monsieur-la-doulaise",
+});
+
+const sacramento = Sacramento({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-sacramento",
+});
+
+const greatVibes = Great_Vibes({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-great-vibes",
 });
 
 export const metadata: Metadata = {
@@ -101,7 +143,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${headingFont.variable} ${cormorant.variable} font-body overflow-x-hidden`}
+        className={`${montserrat.variable} ${headingFont.variable} ${cormorant.variable} ${allison.variable} ${satisfy.variable} ${mrDeHaviland.variable} ${kalam.variable} ${monsieurLaDoulaise.variable} ${sacramento.variable} ${greatVibes.variable} font-body overflow-x-hidden`}
       >
         <script
           type="application/ld+json"

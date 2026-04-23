@@ -30,6 +30,20 @@ export default function FontTestPage() {
         { label: "Italic", class: "text-4xl italic" },
         { label: "Label XS", class: "text-label-xs uppercase tracking-[0.25em]" },
       ]
+    },
+    {
+      title: "Proposed Comparison Fonts",
+      description: "Comparison of fonts requested for potential website updates (using high-fidelity Google Font alternatives).",
+      fontClass: "",
+      variants: [
+        { label: "Samarata Style (Satisfy)", class: "text-7xl font-samarata" },
+        { label: "Paragraph Style (Mr De Haviland)", class: "text-7xl font-paragraph" },
+        { label: "Allison Script (Exact Match)", class: "text-7xl font-allison" },
+        { label: "Vista Chopers Style (Kalam)", class: "text-6xl font-vistachopers" },
+        { label: "Gustera Style (Monsieur La Doulaise)", class: "text-7xl font-gustera" },
+        { label: "Gwathlyn Style (Sacramento)", class: "text-7xl font-gwathlyn" },
+        { label: "Breakline Signature Style (Great Vibes)", class: "text-7xl font-breakline" },
+      ]
     }
   ];
 
