@@ -58,7 +58,7 @@ export default function TypographyGuide() {
   return (
     <main className="min-h-screen bg-[#fbfaf7] text-ink selection:bg-rustic-red/10 selection:text-rustic-red">
       {/* Header */}
-      <section className="px-section-px md:px-section-px-md lg:px-section-px-lg pt-24 pb-16 border-b border-ink/5 bg-white">
+      <section className="border-b border-ink/5 bg-white px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
         <div className="max-w-7xl mx-auto">
           <p className="text-label-xs mb-4 text-rustic-red">Design System</p>
           <h1 className="text-h2-section font-body font-semibold leading-tight">
@@ -72,7 +72,7 @@ export default function TypographyGuide() {
       </section>
 
       {/* Font Family Overview */}
-      <section className="px-section-px md:px-section-px-md lg:px-section-px-lg py-20 bg-white">
+      <section className="bg-white px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-8 border border-ink/5 rounded-sm bg-[#fbfaf7]">
             <p className="text-label-xs text-ink/40 mb-2 uppercase">Brand Accent</p>
@@ -99,7 +99,7 @@ export default function TypographyGuide() {
       </section>
 
       {/* Hierarchy Table */}
-      <section className="px-section-px md:px-section-px-md lg:px-section-px-lg py-32">
+      <section className="px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
         <div className="max-w-7xl mx-auto space-y-24">
           {hierarchy.map((item, index) => (
             <div key={index} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border-b border-ink/5 pb-16">
@@ -123,7 +123,7 @@ export default function TypographyGuide() {
       </section>
 
       {/* Recommended Improvements */}
-      <section className="px-section-px md:px-section-px-md lg:px-section-px-lg py-32 bg-ink text-paper">
+      <section className="bg-ink px-section-px py-section-py text-paper md:px-section-px-md lg:px-section-px-lg">
         <div className="max-w-4xl mx-auto text-center space-y-12">
           <h2 className="text-h3-title font-body font-semibold">Recommended Pairing Strategy</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -143,7 +143,7 @@ export default function TypographyGuide() {
         </div>
       </section>
 
-      <footer className="py-12 border-t border-ink/5 text-center">
+      <footer className="border-t border-ink/5 py-section-py text-center">
         <p className="text-label-xs text-ink/30 uppercase tracking-[0.5em]">Gaurav Patthare Architectss &copy; {new Date().getFullYear()}</p>
       </footer>
     </main>

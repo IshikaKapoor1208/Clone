@@ -10,7 +10,7 @@ export default function ContactPage() {
         <main className="relative min-h-screen bg-white text-ink overflow-x-hidden">
             <Navbar />
 
-            <section className="relative px-4 pt-40 pb-24 md:px-10 lg:px-20 lg:pt-32">
+            <section className="relative px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
                 {/* Background Pattern */}
                 <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_86px)]" />
 
@@ -147,7 +147,7 @@ export default function ContactPage() {
                                 <div className="md:col-span-2 pt-6">
                                     <button
                                         type="submit"
-                                        className="group flex items-center gap-4 bg-ink text-paper px-10 py-5 transition-all hover:bg-ink/90 active:scale-95"
+                                        className="group flex items-center gap-4 bg-ink px-8 py-4 text-paper transition-all hover:bg-ink/90 active:scale-95"
                                     >
                                         <span className="text-[0.7rem] font-semibold uppercase tracking-[0.25em]">Send Message</span>
                                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

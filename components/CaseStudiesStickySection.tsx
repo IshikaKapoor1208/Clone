@@ -146,7 +146,7 @@ export default function CaseStudiesStickySection({ projects }) {
     <section
       id="case-studies"
       ref={containerRef}
-      className="relative bg-white px-section-px md:px-section-px-md lg:px-section-px-lg"
+      className="relative bg-white px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg"
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
@@ -160,7 +160,7 @@ export default function CaseStudiesStickySection({ projects }) {
               ref={(element) => {
                 sectionRefs.current[index] = element;
               }}
-              className="flex min-h-[92vh] items-center border-t border-black/8 py-12 md:min-h-screen md:py-16"
+              className="flex min-h-[92vh] items-center border-t border-black/8 py-section-py md:min-h-screen"
             >
               <div
                 ref={(element) => {
@@ -209,7 +209,7 @@ export default function CaseStudiesStickySection({ projects }) {
                 <div className="pt-6">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="inline-block border border-black/10 px-6 py-3 text-label-xs text-black hover:bg-black hover:text-white transition-colors duration-300"
+                    className="inline-block border border-black/10 px-8 py-4 text-label-xs text-black hover:bg-black hover:text-white transition-colors duration-300"
                   >
                     Read Full Case Study
                   </Link>

@@ -36,7 +36,7 @@ export default function ScrollStorySection() {
   return (
     <section
       ref={sectionRef}
-      className={`relative overflow-hidden bg-[#fbfaf7] px-4 py-16 text-[#212020] md:px-10 md:py-0 lg:px-20 ${revealClassName}`}
+      className={`relative overflow-hidden bg-[#fbfaf7] px-section-px py-section-py text-[#212020] md:px-section-px-md lg:px-section-px-lg ${revealClassName}`}
     >
       <div className="grid gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
         <div className="md:sticky md:top-24 md:flex md:h-[calc(100vh-6rem)] md:items-center">
@@ -47,7 +47,7 @@ export default function ScrollStorySection() {
             <h2 className="max-w-[8ch] font-signature text-[3.2rem] leading-[0.88] tracking-[0.03em] md:text-[4.8rem] lg:text-[6rem]">
               A slow walk through form.
             </h2>
-            <p className="max-w-[30rem] text-sm leading-7 text-black/62 md:text-[0.98rem]">
+            <p className="max-w-[30rem] text-body-base text-black/62">
               Architecture is read in sequence: the first threshold, the open
               middle, the final detail that makes everything feel inevitable.
             </p>
@@ -78,7 +78,7 @@ export default function ScrollStorySection() {
                 <h3 className="max-w-[12ch] text-3xl font-medium leading-[1.04] tracking-[0.01em] md:text-4xl lg:text-5xl">
                   {frame.title}
                 </h3>
-                <p className="max-w-[34rem] text-sm leading-7 text-black/62 md:text-[0.98rem]">
+                <p className="max-w-[34rem] text-body-base text-black/62">
                   {frame.text}
                 </p>
               </div>

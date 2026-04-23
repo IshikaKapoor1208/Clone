@@ -7,12 +7,12 @@ export default function CTASection() {
   return (
     <section
       id="cta-section"
-      className="relative overflow-hidden bg-white py-16 md:py-18 lg:py-20"
+      className="relative overflow-hidden bg-white py-section-py"
     >
       {/* Background Decorative Element */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_100px)]" />
 
-      <div className="relative mx-auto max-w-[1240px] px-6 md:px-12">
+      <div className="relative mx-auto max-w-[1240px] px-section-px md:px-section-px-md lg:px-section-px-lg">
         <div className="flex flex-col items-center text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mb-10 max-w-xl text-base leading-relaxed text-ink/60 md:text-lg"
+            className="mb-10 max-w-xl text-body-base text-ink/60"
           >
             Whether it&apos;s a residential retreat or a commercial landmark, we bring precision,
             measured details, and architectural clarity to every project.
