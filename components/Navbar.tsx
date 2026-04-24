@@ -42,6 +42,21 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  const scrollToSection = (sectionId: string) => {
+    setIsOpen(false);
+
+    window.requestAnimationFrame(() => {
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      window.location.assign(`/#${sectionId}`);
+    });
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShouldShow(true);
@@ -133,14 +148,25 @@ export default function Navbar() {
             <ul className="w-full space-y-5 text-center md:space-y-7 md:text-left">
               {mainLinks.map((link) => (
                 <li key={link}>
-                  <Link
-                    href={link === "Home" ? "/" : link === "Contact" ? "/contact" : `/#${link.toLowerCase()}`}
-                    onClick={() => setIsOpen(false)}
-                    data-cursor="view"
-                    className="block w-full text-5xl font-semibold uppercase leading-none tracking-[0.08em] transition duration-300 hover:text-black/55 md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
-                  >
-                    {link}
-                  </Link>
+                  {link === "Services" ? (
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection("services")}
+                      data-cursor="view"
+                      className="block w-full text-5xl font-semibold uppercase leading-none tracking-[0.08em] text-left transition duration-300 hover:text-black/55 md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
+                    >
+                      {link}
+                    </button>
+                  ) : (
+                    <Link
+                      href={link === "Home" ? "/" : link === "Contact" ? "/contact" : `/#${link.toLowerCase()}`}
+                      onClick={() => setIsOpen(false)}
+                      data-cursor="view"
+                      className="block w-full text-5xl font-semibold uppercase leading-none tracking-[0.08em] transition duration-300 hover:text-black/55 md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
+                    >
+                      {link}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -158,13 +184,23 @@ export default function Navbar() {
                   <ul className="space-y-3">
                     {column.links.map((link) => (
                       <li key={link.label}>
-                        <Link
-                          href={link.href}
-                          onClick={() => setIsOpen(false)}
-                          className="text-sm uppercase tracking-[0.18em] text-black/62 transition duration-300 hover:text-black md:text-[0.82rem]"
-                        >
-                          {link.label}
-                        </Link>
+                        {link.href === "/#services" ? (
+                          <button
+                            type="button"
+                            onClick={() => scrollToSection("services")}
+                            className="text-sm uppercase tracking-[0.18em] text-black/62 transition duration-300 hover:text-black md:text-[0.82rem]"
+                          >
+                            {link.label}
+                          </button>
+                        ) : (
+                          <Link
+                            href={link.href}
+                            onClick={() => setIsOpen(false)}
+                            className="text-sm uppercase tracking-[0.18em] text-black/62 transition duration-300 hover:text-black md:text-[0.82rem]"
+                          >
+                            {link.label}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>

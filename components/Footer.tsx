@@ -57,12 +57,21 @@ export default function Footer() {
           <ul className="flex gap-6">
             {footerLinks.map((link) => (
               <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className="text-label-xs text-black/48 transition hover:text-black"
-                >
-                  {link.label}
-                </Link>
+                {link.href === "/#services" ? (
+                  <a
+                    href="#services"
+                    className="text-label-xs text-black/48 transition hover:text-black"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="text-label-xs text-black/48 transition hover:text-black"
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

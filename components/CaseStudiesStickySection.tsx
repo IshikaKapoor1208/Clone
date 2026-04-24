@@ -160,7 +160,7 @@ export default function CaseStudiesStickySection({ projects }) {
               ref={(element) => {
                 sectionRefs.current[index] = element;
               }}
-              className="flex min-h-[92vh] items-center border-t border-black/8 py-8 md:min-h-screen"
+              className="flex min-h-[92vh] items-center border-t border-black/8 md:min-h-screen"
             >
               <div
                 ref={(element) => {
