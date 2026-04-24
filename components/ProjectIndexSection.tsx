@@ -178,11 +178,11 @@ export default function ProjectIndexSection({ projects }) {
     <section
       ref={sectionRef}
       id="about"
-      className="relative bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-6 py-16 md:px-12 md:py-24"
+      className="relative bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-6 py-8 md:px-10 md:py-8"
     >
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[24%] bg-[linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35 xl:block" />
 
-      <div className="grid gap-12 md:gap-14 lg:grid-cols-[minmax(16rem,0.38fr)_minmax(0,1fr)] lg:items-stretch lg:gap-16 lg:pb-[45vh] xl:gap-20">
+      <div className="grid gap-12 md:gap-14 lg:grid-cols-[minmax(16rem,0.38fr)_minmax(0,1fr)] lg:items-stretch lg:gap-16 xl:gap-20">
         <div className="self-stretch">
           <div className="lg:sticky lg:top-28 xl:top-32">
             <p className="text-label-xs text-[rgba(33,32,32,0.48)]">
