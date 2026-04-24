@@ -26,7 +26,7 @@ export default function Footer() {
 
       <div className="flex flex-col items-center text-center gap-6 md:grid md:grid-cols-2 md:items-end md:text-left">
         <div className="space-y-4">
-          <h2 className="max-w-[8ch] text-[2.2rem] leading-[0.92] tracking-[0.03em] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]">
+          <h2 className="max-w-[8ch] font-signature text-h2-section">
             <span className="block whitespace-nowrap text-rustic-red">Calm spaces,</span>
             <span className="block text-rustic-red">drawn</span>
             <span className="block whitespace-nowrap text-[#A34E24]">with precision.</span>

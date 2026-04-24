@@ -3,6 +3,12 @@ import React from "react";
 export default function TypographyGuide() {
   const sampleHeading = "Architecture of Precision";
   const sampleBody = "Our approach is rooted in the belief that spaces should be calm, intentional, and shaped through a restrained material language. We focus on residential, hospitality, and wellness environments that resonate with architectural clarity.";
+  const roleMap = [
+    { role: "Heading", font: "Samarata" },
+    { role: "Subheading", font: "Gustera" },
+    { role: "Paragraph", font: "Paragraph" },
+    { role: "Accent", font: "Allison / Signature" },
+  ];
 
   const hierarchy = [
     {
@@ -94,6 +100,29 @@ export default function TypographyGuide() {
             <p className="text-body-base text-ink/60">
               Clean, geometric, and modern. The backbone of the site's clarity and readability.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-section-px py-section-py md:px-section-px-md lg:px-section-px-lg">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-8">
+            <p className="mb-3 text-label-xs text-rustic-red">Font Roles</p>
+            <h2 className="text-h3-title text-ink">Role To Font Mapping</h2>
+          </div>
+
+          <div className="overflow-hidden border border-ink/10 bg-[#2a2a2a] text-paper">
+            <div className="grid grid-cols-2 border-b border-white/15">
+              <div className="px-6 py-4 text-xl font-semibold md:text-2xl">Role</div>
+              <div className="border-l border-white/15 px-6 py-4 text-xl font-semibold md:text-2xl">Font</div>
+            </div>
+
+            {roleMap.map((item) => (
+              <div key={item.role} className="grid grid-cols-2 border-b border-white/15 last:border-b-0">
+                <div className="px-6 py-4 text-lg md:text-xl">{item.role}</div>
+                <div className="border-l border-white/15 px-6 py-4 text-lg md:text-xl">{item.font}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

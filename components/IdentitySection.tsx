@@ -75,15 +75,15 @@ export default function IdentitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="space-y-2 text-h3-title font-medium leading-relaxed"
+                className="space-y-2"
               >
-                <p className="text-ink">
+                <p className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed text-ink">
                   It&apos;s about proportion, material, and the way a space is lived.
                 </p>
-                <p className="text-ink">
+                <p className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed text-ink">
                   Every project begins with listening. <span className="text-ink/30">Then we shape</span>
                 </p>
-                <p className="text-ink/30">
+                <p className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed text-ink/30">
                   clarity, calm, and a built form that feels distinctly yours.
                 </p>
               </motion.div>
