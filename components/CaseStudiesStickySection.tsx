@@ -169,7 +169,7 @@ export default function CaseStudiesStickySection({ projects }) {
                 className="max-w-[34rem] space-y-6"
               >
                 <div className="space-y-3">
-                  <h2 className="text-h2-section">
+                  <h2 className="text-[clamp(1.95rem,6.5vw,4.8rem)] leading-[1.06] tracking-[0.02em]">
                     {(() => {
                       const words = project.title.trim().split(" ");
                       const last = words.pop();
@@ -232,7 +232,7 @@ export default function CaseStudiesStickySection({ projects }) {
         <div className="hidden lg:block">
           <div
             ref={pinnedMediaRef}
-             className="mx-auto h-[calc(100vh-12rem)] md:sticky md:top-24 max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
+             className="mx-auto h-[calc(100vh-16rem)] md:sticky md:top-24 max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
           >
             <div className="relative h-full w-full overflow-hidden">
               {projects.map((project, index) => (
