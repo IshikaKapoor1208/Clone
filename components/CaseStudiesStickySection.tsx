@@ -67,7 +67,7 @@ export default function CaseStudiesStickySection({ projects }) {
         const context = gsap.context(() => {
           ScrollTrigger.create({
             trigger: container,
-            start: "top top+=80",
+            start: "top top+=24",
             end: "bottom bottom-=40",
             pin: pinnedMedia,
             pinSpacing: false,
@@ -126,6 +126,22 @@ export default function CaseStudiesStickySection({ projects }) {
         const context = gsap.context(() => {
           activeIndexRef.current = 0;
           setActiveIndex(0);
+
+          sections.forEach((section, index) => {
+            const content = contentRefs.current[index];
+
+            if (!content) {
+              return;
+            }
+
+            ScrollTrigger.create({
+              trigger: content,
+              start: REVEAL_START,
+              end: REVEAL_END,
+              onEnter: () => setActiveProjectIndex(index),
+              onEnterBack: () => setActiveProjectIndex(index),
+            });
+          });
         }, container);
 
         return () => context.revert();
@@ -146,12 +162,40 @@ export default function CaseStudiesStickySection({ projects }) {
     <section
       id="case-studies"
       ref={containerRef}
-      className="relative bg-white px-10 py-8"
+      className="relative bg-white px-4 py-8 sm:px-6 lg:px-10"
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-        <div className="relative mx-auto grid max-w-[96rem] gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
-        <div>
+      <div className="sticky top-14 z-30 mx-auto mb-6 w-full max-w-[42rem] overflow-hidden border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)] lg:hidden">
+        <div className="relative aspect-[16/11] w-full overflow-hidden sm:aspect-[16/10]">
+          <Image
+            src={activeProject.stickyImageSrc || activeProject.imageSrc}
+            alt={activeProject.imageAlt}
+            fill
+            sizes="100vw"
+            className="h-full w-full object-cover object-center grayscale transition-all duration-500 ease-out"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.16))]" />
+        </div>
+
+        <div className="space-y-3 border-t border-black/10 px-5 py-4 sm:px-6">
+          <p className="text-[0.65rem] uppercase tracking-[0.2em] text-black/46">
+            Active Case Study
+          </p>
+          <h3 className="text-[clamp(1.3rem,4.6vw,2rem)] leading-[1.05] tracking-[0.01em]">
+            <span className="block text-rustic-red">{activeProject.title}</span>
+          </h3>
+          <p className="text-sm leading-6 text-black/65 sm:text-base">
+            {activeProject.subtitle}
+          </p>
+          <p className="text-[0.62rem] uppercase tracking-[0.2em] text-black/44">
+            {activeProject.meta}
+          </p>
+        </div>
+      </div>
+
+      <div className="relative mx-auto grid max-w-[96rem] gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+        <div className="min-w-0">
           {projects.map((project, index) => (
             <article
               key={project.id}
@@ -160,16 +204,16 @@ export default function CaseStudiesStickySection({ projects }) {
               ref={(element) => {
                 sectionRefs.current[index] = element;
               }}
-              className="flex min-h-[92vh] items-center border-t border-black/8 md:min-h-screen"
+              className="flex min-h-auto items-start border-t border-black/8 py-8 md:min-h-screen md:items-center"
             >
               <div
                 ref={(element) => {
                   contentRefs.current[index] = element;
                 }}
-                className="max-w-[34rem] space-y-6"
+                className="max-w-full space-y-5 md:max-w-[34rem] md:space-y-6"
               >
                 <div className="space-y-3">
-                  <h2 className="text-[clamp(1.95rem,6.5vw,4.8rem)] leading-[1.06] tracking-[0.02em]">
+                  <h2 className="text-[clamp(1.85rem,11vw,4.8rem)] leading-[1.02] tracking-[0.01em] sm:text-[clamp(1.95rem,6.5vw,4.8rem)]">
                     {(() => {
                       const words = project.title.trim().split(" ");
                       const last = words.pop();
@@ -181,12 +225,12 @@ export default function CaseStudiesStickySection({ projects }) {
                       );
                     })()}
                   </h2>
-                  <p className="text-body-lg text-black/62">
+                  <p className="text-base text-black/62 sm:text-body-lg">
                     {project.subtitle}
                   </p>
                 </div>
 
-                <p className="text-label-xs text-black/46">
+                <p className="text-[0.6rem] tracking-[0.22em] text-black/46 sm:text-label-xs">
                   {project.meta}
                 </p>
 
@@ -199,7 +243,7 @@ export default function CaseStudiesStickySection({ projects }) {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="border border-black/14 px-3 py-1 text-[0.64rem] uppercase tracking-[0.15em] text-black/55"
+                      className="border border-black/14 px-2.5 py-1 text-[0.58rem] uppercase tracking-[0.14em] text-black/55 sm:px-3 sm:text-[0.64rem]"
                     >
                       {tag}
                     </span>
@@ -209,20 +253,10 @@ export default function CaseStudiesStickySection({ projects }) {
                 <div className="pt-6">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="inline-block border border-black/10 px-8 py-4 text-label-xs text-black hover:bg-black hover:text-white transition-colors duration-300"
+                    className="inline-block w-full border border-black/10 px-6 py-4 text-center text-label-xs text-black transition-colors duration-300 hover:bg-black hover:text-white sm:w-auto sm:px-8"
                   >
                     Read Full Case Study
                   </Link>
-                </div>
-
-                <div className="relative mt-4 aspect-[16/10] overflow-hidden border border-black/10 lg:hidden">
-                  <Image
-                    src={project.stickyImageSrc || project.imageSrc}
-                    alt={project.imageAlt}
-                    fill
-                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                     className="w-full h-auto object-cover object-center grayscale group active:scale-95 group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out"
-                  />
                 </div>
               </div>
             </article>
@@ -232,7 +266,7 @@ export default function CaseStudiesStickySection({ projects }) {
         <div className="hidden lg:block">
           <div
             ref={pinnedMediaRef}
-             className="mx-auto h-[calc(100vh-16rem)] md:sticky md:top-24 max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
+             className="mx-auto h-[calc(100vh-16rem)] md:sticky md:top-14 max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
           >
             <div className="relative h-full w-full overflow-hidden">
               {projects.map((project, index) => (
