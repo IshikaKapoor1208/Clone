@@ -38,7 +38,7 @@ const menuColumns: { title: string; links: { label: string; href: string }[] }[]
 //dndhjs
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [shouldShow, setShouldShow] = useState(false);
+  const [shouldShow] = useState(true);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -56,13 +56,6 @@ export default function Navbar() {
       window.location.assign(`/#${sectionId}`);
     });
   };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShouldShow(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,10 +79,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 z-[70] w-full bg-white transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"} ${shouldShow ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed left-0 top-0 z-[70] w-full bg-transparent transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"} ${shouldShow ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <div className="flex items-start justify-between px-4 pt-4 md:px-10 lg:px-8">
-          <div className="flex h-12 items-start bg-white/96 px-4 transition duration-300 ease-in-out">
+          <div className="flex h-12 items-start transition duration-300 ease-in-out">
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
@@ -113,7 +106,7 @@ export default function Navbar() {
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               onClick={() => setIsOpen((current) => !current)}
-              className="group grid h-12 w-12 place-items-center border border-black/10 bg-white/96 backdrop-blur-md transition duration-300 hover:bg-white"
+              className="group grid h-12 w-12 place-items-center border border-black/20 bg-transparent transition duration-300 hover:bg-white/70"
             >
               <span className="grid w-6 gap-1.5">
                 <span
