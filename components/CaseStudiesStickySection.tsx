@@ -14,6 +14,7 @@ export default function CaseStudiesStickySection({ projects }) {
   const sectionRefs = useRef([]);
   const contentRefs = useRef([]);
   const imageLayerRefs = useRef([]);
+  const mobileImageLayerRefs = useRef([]);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const prefersReducedMotion = useReducedMotion();
@@ -56,7 +57,7 @@ export default function CaseStudiesStickySection({ projects }) {
       if (prefersReducedMotion) {
         activeIndexRef.current = 0;
         setActiveIndex(0);
-        gsap.set(imageLayerRefs.current.filter(Boolean), { clearProps: "all" });
+        gsap.set([...imageLayerRefs.current.filter(Boolean), ...mobileImageLayerRefs.current.filter(Boolean)], { clearProps: "all" });
         return;
       }
 
@@ -127,8 +128,19 @@ export default function CaseStudiesStickySection({ projects }) {
           activeIndexRef.current = 0;
           setActiveIndex(0);
 
+          mobileImageLayerRefs.current.forEach((layer, index) => {
+            if (!layer) return;
+            gsap.set(layer, {
+              clipPath:
+                index === 0 ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
+              opacity: index === 0 ? 1 : 0.9,
+              zIndex: 10 + index,
+            });
+          });
+
           sections.forEach((section, index) => {
             const content = contentRefs.current[index];
+            const layer = mobileImageLayerRefs.current[index];
 
             if (!content) {
               return;
@@ -136,11 +148,28 @@ export default function CaseStudiesStickySection({ projects }) {
 
             ScrollTrigger.create({
               trigger: content,
-              start: REVEAL_START,
-              end: REVEAL_END,
+              start: "top 90%",
+              end: "top 55%",
               onEnter: () => setActiveProjectIndex(index),
               onEnterBack: () => setActiveProjectIndex(index),
             });
+
+            if (layer && index > 0) {
+              gsap
+                .timeline({
+                  scrollTrigger: {
+                    trigger: content,
+                    start: "top 90%",
+                    end: "top 55%",
+                    scrub: true,
+                  },
+                })
+                .to(layer, {
+                  clipPath: "inset(0% 0% 0% 0%)",
+                  opacity: 1,
+                  ease: "none",
+                });
+            }
           });
         }, container);
 
@@ -166,31 +195,37 @@ export default function CaseStudiesStickySection({ projects }) {
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="sticky top-14 z-30 mx-auto mb-6 w-full max-w-[42rem] overflow-hidden border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)] lg:hidden">
-        <div className="relative aspect-[16/11] w-full overflow-hidden sm:aspect-[16/10]">
-          <Image
-            src={activeProject.stickyImageSrc || activeProject.imageSrc}
-            alt={activeProject.imageAlt}
-            fill
-            sizes="100vw"
-            className="h-full w-full object-cover object-center grayscale transition-all duration-500 ease-out"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.16))]" />
-        </div>
+      <div className="sticky top-[-1px] z-40 mx-auto mb-10 w-full bg-white pt-[4.5rem] pb-3 shadow-[0_22px_58px_rgba(33,32,32,0.09)] lg:hidden">
+        <div className="max-w-[42rem] mx-auto overflow-hidden border border-black/10">
+          <div className="relative aspect-[16/11] w-full overflow-hidden sm:aspect-[16/10]">
+            {projects.map((project, index) => (
+              <div
+                key={project.id}
+                ref={(element) => {
+                  mobileImageLayerRefs.current[index] = element;
+                }}
+                className="absolute inset-0 will-change-[clip-path,opacity]"
+              >
+                <Image
+                  src={project.stickyImageSrc || project.imageSrc}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="100vw"
+                  className="h-full w-full object-cover object-center grayscale transition-all duration-500 ease-out"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.16))]" />
+              </div>
+            ))}
 
-        <div className="space-y-3 border-t border-black/10 px-5 py-4 sm:px-6">
-          <p className="text-[0.65rem] uppercase tracking-[0.2em] text-black/46">
-            Active Case Study
-          </p>
-          <h3 className="text-[clamp(1.3rem,4.6vw,2rem)] leading-[1.05] tracking-[0.01em]">
-            <span className="block text-rustic-red">{activeProject.title}</span>
-          </h3>
-          <p className="text-sm leading-6 text-black/65 sm:text-base">
-            {activeProject.subtitle}
-          </p>
-          <p className="text-[0.62rem] uppercase tracking-[0.2em] text-black/44">
-            {activeProject.meta}
-          </p>
+            <div className="absolute bottom-0 left-0 right-0 border-t border-black/10 bg-white/95 px-4 py-3 backdrop-blur-[4px] sm:px-6">
+              <p className="text-[0.6rem] uppercase tracking-[0.2em] text-black/50">
+                Active Case Study
+              </p>
+              <p className="mt-0.5 text-sm font-medium tracking-[0.04em] text-rustic-red transition-colors duration-300">
+                {activeProject.title}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
