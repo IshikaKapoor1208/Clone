@@ -248,7 +248,7 @@ export default function CaseStudiesStickySection({ projects }) {
                 className="max-w-full space-y-5 md:max-w-[34rem] md:space-y-6"
               >
                 <div className="space-y-3">
-                  <h2 className="text-[clamp(1.85rem,11vw,4.8rem)] leading-[1.02] tracking-[0.01em] sm:text-[clamp(1.95rem,6.5vw,4.8rem)]">
+                  <h2 className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
                     {(() => {
                       const words = project.title.trim().split(" ");
                       const last = words.pop();

@@ -67,7 +67,7 @@ export default function TypographyGuide() {
       <section className="border-b border-ink/5 bg-white px-6 py-16 md:px-12 md:py-24 pt-24">
         <div className="max-w-7xl mx-auto">
           <p className="text-label-xs mb-4 text-rustic-red">Design System</p>
-          <h1 className="text-h2-section font-body font-semibold leading-tight">
+          <h1 className="font-body text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
             Typography <span className="text-rustic-red">&</span> Hierarchy
           </h1>
           <p className="text-body-lg text-ink/60 mt-6 max-w-2xl font-body">
@@ -82,21 +82,21 @@ export default function TypographyGuide() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-8 border border-ink/5 rounded-sm bg-[#fbfaf7]">
             <p className="text-label-xs text-ink/40 mb-2 uppercase">Brand Accent</p>
-            <h2 className="font-heading text-4xl text-rustic-red mb-4">The Signature</h2>
+            <h2 className="font-heading text-rustic-red mb-4 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">The Signature</h2>
             <p className="text-body-base text-ink/60">
               Personal, bespoke, and artistic. Use sparingly for brand presence and character.
             </p>
           </div>
           <div className="p-8 border border-ink/5 rounded-sm bg-[#fbfaf7]">
             <p className="text-label-xs text-ink/40 mb-2 uppercase">Premium Heading</p>
-            <h2 className="font-serif text-4xl mb-4 italic">Cormorant</h2>
+            <h2 className="font-serif mb-4 italic text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Cormorant</h2>
             <p className="text-body-base text-ink/60">
               An elegant serif that conveys luxury, precision, and architectural heritage.
             </p>
           </div>
           <div className="p-8 border border-ink/5 rounded-sm bg-[#fbfaf7]">
             <p className="text-label-xs text-ink/40 mb-2 uppercase">Interface & Body</p>
-            <h2 className="font-body font-bold text-4xl mb-4 tracking-tight">Montserrat</h2>
+            <h2 className="font-body mb-4 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Montserrat</h2>
             <p className="text-body-base text-ink/60">
               Clean, geometric, and modern. The backbone of the site's clarity and readability.
             </p>
@@ -108,7 +108,7 @@ export default function TypographyGuide() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-8">
             <p className="mb-3 text-label-xs text-rustic-red">Font Roles</p>
-            <h2 className="text-h3-title text-ink">Role To Font Mapping</h2>
+            <h2 className="text-ink text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Role To Font Mapping</h2>
           </div>
 
           <div className="overflow-hidden border border-ink/10 bg-[#2a2a2a] text-paper">
@@ -154,18 +154,18 @@ export default function TypographyGuide() {
       {/* Recommended Improvements */}
       <section className="bg-ink px-6 py-16 md:px-12 md:py-24 text-paper">
         <div className="max-w-4xl mx-auto text-center space-y-12">
-          <h2 className="text-h3-title font-body font-semibold">Recommended Pairing Strategy</h2>
+          <h2 className="font-body text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Recommended Pairing Strategy</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             <div className="space-y-4">
-              <h4 className="text-rustic-red font-bold uppercase text-xs tracking-widest">Minimalist</h4>
+              <h4 className="text-rustic-red uppercase st text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Minimalist</h4>
               <p className="text-sm text-paper/60">Use Montserrat for everything. Vary weights (300 for body, 700 for headings) and tracking (widest for labels).</p>
             </div>
             <div className="space-y-4">
-              <h4 className="text-rustic-red font-bold uppercase text-xs tracking-widest">Balanced</h4>
+              <h4 className="text-rustic-red uppercase st text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Balanced</h4>
               <p className="text-sm text-paper/60">The Signature for Hero H1s only. Montserrat for all other headings and body. Maintains professionalism with a spark of personality.</p>
             </div>
             <div className="space-y-4">
-              <h4 className="text-rustic-red font-bold uppercase text-xs tracking-widest">Sophisticated</h4>
+              <h4 className="text-rustic-red uppercase st text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Sophisticated</h4>
               <p className="text-sm text-paper/60">Introduce a Serif (like Lora or Cormorant) for H2 and H3 headings. Montserrat remains for navigation and body text.</p>
             </div>
           </div>

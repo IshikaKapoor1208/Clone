@@ -20,13 +20,13 @@ export default function Footer() {
           alt="Gaurav Patthare Architectss"
           width={240}
           height={72}
-          className="h-16 w-auto object-contain md:h-20  transition-all duration-500"
+          className="h-16 w-auto object-contain md:h-20 transition-all duration-500"
         />
       </div>
 
       <div className="flex flex-col items-center text-center gap-6 md:grid md:grid-cols-2 md:items-end md:text-left">
         <div className="space-y-4">
-          <h2 className="max-w-[8ch] font-signature text-h2-section">
+          <h2 className="max-w-[8ch] font-signature text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
             <span className="block whitespace-nowrap text-rustic-red">Calm spaces,</span>
             <span className="block text-rustic-red">drawn</span>
             <span className="block whitespace-nowrap text-[#A34E24]">with precision.</span>

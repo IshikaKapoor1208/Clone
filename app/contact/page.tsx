@@ -24,7 +24,7 @@ export default function ContactPage() {
                         <p className="text-[0.7rem] uppercase tracking-[0.3em] text-ink/50 mb-6">
                             Connect with us
                         </p>
-                        <h1 className="font-signature  text-[4rem] leading-[0.9] tracking-tight md:text-[7rem] lg:text-[9rem]">
+                        <h1 className="font-signature text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
                             <span className="text-rustic-red">Get in </span>
                             <span className="text-[#A34E24] italic font-medium">Touch.</span>
                         </h1>

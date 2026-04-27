@@ -22,7 +22,7 @@ export default function ServiceDetailPage({ service }) {
             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-ink/45">
               {service.eyebrow}
             </p>
-            <h1 className="mt-5 max-w-[8ch] text-6xl font-light leading-[0.88] tracking-[-0.04em] md:text-8xl lg:text-9xl">
+            <h1 className="mt-5 max-w-[8ch] text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
               {service.title}
             </h1>
           </div>
@@ -95,7 +95,7 @@ export default function ServiceDetailPage({ service }) {
                 <p className="mb-4 text-xs uppercase tracking-[0.24em] text-ink/42">
                   Study 0{index + 1}
                 </p>
-                <h2 className="text-3xl font-light tracking-[-0.03em] md:text-4xl">
+                <h2 className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
                   {item.title}
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-8 text-ink/62">
@@ -113,7 +113,7 @@ export default function ServiceDetailPage({ service }) {
             <p className="text-xs uppercase tracking-[0.3em] text-paper/45">
               Process
             </p>
-            <h2 className="mt-4 text-4xl font-light tracking-[-0.03em]">
+            <h2 className="mt-4 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
               How we shape it
             </h2>
           </div>

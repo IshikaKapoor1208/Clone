@@ -37,7 +37,7 @@ export default async function ProjectPage({ params }) {
           <p className="text-[0.76rem] uppercase tracking-[0.28em] text-[rgba(33,32,32,0.48)] mb-6">
             {project.meta}
           </p>
-          <h1 className="mb-6 max-w-[12ch] break-words text-[clamp(2.4rem,7vw,5.75rem)] leading-[0.92] tracking-[0.01em]">
+          <h1 className="mb-6 max-w-[12ch] break-words text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
             {(() => {
               const words = project.title.trim().split(" ");
               const last = words.pop();
@@ -72,12 +72,12 @@ export default async function ProjectPage({ params }) {
       <section className="px-6 py-16 md:px-12 md:py-24">
         <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-[1fr_2.5fr] gap-12 md:gap-20">
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ink/50 mb-6 border-b border-ink/10 pb-4">
+            <h3 className="uppercase text-ink/50 mb-6 border-b border-ink/10 pb-4 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
               Project Details
             </h3>
             <div className="flex flex-col gap-6">
                <div>
-                  <h4 className="text-[0.65rem] uppercase tracking-wider text-ink/40 mb-3">Tags</h4>
+                  <h4 className="uppercase r text-ink/40 mb-3 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Tags</h4>
                   <div className="flex flex-col gap-2">
                     {project.tags.map((tag) => (
                       <span key={tag} className="text-[0.8rem] text-ink/80 uppercase tracking-widest">{tag}</span>
@@ -102,7 +102,7 @@ export default async function ProjectPage({ params }) {
       {/* Process / Gallery Grid */}
       <section className="px-6 py-16 md:px-12 md:py-24">
         <div className="max-w-7xl mx-auto w-full">
-          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ink/50 mb-10 border-b border-ink/10 pb-4">
+          <h3 className="uppercase text-ink/50 mb-10 border-b border-ink/10 pb-4 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
             Visual Studies & Details
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-4 md:gap-y-8">
@@ -126,7 +126,7 @@ export default async function ProjectPage({ params }) {
       <section className="bg-ink px-6 py-16 md:px-12 md:py-24 text-center text-white flex min-h-[60vh] flex-col items-center justify-center">
         <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50 mb-6">Next Project</p>
         <Link href={`/projects/${nextProject.slug}`} className="group inline-block mb-16">
-          <h2 className="max-w-[12ch] break-words text-[clamp(2.25rem,6vw,5.5rem)] font-light leading-[0.94] tracking-tight transition-opacity duration-300 group-hover:opacity-70">
+          <h2 className="max-w-[12ch] break-words transition-opacity duration-300 group-hover:opacity-70 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
             {(() => {
               const words = nextProject.title.trim().split(" ");
               const last = words.pop();

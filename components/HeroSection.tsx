@@ -221,12 +221,12 @@ export default function HeroSection() {
           className="flex items-end pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pb-34 lg:pl-12 xl:pl-12 xl:pb-34"
         >
           <div className="max-w-[34rem]">
-            <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.26em] text-black/40 md:mb-5">
+            <p className="mb-3 text-[1.68rem] font-medium uppercase tracking-[0.26em] text-black/40 md:mb-5">
               Architecture & Interior Design Studio
             </p>
             <h1
               ref={textContainerRef}
-              className="cursor-image font-signature text-h2-section opacity-0"
+              className="cursor-image font-signature opacity-0 text-2xl md:text-4xl xl:text-4xl font-light leading-relaxed"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);
