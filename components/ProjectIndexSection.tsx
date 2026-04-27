@@ -188,7 +188,7 @@ export default function ProjectIndexSection({ projects }) {
             <p className="text-label-xs text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>
-            <h2 className="mt-6 font-signature text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
+            <h2 className="mt-6 font-signature text-xl md:text-2xl xl:text-6xl font-light leading-relaxed">
               <span className="block whitespace-nowrap text-rustic-red">Project</span>
               <span className="block text-[#A34E24]">Index</span>
             </h2>
@@ -228,11 +228,11 @@ export default function ProjectIndexSection({ projects }) {
                   }}
                   onMouseMove={movePreviewToCursor}
                   onMouseLeave={() => setHoveredProject(null)}
-                   className={`cursor-image grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.12)] py-5 text-black active:scale-95 transition-all duration-500 ease-out hover:translate-x-1 hover:text-black sm:grid-cols-[52px_minmax(0,1fr)_minmax(145px,220px)] sm:items-start sm:gap-5 lg:grid-cols-[58px_minmax(0,1fr)_minmax(190px,270px)] lg:gap-7 ${isActive ? "translate-x-1" : "translate-x-0"
-                     }`}
+                  className={`cursor-image grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.12)] py-5 text-black active:scale-95 transition-all duration-500 ease-out hover:translate-x-1 hover:text-black sm:grid-cols-[52px_minmax(0,1fr)_minmax(145px,220px)] sm:items-start sm:gap-5 lg:grid-cols-[58px_minmax(0,1fr)_minmax(190px,270px)] lg:gap-7 ${isActive ? "translate-x-1" : "translate-x-0"
+                    }`}
                 >
                   <span
-                     className={`font-body text-label-xs font-normal transition-all duration-500 ease-out sm:pt-1 ${isActive
+                    className={`font-body text-label-xs font-normal transition-all duration-500 ease-out sm:pt-1 ${isActive
                       ? "text-[#1f1f1f]"
                       : "text-[#858585]"
                       }`}
@@ -242,7 +242,7 @@ export default function ProjectIndexSection({ projects }) {
 
                   <span className="grid min-w-0 gap-2">
                     <h3
-                       className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-h3-title font-normal transition-all duration-500 ease-out sm:whitespace-nowrap ${isActive ? "translate-x-1" : ""}`}
+                      className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-h3-title font-normal transition-all duration-500 ease-out sm:whitespace-nowrap ${isActive ? "translate-x-1" : ""}`}
                     >
                       {(() => {
                         const words = project.title.trim().split(" ");

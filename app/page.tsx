@@ -27,11 +27,11 @@ export default function Page() {
       <section className="px-6 py-16 md:px-12 md:py-24 bg-paper-soft">
         <div className="mx-auto max-w-[900px]">
           <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-            <h2 className="font-signature text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
+            <h2 className="font-signature text-xl md:text-2xl xl:text-7xl font-light leading-relaxed">
               <span className="text-rustic-red">The </span>
               <span className="text-[#A34E24]">Process.</span>
             </h2>
-            <p className="max-w-md text-label-xs text-ink/60">
+            <p className="max-w-md text-label-md text-ink/60">
               Every built form begins as a dialogue on paper. We translate
               abstract sketches into precise architectural expressions.
             </p>

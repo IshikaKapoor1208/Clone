@@ -248,7 +248,7 @@ export default function CaseStudiesStickySection({ projects }) {
                 className="max-w-full space-y-5 md:max-w-[34rem] md:space-y-6"
               >
                 <div className="space-y-3">
-                  <h2 className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
+                  <h2 className="text-xl md:text-2xl xl:text-5xl font-light leading-relaxed">
                     {(() => {
                       const words = project.title.trim().split(" ");
                       const last = words.pop();
@@ -301,7 +301,7 @@ export default function CaseStudiesStickySection({ projects }) {
         <div className="hidden lg:block">
           <div
             ref={pinnedMediaRef}
-             className="mx-auto h-[calc(100vh-16rem)] md:sticky md:top-14 max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
+            className="mx-auto h-[calc(100vh-16rem)] md:sticky md:top-14 max-w-[42rem] border border-black/10 bg-white shadow-[0_22px_58px_rgba(33,32,32,0.09)]"
           >
             <div className="relative h-full w-full overflow-hidden">
               {projects.map((project, index) => (
@@ -310,14 +310,14 @@ export default function CaseStudiesStickySection({ projects }) {
                   ref={(element) => {
                     imageLayerRefs.current[index] = element;
                   }}
-                   className="absolute inset-0 will-change-[clip-path,opacity] transition-all duration-500 ease-out"
+                  className="absolute inset-0 will-change-[clip-path,opacity] transition-all duration-500 ease-out"
                 >
                   <Image
                     src={project.stickyImageSrc || project.imageSrc}
                     alt={project.imageAlt}
                     fill
                     sizes="(max-width: 1279px) 56vw, 42rem"
-                     className="w-full h-auto object-cover object-center grayscale transition-all duration-500 ease-out"
+                    className="w-full h-auto object-cover object-center grayscale transition-all duration-500 ease-out"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.18))]" />
                 </div>

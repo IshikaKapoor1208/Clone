@@ -82,7 +82,7 @@ export default function Navbar() {
         className={`fixed left-0 top-0 z-[70] w-full bg-transparent transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"} ${shouldShow ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <div className="flex items-start justify-between px-4 pt-4 md:px-10 lg:px-8">
-          <div className="flex h-12 items-start transition duration-300 ease-in-out">
+          <div className="flex h-15 items-start transition duration-300 ease-in-out">
             <Link
               href="/"
               onClick={() => setIsOpen(false)}

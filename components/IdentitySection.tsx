@@ -27,7 +27,7 @@ export default function IdentitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="text-h2-section font-medium"
+                className="text-6xl font-medium"
               >
                 <span className="text-rustic-red">This isn&apos;t just </span>
                 <span className="text-[#A34E24]">about buildings.</span>
@@ -60,9 +60,8 @@ export default function IdentitySection() {
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className={`object-cover transition-all duration-700 ${
-                        isGalleryHovered ? "grayscale-0" : "grayscale"
-                      }`}
+                      className={`object-cover transition-all duration-700 ${isGalleryHovered ? "grayscale-0" : "grayscale"
+                        }`}
                     />
                   </div>
                 </motion.div>

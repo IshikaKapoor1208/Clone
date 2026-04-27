@@ -41,7 +41,7 @@ h4 {
 h1,
 h2 {
   @apply font-heading;
-  font-weight: 400;
+  font-weight: 40;
 }
 
 .sr-only {
@@ -175,7 +175,9 @@ a:hover .project-name::after {
 }
 
 /* Force hide on mobile/touch devices */
-@media (max-width: 1024px), (pointer: coarse) {
+@media (max-width: 1024px),
+(pointer: coarse) {
+
   .magnetic-cursor,
   .custom-cursor-container {
     display: none !important;
@@ -274,6 +276,7 @@ a:hover .project-name::after {
 }
 
 @keyframes cursor-breathe {
+
   0%,
   100% {
     box-shadow: 0 0 0 1px rgba(18, 18, 18, 0.12), 0 6px 18px rgba(18, 18, 18, 0.28);
@@ -285,6 +288,7 @@ a:hover .project-name::after {
 }
 
 @keyframes cursor-ring {
+
   0%,
   100% {
     opacity: 0.42;
