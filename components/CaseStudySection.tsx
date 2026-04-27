@@ -188,7 +188,7 @@ export default function CaseStudySection({
                 fill
                 priority={imagePriority}
                 sizes="(max-width: 1023px) 100vw, 56vw"
-                className="h-auto w-full object-cover object-center grayscale"
+                className="h-auto w-full object-cover object-center"
               />
               <div
                 ref={revealMaskRef}

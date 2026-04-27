@@ -165,7 +165,7 @@ export default function ProjectIndexSection({ projects }) {
             alt={hoveredProject.imageAlt || hoveredProject.title}
             fill
             sizes="260px"
-            className="h-full w-full object-cover object-center grayscale"
+            className="h-full w-full object-cover object-center"
             priority={false}
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(20,20,20,0.1))]" />
@@ -242,7 +242,7 @@ export default function ProjectIndexSection({ projects }) {
 
                   <span className="grid min-w-0 gap-2">
                     <h3
-                      className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-h3-title font-normal transition-all duration-500 ease-out sm:whitespace-nowrap ${isActive ? "translate-x-1" : ""}`}
+                      className={`project-name relative m-0 w-fit max-w-full whitespace-normal font-body text-xl md:text-2xl font-normal transition-all duration-500 ease-out sm:whitespace-nowrap ${isActive ? "translate-x-1" : ""}`}
                     >
                       {(() => {
                         const words = project.title.trim().split(" ");

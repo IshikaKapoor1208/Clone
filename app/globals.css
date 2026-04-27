@@ -259,7 +259,7 @@ a:hover .project-name::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #111111 0%, #191919 100%);
+  background: linear-gradient(135deg, #C8845A 0%, #832F23 100%);
   opacity: 1;
 }
 

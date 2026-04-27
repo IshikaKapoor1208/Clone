@@ -59,7 +59,7 @@ export default function ComparisonSlider({
           src={beforeImage}
           alt={beforeLabel}
           fill
-          className="object-cover grayscale opacity-80"
+          className="object-cover opacity-80"
         />
         <div className="absolute bottom-6 left-6 bg-ink text-white px-4 py-2 text-[10px] uppercase tracking-widest font-bold">
           {beforeLabel}
