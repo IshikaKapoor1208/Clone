@@ -162,8 +162,8 @@ export default function HeroSection() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-6 py-2 md:px-12 md:py-4 lg:grid-cols-[1.18fr_0.82fr] lg:gap-0">
-        <div className="relative h-[54vh] w-full md:h-[62vh] lg:h-[78vh]">
+      <div className="relative mx-auto grid min-h-screen w-full max-w-[96rem] grid-cols-1 px-6 py-12 md:px-12 md:py-24 lg:grid-cols-2 lg:gap-0 lg:py-20">
+        <div className="relative h-[50vh] w-full md:h-[62vh] lg:h-[78vh]">
           <div
             ref={videoShellRef}
             className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${isVideoExpanded && !prefersReducedMotion
@@ -216,7 +216,7 @@ export default function HeroSection() {
 
         <div
           ref={sideContentRef}
-          className="flex items-end pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pb-34 lg:pl-12 xl:pl-12 xl:pb-24"
+          className="flex items-center pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pl-12 lg:h-[78vh] xl:pl-12 xl:pb-54"
         >
           <div className="max-w-[34rem]">
             <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.26em] text-black/40 md:mb-5">
