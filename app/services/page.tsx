@@ -16,7 +16,7 @@ export default function ServicesPage() {
           <p className="text-[0.72rem] uppercase tracking-[0.3em] text-ink/48">
             Services
           </p>
-          <h1 className="mt-6 max-w-[10ch] text-5xl leading-[0.9] tracking-[0.02em] md:text-7xl lg:text-8xl">
+          <h1 className="mt-6 max-w-[10ch] text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
             Spatial thinking across scales.
           </h1>
           <p className="mt-8 max-w-2xl text-body-base text-ink/65">

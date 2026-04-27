@@ -50,7 +50,7 @@ export default function FontTestPage() {
   return (
     <main className="min-h-screen bg-paper p-10 md:p-24 space-y-24">
       <header className="border-b border-ink/10 pb-12">
-        <h1 className="text-label-xs uppercase tracking-widest text-ink/50 mb-4">Typography Showcase</h1>
+        <h1 className="text-label-xs uppercase st text-ink/50 mb-4 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">Typography Showcase</h1>
         <p className="text-h3-title font-body max-w-2xl">
           Visual reference for font families used across the Gaurav Patthare Architectss brand identity.
         </p>
@@ -60,7 +60,7 @@ export default function FontTestPage() {
         {sections.map((section, idx) => (
           <section key={idx} className="space-y-12">
             <div className="border-l-2 border-rustic-red pl-6">
-              <h2 className="text-2xl font-body font-medium">{section.title}</h2>
+              <h2 className="font-body text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">{section.title}</h2>
               <p className="text-ink/60 font-body mt-1">{section.description}</p>
             </div>
 

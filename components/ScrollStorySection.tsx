@@ -44,7 +44,7 @@ export default function ScrollStorySection() {
             <p className="text-[0.72rem] uppercase tracking-[0.32em] text-black/45">
               Spatial Story
             </p>
-            <h2 className="max-w-[8ch] font-signature text-[3.2rem] leading-[0.88] tracking-[0.03em] md:text-[4.8rem] lg:text-[6rem]">
+            <h2 className="max-w-[8ch] font-signature text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
               A slow walk through form.
             </h2>
             <p className="max-w-[30rem] text-body-base text-black/62">
@@ -75,7 +75,7 @@ export default function ScrollStorySection() {
                   </span>
                 </div>
 
-                <h3 className="max-w-[12ch] text-3xl font-medium leading-[1.04] tracking-[0.01em] md:text-4xl lg:text-5xl">
+                <h3 className="max-w-[12ch] text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
                   {frame.title}
                 </h3>
                 <p className="max-w-[34rem] text-body-base text-black/62">

@@ -144,7 +144,7 @@ export default function CaseStudySection({
                 <p className="text-[0.7rem] uppercase tracking-[0.24em] text-black/52">
                   Project {number}
                 </p>
-                <h2 className="text-[2.6rem] leading-[0.9] tracking-[0.02em] text-[#1f1d1b] md:text-[4rem] lg:text-[5rem]">
+                <h2 className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
                   {title}
                 </h2>
                 <p className="text-body-base text-black/62">
