@@ -228,7 +228,7 @@ export default function ProjectIndexSection({ projects }) {
                   }}
                   onMouseMove={movePreviewToCursor}
                   onMouseLeave={() => setHoveredProject(null)}
-                  className={`cursor-image grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.12)] py-5 text-black active:scale-95 transition-all duration-500 ease-out hover:translate-x-1 hover:text-black sm:grid-cols-[52px_minmax(0,1fr)_minmax(145px,220px)] sm:items-start sm:gap-5 lg:grid-cols-[58px_minmax(0,1fr)_minmax(190px,270px)] lg:gap-7 ${isActive ? "translate-x-1" : "translate-x-0"
+                  className={`cursor-image grid min-w-0 gap-4 border-b border-[rgba(33,32,32,0.12)] py-5 text-black active:scale-95 transition-all duration-300 ease-out hover:translate-x-2 hover:scale-[1.01] hover:opacity-75 sm:grid-cols-[52px_minmax(0,1fr)_minmax(145px,220px)] sm:items-start sm:gap-5 lg:grid-cols-[58px_minmax(0,1fr)_minmax(190px,270px)] lg:gap-7 ${isActive ? "translate-x-1" : "translate-x-0"
                     }`}
                 >
                   <span

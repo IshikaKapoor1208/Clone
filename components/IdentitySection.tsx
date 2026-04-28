@@ -12,7 +12,7 @@ const images = [
 ];
 
 export default function IdentitySection() {
-  const [isGalleryHovered, setIsGalleryHovered] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section className="bg-white px-6 py-16 md:px-12 md:py-24">
@@ -27,7 +27,7 @@ export default function IdentitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="text-6xl font-medium"
+                className="text-xl md:text-2xl xl:text-3xl font-body font-light leading-relaxed tracking-normal"
               >
                 <span className="text-rustic-red">This isn&apos;t just </span>
                 <span className="text-[#A34E24]">about buildings.</span>
@@ -36,8 +36,6 @@ export default function IdentitySection() {
 
             <div
               className="mb-10 flex h-[200px] items-center justify-center gap-1 overflow-hidden md:h-[300px] lg:h-[360px]"
-              onMouseEnter={() => setIsGalleryHovered(true)}
-              onMouseLeave={() => setIsGalleryHovered(false)}
             >
               {images.map((img, idx) => (
                 <motion.div
@@ -47,8 +45,8 @@ export default function IdentitySection() {
                   transition={{ duration: 0.8, delay: idx * 0.1 }}
                   viewport={{ once: true }}
                   className="relative aspect-[4/5] flex-1 overflow-hidden"
-                  onMouseEnter={() => setIsGalleryHovered(true)}
-                  onMouseLeave={() => setIsGalleryHovered(false)}
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                   style={{
                     clipPath:
                       "polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%)",

@@ -18,9 +18,9 @@ export default function ServicesSection() {
           <div className="text-label-xs text-ink/60 font-semibold shrink-0">
             Services
           </div>
-          <h2 className="max-w-3xl text-right md:text-left text-xl md:text-2xl xl:text-6xl font-light leading-relaxed">
+          <h2 className="max-w-3xl text-right md:text-left text-xl md:text-2xl xl:text-3xl font-body font-light leading-relaxed tracking-normal">
             <span className="text-rustic-red">How GP Architects </span>
-            <span className="text-[#A34E24] font-medium italic">Can Help You</span>
+            <span className="text-[#A34E24]">Can Help You</span>
           </h2>
         </div>
 
