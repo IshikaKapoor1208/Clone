@@ -27,7 +27,7 @@ export default function IdentitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="text-6xl font-medium"
+                className="text-xl md:text-2xl xl:text-3xl font-body font-light leading-relaxed tracking-normal"
               >
                 <span className="text-rustic-red">This isn&apos;t just </span>
                 <span className="text-[#A34E24]">about buildings.</span>
