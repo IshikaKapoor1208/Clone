@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links Column */}
+          {/* Quick Links Columns */}
           <div className="lg:col-span-3 lg:pt-16">
             <p className="mb-8 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-black/30">
               Navigation
