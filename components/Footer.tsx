@@ -23,17 +23,6 @@ const socialLinks = [
     href: "https://instagram.com",
     label: "Instagram"
   },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-        <rect x="2" y="9" width="4" height="12"></rect>
-        <circle cx="4" cy="4" r="2"></circle>
-      </svg>
-    ),
-    href: "https://linkedin.com",
-    label: "LinkedIn"
-  },
   { icon: <Mail size={18} />, href: "mailto:gauravpattharearchitects@gmail.com", label: "Email" },
 ];
 
@@ -45,23 +34,27 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative border-t border-black/5 bg-[#fcfbf9] px-6 py-16 md:px-12 md:py-12 overflow-hidden"
+      className="relative border-t border-black/5 bg-[#fcfbf9] px-6 py-16 md:px-12 md:py-5 overflow-hidden"
     >
       {/* Subtle Background Pattern */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_100px)]" />
 
       <div className="relative mx-auto max-w-[96rem]">
+        {/* Logo - Middle of Page */}
+        <div className="flex justify-center mb-16 border-b border-black/5 pb-10">
+          <Image
+            src="/Logo-03.png"
+            alt="Gaurav Patthare Architects"
+            width={240}
+            height={70}
+            className="h-16 md:h-20 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
+          />
+        </div>
+
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-8">
 
           {/* Brand & Signature Column */}
           <div className="lg:col-span-6 space-y-10">
-            <Image
-              src="/Logo-03.png"
-              alt="Gaurav Patthare Architects"
-              width={200}
-              height={60}
-              className="h-14 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
-            />
 
             <h2 className="font-signature text-4xl md:text-5xl xl:text-7xl font-light leading-tight tracking-tight">
               <span className="block text-rustic-red">Calm spaces,</span>
@@ -134,7 +127,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-24 flex flex-col items-center justify-between gap-8 border-t border-black/8 pt-10 md:flex-row">
+        <div className="mt-24 flex flex-col items-center justify-between gap-8 border-t border-black/8 pt-2 md:flex-row">
           <div className="flex flex-col gap-2 md:flex-row md:gap-8">
             <p className="text-label-xs text-black/40">
               ©2026 Gaurav Patthare Architects. All rights reserved.
