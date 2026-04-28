@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }) {
             src={project.imageSrc}
             alt={project.imageAlt || project.title}
             fill
-            className="object-cover object-center grayscale"
+            className="object-cover object-center"
             priority
           />
         </div>
@@ -107,16 +107,16 @@ export default async function ProjectPage({ params }) {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-4 md:gap-y-8">
              <div className="relative aspect-[4/5] overflow-hidden border border-black/10 group active:scale-95 transition-all duration-500 ease-out">
-               <Image src="/interior-detail-lounge.jpg" alt="Interior detail" fill className="object-cover grayscale group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
+               <Image src="/interior-detail-lounge.jpg" alt="Interior detail" fill className="object-cover group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
                <div className="absolute inset-0 bg-black/0 group-active:bg-black/5 group-hover:bg-black/5 transition-colors duration-500" />
              </div>
              <div className="relative aspect-[4/5] overflow-hidden border border-black/10 group active:scale-95 transition-all duration-500 ease-out">
-               <Image src="/interior-detail-residence.jpg" alt="Residence detail" fill className="object-cover grayscale group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
+               <Image src="/interior-detail-residence.jpg" alt="Residence detail" fill className="object-cover group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
                <div className="absolute inset-0 bg-black/0 group-active:bg-black/5 group-hover:bg-black/5 transition-colors duration-500" />
              </div>
           </div>
            <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-black/10 group active:scale-95 transition-all duration-500 ease-out mt-4 md:mt-8">
-             <Image src="/process-final.png" alt="Process detail" fill className="object-cover grayscale group-active:grayscale-0 group-hover:grayscale-0 group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
+             <Image src="/process-final.png" alt="Process detail" fill className="object-cover group-active:scale-105 group-hover:scale-105 transition-all duration-500 ease-out" />
              <div className="absolute inset-0 bg-black/0 group-active:bg-black/5 group-hover:bg-black/5 transition-colors duration-500" />
           </div>
         </div>

@@ -95,7 +95,7 @@ export default function ScrollStorySection() {
                   alt={frame.imageAlt}
                   fill
                   sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 48vw"
-                  className="w-full h-auto object-cover object-center grayscale transition duration-700"
+                  className="w-full h-auto object-cover object-center transition duration-700"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(0,0,0,0.08))]" />
               </motion.div>

@@ -58,8 +58,7 @@ export default function IdentitySection() {
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className={`object-cover transition-all duration-700 ${hoveredIndex === idx ? "grayscale-0" : "grayscale"
-                        }`}
+                      className={`object-cover transition-all duration-700`}
                     />
                   </div>
                 </motion.div>
@@ -74,13 +73,13 @@ export default function IdentitySection() {
                 viewport={{ once: true }}
                 className="space-y-2"
               >
-                <p className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed text-ink">
+                <p className="text-lg md:text-xl font-light leading-relaxed text-ink">
                   It&apos;s about proportion, material, and the way a space is lived.
                 </p>
-                <p className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed text-ink">
+                <p className="text-lg md:text-xl font-light leading-relaxed text-ink">
                   Every project begins with listening. <span className="text-ink/30">Then we shape</span>
                 </p>
-                <p className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed text-ink/30">
+                <p className="text-lg md:text-xl font-light leading-relaxed text-ink/30">
                   clarity, calm, and a built form that feels distinctly yours.
                 </p>
               </motion.div>

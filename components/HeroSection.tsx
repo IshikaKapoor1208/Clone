@@ -6,9 +6,7 @@ import { createPortal } from "react-dom";
 import useSectionReveal from "./useSectionReveal";
 import useReducedMotion from "./useReducedMotion";
 import StaggeredText from "./animations/StaggeredText";
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { Flip } from "gsap/dist/Flip";
+import { gsap, SplitText, Flip } from "gsap/all";
 
 const HERO_VIDEO_PLAYBACK_RATE = 1.35;
 
@@ -175,7 +173,7 @@ export default function HeroSection() {
           >
             <video
               ref={heroVideoRef}
-              className="h-full w-full object-cover object-center grayscale"
+              className="h-full w-full object-cover object-center"
               src="/vid3.mp4"
               poster="/vid3-poster.jpg"
               autoPlay

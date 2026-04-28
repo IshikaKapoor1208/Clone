@@ -64,8 +64,8 @@ export default function ServicesSection() {
 
         {/* Footer */}
         <div className="mt-20 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 border-t border-ink/10 pt-10">
-          <div className="text-xl md:text-2xl xl:text-3xl font-light max-w-3xl leading-relaxed">
-            Our certified architects guide you through every stage of development <span className="font-medium italic">with expert knowledge and innovative solutions.</span>
+          <div className="text-lg md:text-xl font-light max-w-3xl leading-relaxed text-ink">
+            Our certified architects guide you through every stage of development <span>with expert knowledge and innovative solutions.</span>
           </div>
           <button className="group shrink-0 bg-ink px-8 py-4 text-paper flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95">
             <span className="font-medium tracking-wide">Get Started</span>
