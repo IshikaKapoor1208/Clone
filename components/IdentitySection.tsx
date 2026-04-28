@@ -12,7 +12,7 @@ const images = [
 ];
 
 export default function IdentitySection() {
-  const [isGalleryHovered, setIsGalleryHovered] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section className="bg-white px-6 py-16 md:px-12 md:py-24">
@@ -36,8 +36,6 @@ export default function IdentitySection() {
 
             <div
               className="mb-10 flex h-[200px] items-center justify-center gap-1 overflow-hidden md:h-[300px] lg:h-[360px]"
-              onMouseEnter={() => setIsGalleryHovered(true)}
-              onMouseLeave={() => setIsGalleryHovered(false)}
             >
               {images.map((img, idx) => (
                 <motion.div
@@ -47,8 +45,8 @@ export default function IdentitySection() {
                   transition={{ duration: 0.8, delay: idx * 0.1 }}
                   viewport={{ once: true }}
                   className="relative aspect-[4/5] flex-1 overflow-hidden"
-                  onMouseEnter={() => setIsGalleryHovered(true)}
-                  onMouseLeave={() => setIsGalleryHovered(false)}
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                   style={{
                     clipPath:
                       "polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%)",
@@ -60,7 +58,7 @@ export default function IdentitySection() {
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className={`object-cover transition-all duration-700 ${isGalleryHovered ? "grayscale-0" : "grayscale"
+                      className={`object-cover transition-all duration-700 ${hoveredIndex === idx ? "grayscale-0" : "grayscale"
                         }`}
                     />
                   </div>
