@@ -188,7 +188,7 @@ export default function ProjectIndexSection({ projects }) {
             <p className="text-label-xs text-[rgba(33,32,32,0.48)]">
               Selected Work
             </p>
-            <h2 className="mt-6 font-signature text-xl md:text-2xl xl:text-6xl font-light leading-relaxed">
+            <h2 className="mt-6 font-signature text-5xl md:text-2xl xl:text-6xl font-light leading-relaxed">
               <span className="block whitespace-nowrap text-rustic-red">Project</span>
               <span className="block text-[#A34E24]">Index</span>
             </h2>

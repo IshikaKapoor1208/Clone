@@ -15,10 +15,10 @@ export default function ServicesSection() {
 
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-          <div className="text-label-xs text-ink/60 font-semibold shrink-0">
+          <div className="text-label-md text-ink/60 font-semibold shrink-0">
             Services
           </div>
-          <h2 className="max-w-3xl text-right md:text-left text-xl md:text-2xl xl:text-3xl font-body font-light leading-relaxed tracking-normal">
+          <h2 className="max-w-3xl text-right md:text-left text-2xl md:text-2xl xl:text-3xl font-body font-light leading-relaxed tracking-normal">
             <span className="text-rustic-red">How GP Architects </span>
             <span className="text-[#A34E24]">Can Help You</span>
           </h2>
@@ -63,7 +63,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Footer */}
-        <div className="mt-20 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 border-t border-ink/10 pt-10">
+        <div className="mt-20 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 border-t border-ink/10 pt-0 xl:pt-10">
           <div className="text-lg md:text-xl font-light max-w-3xl leading-relaxed text-ink">
             Our certified architects guide you through every stage of development <span>with expert knowledge and innovative solutions.</span>
           </div>
