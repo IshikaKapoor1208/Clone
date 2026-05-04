@@ -128,17 +128,17 @@ export default function Navbar() {
       </header>
 
       <div
-        className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-24 text-[#212020] transition duration-300 md:px-10 lg:px-20 ${isOpen
+        className={`fixed inset-0 z-[60] overflow-y-auto bg-white px-4 py-20 text-[#212020] transition duration-300 md:px-10 md:py-24 lg:px-20 ${isOpen
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0"
           }`}
       >
         <div
-          className={`grid min-h-[calc(100vh-12rem)] gap-12 transition duration-300 md:grid-cols-[minmax(0,1.1fr)_1px_minmax(0,0.9fr)] md:gap-12 lg:gap-16 ${isOpen ? "translate-y-0" : "translate-y-4"
+          className={`grid min-h-[calc(100vh-10rem)] gap-6 transition duration-300 md:min-h-[calc(100vh-12rem)] md:grid-cols-[minmax(0,1.1fr)_1px_minmax(0,0.9fr)] md:gap-12 lg:gap-16 ${isOpen ? "translate-y-0" : "translate-y-4"
             }`}
         >
           <div className="flex w-full items-center justify-center md:justify-start">
-            <ul className="w-full space-y-5 text-center md:space-y-7 md:text-left">
+            <ul className="mx-auto w-full max-w-[14rem] space-y-3 text-center md:mx-0 md:max-w-none md:space-y-7 md:text-left">
               {mainLinks.map((link) => (
                 <li key={link}>
                   {link === "Services" ? (
@@ -146,7 +146,7 @@ export default function Navbar() {
                       type="button"
                       onClick={() => scrollToSection("services")}
                       data-cursor="view"
-                      className="block w-full text-5xl font-semibold uppercase leading-none tracking-[0.08em] text-left transition duration-300 hover:text-black/55 md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
+                      className="block w-full text-center text-3xl font-semibold uppercase leading-none tracking-[0.07em] transition duration-300 hover:text-black/55 md:text-left md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
                     >
                       {link}
                     </button>
@@ -155,7 +155,7 @@ export default function Navbar() {
                       href={link === "Home" ? "/" : link === "Contact" ? "/contact" : `/#${link.toLowerCase()}`}
                       onClick={() => setIsOpen(false)}
                       data-cursor="view"
-                      className="block w-full text-5xl font-semibold uppercase leading-none tracking-[0.08em] transition duration-300 hover:text-black/55 md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
+                      className="block w-full text-center text-3xl font-semibold uppercase leading-none tracking-[0.07em] transition duration-300 hover:text-black/55 md:text-left md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
                     >
                       {link}
                     </Link>
