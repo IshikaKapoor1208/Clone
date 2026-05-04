@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
   const [cursorType, setCursorType] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const cursorTypeRef = useRef<string | null>(null);
+  const isVisibleRef = useRef(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -23,15 +25,26 @@ export default function CustomCursor() {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       
-      if (!isVisible) setIsVisible(true);
+      if (!isVisibleRef.current) {
+        isVisibleRef.current = true;
+        setIsVisible(true);
+      }
 
       // Check for hover types
       const target = e.target as HTMLElement;
       const cursorData = target.closest("[data-cursor]")?.getAttribute("data-cursor");
-      setCursorType(cursorData || null);
+      const nextType = cursorData || null;
+
+      if (cursorTypeRef.current !== nextType) {
+        cursorTypeRef.current = nextType;
+        setCursorType(nextType);
+      }
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseLeave = () => {
+      isVisibleRef.current = false;
+      setIsVisible(false);
+    };
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
@@ -40,7 +53,7 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [isVisible, mouseX, mouseY]);
+  }, [mouseX, mouseY]);
 
   if (!mounted) return null;
 

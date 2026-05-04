@@ -10,6 +10,7 @@ import SmoothScroll from "../components/SmoothScroll";
 import ComparisonSlider from "../components/ComparisonSlider";
 import IdentitySection from "../components/IdentitySection";
 import AnimatedHeroName from "../components/AnimatedHeroName";
+import { ArrowDown } from "lucide-react";
 
 export default function Page() {
   return (
@@ -90,6 +91,14 @@ export default function Page() {
               Start a Project
             </a>
           </div>
+
+          <a
+            href="#services"
+            aria-label="Scroll to services"
+            className="absolute bottom-3 left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center bg-transparent text-rustic-red shadow-none transition duration-300 ease-out hover:translate-y-1 hover:shadow-none sm:bottom-4 sm:h-14 sm:w-14 md:bottom-5"
+          >
+            <ArrowDown className="hero-scroll-arrow h-6 w-6 translate-y-0.5 stroke-[2.5] sm:h-7 sm:w-7" />
+          </a>
         </div>
       </section>
 

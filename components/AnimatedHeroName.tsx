@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 
 type AnimatedHeroNameProps = {
@@ -25,7 +25,7 @@ export default function AnimatedHeroName({
   const firstLineChars = useMemo(() => splitCharacters(firstLine), [firstLine]);
   const secondLineChars = useMemo(() => splitCharacters(secondLine), [secondLine]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const container = containerRef.current;
 
     if (!container) {
@@ -54,12 +54,14 @@ export default function AnimatedHeroName({
         y: 18,
         scale: 0.9,
         filter: "blur(6px)",
+        color: "#ffffff",
       },
       {
         opacity: 1,
         y: 0,
         scale: 1,
         filter: "blur(0px)",
+        color: "#b24e1f",
         duration: 0.9,
         ease: "power3.out",
         stagger: {
@@ -85,7 +87,7 @@ export default function AnimatedHeroName({
           <span
             key={key}
             data-hero-char
-            className={character === " " ? "inline-block w-[0.32em]" : "inline-block"}
+            className={character === " " ? "inline-block w-[0.32em] opacity-0" : "inline-block opacity-0"}
           >
             {character}
           </span>
@@ -96,7 +98,7 @@ export default function AnimatedHeroName({
           <span
             key={key}
             data-hero-char
-            className={character === " " ? "inline-block w-[0.32em]" : "inline-block"}
+            className={character === " " ? "inline-block w-[0.32em] opacity-0" : "inline-block opacity-0"}
           >
             {character}
           </span>
