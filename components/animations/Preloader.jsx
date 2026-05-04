@@ -150,7 +150,7 @@ export default function Preloader({ onComplete }) {
 				</div>
 				<p
 					ref={nameRef}
-					className="m-0 max-w-[18ch] font-body text-[1rem] font-light uppercase tracking-normal text-white/92 opacity-0 md:text-[1.15rem]"
+					className="m-0 max-w-[18ch] font-body text-[1rem] font-light uppercase tracking-normal text-white opacity-0 md:text-[1.15rem]"
 				>
 					{BRAND_TEXT}
 				</p>
