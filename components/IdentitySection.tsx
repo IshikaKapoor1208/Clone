@@ -27,7 +27,7 @@ export default function IdentitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="text-xl md:text-2xl xl:text-3xl font-body font-light leading-relaxed tracking-normal"
+                className="text-2xl md:text-2xl xl:text-3xl font-body font-light leading-relaxed tracking-normal"
               >
                 <span className="text-rustic-red">This isn&apos;t just </span>
                 <span className="text-[#A34E24]">about buildings.</span>
@@ -35,7 +35,7 @@ export default function IdentitySection() {
             </div>
 
             <div
-              className="mb-10 flex h-[200px] items-center justify-center gap-1 overflow-hidden md:h-[300px] lg:h-[360px]"
+              className="mb-10 flex h-[150px] items-center justify-center gap-1 overflow-hidden md:h-[2500px] lg:h-[360px] lg:px-16 xl:px-20"
             >
               {images.map((img, idx) => (
                 <motion.div

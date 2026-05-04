@@ -158,7 +158,7 @@ export default function HeroSection() {
     <section
       id="home"
       ref={sectionRef}
-      className={`relative min-h-screen overflow-hidden bg-white pt-8 md:pt-10 ${revealClassName}`}
+      className={`relative min-h-screen overflow-hidden bg-white pt-8 md:pl-20 ${revealClassName}`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
@@ -166,7 +166,7 @@ export default function HeroSection() {
         <div className="relative h-[50vh] w-full md:h-[62vh] lg:h-[78vh]">
           <div
             ref={videoShellRef}
-            className={`hero-video-feather overflow-hidden bg-[#212121] origin-center ${isVideoExpanded && !prefersReducedMotion
+            className={`hero-video-feather overflow-hidden origin-center ${isVideoExpanded && !prefersReducedMotion
               ? "fixed inset-0 z-50 rounded-none border-none"
               : "absolute inset-0 border border-black/10"
               }`}
@@ -210,13 +210,13 @@ export default function HeroSection() {
               }}
               aria-hidden="true"
             />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.14))]" />
+            <div className="pointer-events-none absolute inset-0 " />
           </div>
         </div>
 
         <div
           ref={sideContentRef}
-          className="flex items-center pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pl-12 lg:h-[78vh] xl:pl-12 xl:pb-54"
+          className="flex items-center pb-8 opacity-0 md:pb-20 lg:border-l lg:border-black/5 lg:pl-12 lg:h-[86vh] xl:pl-12 xl:pb-54"
         >
           <div className="max-w-[34rem]">
             <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.26em] text-black/40 md:mb-5">
@@ -224,7 +224,7 @@ export default function HeroSection() {
             </p>
             <h1
               ref={textContainerRef}
-              className="cursor-image font-signature opacity-0 text-2xl md:text-4xl xl:text-7xl font-light leading-relaxed"
+              className="cursor-image font-signature opacity-0 text-5xl md:text-5xl xl:text-8xl font-light leading-relaxed"
               onMouseEnter={(event) => {
                 setShowTitlePreview(true);
                 moveTitlePreview(event);

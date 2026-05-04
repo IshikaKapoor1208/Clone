@@ -20,7 +20,7 @@ const socialLinks = [
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
       </svg>
     ),
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/gaurav_patthare_architectss/?__pwa=1#",
     label: "Instagram"
   },
   { icon: <Mail size={18} />, href: "mailto:gauravpattharearchitects@gmail.com", label: "Email" },
@@ -34,7 +34,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative border-t border-black/5 bg-[#fcfbf9] px-6 py-16 md:px-12 md:py-5 overflow-hidden"
+      className="relative border-t mt-12 border-black/5 bg-[#fcfbf9] px-6 py-6 md:px-12 md:py-5 overflow-hidden"
     >
       {/* Subtle Background Pattern */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_100px)]" />
@@ -47,14 +47,14 @@ export default function Footer() {
             alt="Gaurav Patthare Architects"
             width={240}
             height={70}
-            className="h-16 md:h-20 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
+            className="h-14 md:h-16 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-16 lg:grid-cols-12 lg:gap-8">
 
           {/* Brand & Signature Column */}
-          <div className="lg:col-span-6 space-y-10">
+          <div className="col-span-1 lg:col-span-6 mt-12 space-y-10">
 
             <h2 className="font-signature text-4xl md:text-5xl xl:text-7xl font-light leading-tight tracking-tight">
               <span className="block text-rustic-red">Calm spaces,</span>
@@ -79,8 +79,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links Column */}
-          <div className="lg:col-span-3 lg:pt-16">
+          {/* Quick Links Columns */}
+          <div className="col-span-1 lg:col-span-3 mt-12 lg:mt-0 lg:pt-16">
             <p className="mb-8 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-black/30">
               Navigation
             </p>
@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
 
           {/* Contact & Studio Info Column */}
-          <div className="lg:col-span-3 lg:pt-16">
+          <div className="hidden lg:block lg:col-span-3 lg:pt-16">
             <p className="mb-8 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-black/30">
               Studio
             </p>

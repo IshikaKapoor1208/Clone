@@ -196,7 +196,7 @@ export default function CaseStudiesStickySection({ projects }) {
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
       <div className="sticky top-[-1px] z-40 mx-auto mb-10 w-full bg-white pt-[4.5rem] pb-3 shadow-[0_22px_58px_rgba(33,32,32,0.09)] lg:hidden">
-        <div className="max-w-[42rem] mx-auto overflow-hidden border border-black/10">
+        <div className="max-w-[42rem] mt-5 mx-auto overflow-hidden border border-black/10">
           <div className="relative aspect-[16/11] w-full overflow-hidden sm:aspect-[16/10]">
             {projects.map((project, index) => (
               <div
@@ -211,7 +211,7 @@ export default function CaseStudiesStickySection({ projects }) {
                   alt={project.imageAlt}
                   fill
                   sizes="100vw"
-                  className="h-full w-full object-cover object-center transition-all duration-500 ease-out"
+                  className="h-full w-full object-cover object-center transition-all duration-500  ease-out"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.16))]" />
               </div>
@@ -248,7 +248,7 @@ export default function CaseStudiesStickySection({ projects }) {
                 className="max-w-full space-y-5 md:max-w-[34rem] md:space-y-6"
               >
                 <div className="space-y-3">
-                  <h2 className="text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
+                  <h2 className="text-4xl md:text-4xl xl:text-5xl font-light leading-relaxed">
                     {(() => {
                       const words = project.title.trim().split(" ");
                       const last = words.pop();
