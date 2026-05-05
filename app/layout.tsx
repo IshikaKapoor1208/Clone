@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Cormorant_Garamond, Allison, Satisfy, Mr_De_Haviland, Kalam, Monsieur_La_Doulaise, Sacramento, Great_Vibes } from "next/font/google";
 import localFont from "next/font/local";
 import MagneticCursor from "../components/MagneticCursor";
+import AmbientOrnaments from "../components/AmbientOrnaments";
 import PreloaderGate from "../components/animations/PreloaderGate";
 import "./globals.css";
 
@@ -150,7 +151,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <MagneticCursor />
-        <PreloaderGate>{children}</PreloaderGate>
+        <PreloaderGate>
+          <AmbientOrnaments />
+          <div className="relative z-10">{children}</div>
+        </PreloaderGate>
       </body>
     </html>
   );

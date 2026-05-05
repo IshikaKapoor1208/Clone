@@ -172,6 +172,137 @@ a:hover .project-name::after {
   transform-origin: center;
 }
 
+.ambient-ornaments {
+  z-index: 0;
+}
+
+.ambient-ornament {
+  position: absolute;
+  will-change: transform;
+  filter: saturate(0.92);
+}
+
+.ambient-ornament__drift {
+  will-change: transform;
+}
+
+.ambient-ornament__parallax {
+  transform: translate3d(
+    calc(var(--ambient-x, 0) * var(--parallax-x, 0) * 1px),
+    calc(var(--ambient-y, 0) * var(--parallax-y, 0) * 1px),
+    0
+  );
+  transition: transform 140ms linear;
+}
+
+.ambient-ornament__parallax svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ambient-ornament--lines {
+  opacity: 0.34;
+}
+
+.ambient-ornament--circle {
+  opacity: 0.32;
+}
+
+.ambient-ornament--left {
+  left: -21vw;
+  top: 9%;
+  width: min(40vw, 380px);
+}
+
+.ambient-ornament--right {
+  right: -8vw;
+  top: 11%;
+  width: min(28vw, 300px);
+}
+
+.ambient-ornament--right-bottom {
+  right: -7vw;
+  bottom: 7%;
+  width: min(24vw, 260px);
+}
+
+.ambient-ornament--left-bottom {
+  left: 6vw;
+  bottom: 8%;
+  width: min(16vw, 160px);
+}
+
+.ambient-ornament__drift--lines {
+  animation: ambient-line-drift 36s ease-in-out infinite alternate;
+}
+
+.ambient-ornament__drift--circle {
+  animation: ambient-circle-float 42s ease-in-out infinite alternate, ambient-circle-spin 140s linear infinite;
+  transform-origin: center;
+}
+
+.ambient-ornament__drift--small-circle {
+  animation: ambient-small-circle-float 30s ease-in-out infinite alternate, ambient-circle-spin 110s linear infinite reverse;
+  transform-origin: center;
+}
+
+.ambient-ornament__drift--reverse {
+  animation-direction: alternate-reverse;
+}
+
+@keyframes ambient-line-drift {
+  0% {
+    transform: translate3d(-1.5%, -0.5%, 0);
+  }
+
+  50% {
+    transform: translate3d(1.25%, 0.8%, 0);
+  }
+
+  100% {
+    transform: translate3d(-0.75%, 1.35%, 0);
+  }
+}
+
+@keyframes ambient-circle-float {
+  0% {
+    transform: translate3d(-0.8%, -0.6%, 0) scale(0.985);
+  }
+
+  50% {
+    transform: translate3d(1%, 0.85%, 0) scale(1.01);
+  }
+
+  100% {
+    transform: translate3d(-0.4%, 1.2%, 0) scale(0.992);
+  }
+}
+
+@keyframes ambient-small-circle-float {
+  0% {
+    transform: translate3d(0.6%, 0.2%, 0) scale(0.97);
+  }
+
+  50% {
+    transform: translate3d(-0.4%, 1.1%, 0) scale(1.015);
+  }
+
+  100% {
+    transform: translate3d(0.8%, -0.35%, 0) scale(0.985);
+  }
+}
+
+@keyframes ambient-circle-spin {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
 .magnetic-cursor {
   position: fixed;
   top: 0;

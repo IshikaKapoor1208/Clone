@@ -1,7 +1,7 @@
 "use client";
 
-import { useId } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useId } from "react";
 
 const skylineBuildings = [
   { x: 74, width: 56, height: 36, windows: 1 },
@@ -62,9 +62,8 @@ function BuildingWindows({
 
 export default function AnimatedSkyline() {
   const prefersReducedMotion = useReducedMotion();
-  const maskId = useId();
+  const clipId = useId();
   const baseY = 172;
-  const revealWidth = 820;
 
   const skyline = (
     <svg
@@ -74,34 +73,12 @@ export default function AnimatedSkyline() {
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id={`skyline-glow-${maskId}`} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#c46e3d" stopOpacity="0" />
-          <stop offset="50%" stopColor="#c46e3d" stopOpacity="0.38" />
-          <stop offset="100%" stopColor="#c46e3d" stopOpacity="0" />
-        </linearGradient>
-
-        {!prefersReducedMotion ? (
-          <mask
-            id={`skyline-mask-${maskId}`}
-            maskUnits="userSpaceOnUse"
-            maskContentUnits="userSpaceOnUse"
-          >
-            <rect x="0" y="0" width={revealWidth} height="220" fill="black" />
-            <motion.rect
-              x="0"
-              y="0"
-              width="0"
-              height="220"
-              fill="white"
-              initial={{ width: 0 }}
-              animate={{ width: revealWidth }}
-              transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            />
-          </mask>
-        ) : null}
+        <clipPath id={`skyline-buildings-clip-${clipId}`}>
+          <rect x="0" y="0" width="820" height={baseY} />
+        </clipPath>
       </defs>
 
-      <g mask={prefersReducedMotion ? undefined : `url(#skyline-mask-${maskId})`}>
+      <g>
         <path
           d={`M24 ${baseY}H780`}
           stroke="#d8b08a"
@@ -110,37 +87,61 @@ export default function AnimatedSkyline() {
           strokeLinecap="round"
         />
 
-        {skylineBuildings.map((building) => {
-          const y = baseY - building.height;
+        <g clipPath={`url(#skyline-buildings-clip-${clipId})`}>
+          {skylineBuildings.map((building, index) => {
+            const y = baseY - building.height;
+            const buildingShape = (
+              <>
+                <rect
+                  x={building.x}
+                  y={y}
+                  width={building.width}
+                  height={building.height}
+                  rx="0"
+                  stroke="#d8b08a"
+                  strokeOpacity="0.95"
+                  strokeWidth="1.15"
+                />
+                <BuildingWindows
+                  x={building.x}
+                  y={y}
+                  width={building.width}
+                  height={building.height}
+                />
+              </>
+            );
 
-          return (
-            <g key={building.x}>
-              <rect
-                x={building.x}
-                y={y}
-                width={building.width}
-                height={building.height}
-                rx="0"
-                stroke="#d8b08a"
-                strokeOpacity="0.95"
-                strokeWidth="1.15"
-              />
-              <BuildingWindows
-                x={building.x}
-                y={y}
-                width={building.width}
-                height={building.height}
-              />
-            </g>
-          );
-        })}
+            if (prefersReducedMotion) {
+              return <g key={building.x}>{buildingShape}</g>;
+            }
 
-        <path
+            return (
+              <motion.g
+                key={building.x}
+                initial={{ opacity: 0, y: 34, scaleY: 0.2 }}
+                animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                transition={{
+                  delay: 0.18 + index * 0.1,
+                  duration: 0.52,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                style={{ transformBox: "fill-box", transformOrigin: "center bottom" }}
+              >
+                {buildingShape}
+              </motion.g>
+            );
+          })}
+        </g>
+
+        <motion.path
           d="M20 178H784"
           stroke="#c46e3d"
           strokeOpacity="0.18"
           strokeWidth="2"
           strokeLinecap="round"
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
+          animate={prefersReducedMotion ? undefined : { opacity: 1 }}
+          transition={{ duration: 0.35, ease: "easeOut", delay: 0.1 }}
         />
       </g>
     </svg>
@@ -153,12 +154,6 @@ export default function AnimatedSkyline() {
   return (
     <div className="relative overflow-hidden">
       {skyline}
-      <motion.div
-        className="pointer-events-none absolute inset-y-0 left-0 w-[24%] bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.18)_32%,rgba(255,255,255,0.46)_50%,rgba(255,255,255,0.18)_68%,rgba(255,255,255,0)_100%)]"
-        initial={{ x: "-140%" }}
-        animate={{ x: "260%" }}
-        transition={{ duration: 1.45, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      />
       <div className="pointer-events-none absolute inset-x-0 bottom-[6px] h-px bg-[#c46e3d]/15" />
     </div>
   );

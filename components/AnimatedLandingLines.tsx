@@ -13,9 +13,21 @@ const primaryPaths = [
 ];
 
 const beamCount = 20;
+const primaryStroke = "#a86a41";
+const secondaryStroke = "#b27a50";
 
 export default function AnimatedLandingLines() {
   const prefersReducedMotion = useReducedMotion();
+  const slowDrift = {
+    duration: 14,
+    repeat: Infinity,
+    ease: "easeInOut" as const,
+  };
+  const beamDrift = {
+    duration: 10,
+    repeat: Infinity,
+    ease: "easeInOut" as const,
+  };
 
   if (prefersReducedMotion) {
     return (
@@ -25,12 +37,12 @@ export default function AnimatedLandingLines() {
         fill="none"
         aria-hidden="true"
       >
-        <g stroke="#d2ab84" strokeLinecap="round" strokeLinejoin="round">
+        <g stroke={primaryStroke} strokeLinecap="round" strokeLinejoin="round">
           {primaryPaths.slice(0, 5).map((item) => (
             <path key={item.d} d={item.d} strokeWidth={item.strokeWidth} />
           ))}
         </g>
-        <g stroke="#d8b08a" strokeWidth="0.95" strokeLinecap="round">
+        <g stroke={secondaryStroke} strokeWidth="0.95" strokeLinecap="round">
           {Array.from({ length: beamCount }).map((_, index) => {
             const x = 74 + index * 13.4;
             const topY = 808 + index * 3.6;
@@ -51,10 +63,22 @@ export default function AnimatedLandingLines() {
       fill="none"
       aria-hidden="true"
       initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        x: [0, 2, -1, 0],
+        y: [0, -4, 0],
+        rotate: [0, -0.12, 0.08, 0],
+      }}
+      transition={{
+        opacity: { duration: 0.6, ease: "easeOut" },
+        scale: { duration: 0.6, ease: "easeOut" },
+        x: slowDrift,
+        y: { ...slowDrift, duration: 11 },
+        rotate: { ...slowDrift, duration: 18 },
+      }}
     >
-      <g stroke="#d2ab84" strokeLinecap="round" strokeLinejoin="round">
+      <g stroke={primaryStroke} strokeLinecap="round" strokeLinejoin="round">
         {primaryPaths.slice(0, 5).map((item) => (
           <motion.path
             key={item.d}
@@ -71,7 +95,7 @@ export default function AnimatedLandingLines() {
         ))}
       </g>
 
-      <g stroke="#d8b08a" strokeWidth="0.95" strokeLinecap="round">
+      <g stroke={secondaryStroke} strokeWidth="0.95" strokeLinecap="round">
         {Array.from({ length: beamCount }).map((_, index) => {
           const x = 74 + index * 13.4;
           const topY = 808 + index * 3.6;
@@ -84,11 +108,25 @@ export default function AnimatedLandingLines() {
               x2={x}
               y2={980}
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
+              animate={{
+                pathLength: 1,
+                opacity: [0, 1, 0.88, 1],
+                y: [0, -1.2, 0],
+              }}
               transition={{
                 duration: 0.8,
                 ease: "easeOut",
                 delay: 0.72 + index * 0.03,
+                opacity: {
+                  duration: 9.5 + index * 0.08,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.72 + index * 0.03,
+                },
+                y: {
+                  ...beamDrift,
+                  delay: index * 0.06,
+                },
               }}
             />
           );
@@ -99,11 +137,32 @@ export default function AnimatedLandingLines() {
             key={item.d}
             d={item.d}
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
+            animate={{
+              pathLength: 1,
+              opacity: [0, 1, 0.9, 1],
+              x: [0, 1.2, 0],
+              y: [0, -0.9, 0],
+            }}
             transition={{
               duration: 0.9,
               ease: "easeOut",
               delay: item.delay,
+              opacity: {
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: item.delay,
+              },
+              x: {
+                ...slowDrift,
+                duration: 16,
+                delay: item.delay,
+              },
+              y: {
+                ...slowDrift,
+                duration: 13,
+                delay: item.delay,
+              },
             }}
           />
         ))}

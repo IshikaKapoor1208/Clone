@@ -10,9 +10,7 @@ import SmoothScroll from "../components/SmoothScroll";
 import ComparisonSlider from "../components/ComparisonSlider";
 import IdentitySection from "../components/IdentitySection";
 import AnimatedHeroName from "../components/AnimatedHeroName";
-import AnimatedLandingLines from "../components/AnimatedLandingLines";
 import AnimatedSkyline from "../components/AnimatedSkyline";
-import AnimatedHeroCircle from "../components/AnimatedHeroCircle";
 import { ArrowDown } from "lucide-react";
 
 export default function Page() {
@@ -26,22 +24,6 @@ export default function Page() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_0%,rgba(250,247,243,0.94)_64%,rgba(246,242,237,1)_100%)]" />
 
         <div className="pointer-events-none absolute inset-0">
-          <AnimatedLandingLines />
-          <AnimatedHeroCircle />
-
-          <div className="absolute right-[4vw] top-[46%] grid gap-4 opacity-65 sm:right-[3vw] md:right-[6.5vw] md:top-[39%] md:gap-5 lg:right-[7vw]">
-            {Array.from({ length: 3 }).map((_, row) => (
-              <div key={`dots-row-${row}`} className="grid grid-cols-5 gap-3 sm:gap-4">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <span
-                    key={`dot-${row}-${index}`}
-                    className="h-[2px] w-[2px] rounded-full bg-[#c46e3d]"
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-
           <div className="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.58))]" />
         </div>
 
@@ -67,9 +49,9 @@ export default function Page() {
               href="/contact"
               data-cursor="view"
               className="inline-flex w-full items-center justify-center border border-[#c46e3d] bg-white/30 px-4 py-3 text-[0.62rem] uppercase tracking-[0.28em] text-[#b95b28] transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-[#b95b28] hover:bg-white/65 hover:shadow-[0_18px_36px_rgba(196,110,61,0.16)] active:translate-y-0 active:scale-[0.99] sm:w-[13.5rem] sm:flex-none sm:px-6 sm:py-3.5 sm:text-[0.7rem] sm:tracking-[0.3em] md:w-[14rem] md:px-7 md:py-3.5 md:text-[0.72rem]"
-            >
-              Start a Project
-            </a>
+              >
+                Start a Project
+              </a>
           </div>
 
           <div className="mt-8 mb-10 w-full max-w-[48rem] px-2 sm:mt-10 sm:mb-12 sm:px-4 md:mb-16 md:max-w-[52rem]">
