@@ -10,6 +10,9 @@ import SmoothScroll from "../components/SmoothScroll";
 import ComparisonSlider from "../components/ComparisonSlider";
 import IdentitySection from "../components/IdentitySection";
 import AnimatedHeroName from "../components/AnimatedHeroName";
+import AnimatedLandingLines from "../components/AnimatedLandingLines";
+import AnimatedSkyline from "../components/AnimatedSkyline";
+import AnimatedHeroCircle from "../components/AnimatedHeroCircle";
 import { ArrowDown } from "lucide-react";
 
 export default function Page() {
@@ -23,31 +26,8 @@ export default function Page() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_0%,rgba(250,247,243,0.94)_64%,rgba(246,242,237,1)_100%)]" />
 
         <div className="pointer-events-none absolute inset-0">
-          <svg
-            className="absolute left-[-23vw] top-[11%] h-[86%] w-[48vw] min-w-[180px] max-w-[460px] opacity-50 sm:left-[-18vw] sm:opacity-60 md:left-[-10vw] md:w-[36vw] md:opacity-65 lg:left-[-8vw]"
-            viewBox="0 0 420 980"
-            fill="none"
-            aria-hidden="true"
-          >
-            <g stroke="#d2ab84" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 176 L204 90 L204 784" strokeWidth="1.3" />
-              <path d="M18 176 L18 968 L204 784" strokeWidth="1.3" />
-              <path d="M204 545 L297 492" strokeWidth="1.05" />
-              <path d="M18 968 L204 784 L362 858" strokeWidth="1.05" />
-              <path d="M18 968 L18 858" strokeWidth="1.05" />
-            </g>
-            <g stroke="#d8b08a" strokeWidth="0.95" strokeLinecap="round">
-              {Array.from({ length: 20 }).map((_, index) => {
-                const x = 74 + index * 13.4;
-                const topY = 808 + index * 3.6;
-                return <line key={`beam-${index}`} x1={x} y1={topY} x2={x} y2={980} />;
-              })}
-              <path d="M18 868 L362 858" />
-              <path d="M68 802 L362 858" />
-            </g>
-          </svg>
-
-          <div className="absolute right-[-18vw] top-[16%] h-[38vw] w-[38vw] max-h-[360px] max-w-[360px] rounded-full border border-[#c46e3d]/35 opacity-70 sm:right-[-12vw] sm:h-[32vw] sm:w-[32vw] md:right-[-8vw] md:top-[18%] md:h-[42vw] md:w-[42vw] md:max-h-[520px] md:max-w-[520px] md:opacity-65 lg:right-[-4vw]" />
+          <AnimatedLandingLines />
+          <AnimatedHeroCircle />
 
           <div className="absolute right-[4vw] top-[46%] grid gap-4 opacity-65 sm:right-[3vw] md:right-[6.5vw] md:top-[39%] md:gap-5 lg:right-[7vw]">
             {Array.from({ length: 3 }).map((_, row) => (
@@ -92,10 +72,14 @@ export default function Page() {
             </a>
           </div>
 
+          <div className="mt-8 mb-10 w-full max-w-[48rem] px-2 sm:mt-10 sm:mb-12 sm:px-4 md:mb-16 md:max-w-[52rem]">
+            <AnimatedSkyline />
+          </div>
+
           <a
             href="#services"
             aria-label="Scroll to services"
-            className="absolute bottom-3 left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center bg-transparent text-rustic-red shadow-none transition duration-300 ease-out hover:translate-y-1 hover:shadow-none sm:bottom-4 sm:h-14 sm:w-14 md:bottom-5"
+            className="absolute bottom-[-8px] left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center bg-transparent text-rustic-red shadow-none transition duration-300 ease-out hover:translate-y-1 hover:shadow-none sm:bottom-[-6px] sm:h-14 sm:w-14 md:bottom-[-4px]"
           >
             <ArrowDown className="hero-scroll-arrow h-6 w-6 translate-y-0.5 stroke-[2.5] sm:h-7 sm:w-7" />
           </a>
