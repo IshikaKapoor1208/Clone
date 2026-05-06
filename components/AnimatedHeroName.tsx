@@ -80,25 +80,25 @@ export default function AnimatedHeroName({
   return (
     <h1
       ref={containerRef}
-      className={`font-signature text-[clamp(2.35rem,11vw,7.5rem)] leading-[0.9] tracking-[0.02em] text-[#b24e1f] ${className}`}
+      className={`font-signature text-[clamp(1.95rem,8.6vw,7.5rem)] leading-[0.88] tracking-[0.02em] text-[#b24e1f] md:text-[clamp(2.35rem,11vw,7.5rem)] md:leading-[0.9] ${className}`}
     >
       <span className="block">
         {firstLineChars.map(({ character, key }) => (
           <span
             key={key}
             data-hero-char
-            className={character === " " ? "inline-block w-[0.32em] opacity-0" : "inline-block opacity-0"}
+            className={character === " " ? "inline-block w-[0.32em] whitespace-nowrap opacity-0" : "inline-block whitespace-nowrap opacity-0"}
           >
             {character}
           </span>
         ))}
       </span>
-      <span className="mt-2.5 block text-[clamp(2rem,8.8vw,6.4rem)]">
+      <span className="mt-2.5 block whitespace-nowrap text-[clamp(1.8rem,7.8vw,6.4rem)] md:text-[clamp(2rem,8.8vw,6.4rem)]">
         {secondLineChars.map(({ character, key }) => (
           <span
             key={key}
             data-hero-char
-            className={character === " " ? "inline-block w-[0.32em] opacity-0" : "inline-block opacity-0"}
+            className={character === " " ? "inline-block w-[0.32em] whitespace-nowrap opacity-0" : "inline-block whitespace-nowrap opacity-0"}
           >
             {character}
           </span>
