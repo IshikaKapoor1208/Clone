@@ -20,15 +20,15 @@ export default function Page() {
       <SmoothScroll />
       <Navbar />
 
-      <section id="top" className="relative min-h-[100svh] overflow-hidden bg-white px-4 pt-20 sm:px-5 md:min-h-screen md:px-10 md:pt-28 lg:px-12">
+      <section id="top" className="relative min-h-[100svh] overflow-hidden bg-white px-4 pt-16 sm:px-5 md:min-h-screen md:px-10 md:pt-28 lg:px-12">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_0%,rgba(250,247,243,0.94)_64%,rgba(246,242,237,1)_100%)]" />
 
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.58))]" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[88rem] flex-col items-center justify-between px-1 pb-4 pt-6 text-center sm:gap-8 sm:pb-8 sm:pt-8 md:min-h-[calc(100vh-7rem)] md:justify-center md:gap-0 md:pb-0 md:pt-0">
-          <div className="flex flex-col items-center">
+        <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[88rem] flex-col items-center justify-center px-1 pb-4 pt-0 text-center sm:gap-8 sm:pb-8 sm:pt-4 md:min-h-[calc(100vh-7rem)] md:gap-0 md:pb-0 md:pt-0">
+          <div className="flex -translate-y-12 flex-col items-center sm:-translate-y-10 md:translate-y-0">
             <AnimatedHeroName
               firstLine="Gaurav Patthare"
               secondLine="Architects"
@@ -56,7 +56,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="w-full max-w-[48rem] px-2 sm:px-4 md:mt-10 md:max-w-[52rem]">
+          <div className="pointer-events-none absolute inset-x-0 bottom-10 mx-auto w-full max-w-[48rem] px-2 sm:bottom-12 sm:px-4 md:bottom-8 md:max-w-[52rem]">
             <AnimatedSkyline />
           </div>
 

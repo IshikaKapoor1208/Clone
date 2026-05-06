@@ -80,7 +80,7 @@ export default function AnimatedHeroName({
   return (
     <h1
       ref={containerRef}
-      className={`font-signature text-[clamp(1.95rem,8.6vw,7.5rem)] leading-[0.88] tracking-[0.02em] text-[#b24e1f] md:text-[clamp(2.35rem,11vw,7.5rem)] md:leading-[0.9] ${className}`}
+      className={`font-signature text-[3.1rem] leading-[0.88] tracking-[0.02em] text-[#b24e1f] min-[390px]:text-[3.55rem] sm:text-[5.35rem] md:text-[clamp(2.8rem,12vw,8rem)] md:leading-[0.9] ${className}`}
     >
       <span className="block">
         {firstLineChars.map(({ character, key }) => (
@@ -93,7 +93,7 @@ export default function AnimatedHeroName({
           </span>
         ))}
       </span>
-      <span className="mt-2.5 block whitespace-nowrap text-[clamp(1.8rem,7.8vw,6.4rem)] md:text-[clamp(2rem,8.8vw,6.4rem)]">
+      <span className="mt-2.5 block whitespace-nowrap text-[2.65rem] min-[390px]:text-[3.05rem] sm:text-[4.6rem] md:text-[clamp(2.45rem,9.6vw,7rem)]">
         {secondLineChars.map(({ character, key }) => (
           <span
             key={key}
