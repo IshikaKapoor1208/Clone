@@ -54,7 +54,7 @@ export default function Page() {
               </a>
           </div>
 
-          <div className="mt-auto mb-0 w-full max-w-[48rem] px-2 sm:mt-10 sm:mb-12 sm:px-4 md:mt-10 md:mb-16 md:max-w-[52rem]">
+          <div className="mt-10 mb-0 w-full max-w-[48rem] px-2 sm:mt-10 sm:mb-12 sm:px-4 md:mt-10 md:mb-16 md:max-w-[52rem]">
             <AnimatedSkyline />
           </div>
 
