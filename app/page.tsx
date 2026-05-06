@@ -27,17 +27,17 @@ export default function Page() {
           <div className="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.58))]" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[calc(100dvh-5rem)] max-w-[88rem] flex-col items-center justify-between px-1 pb-4 text-center sm:pb-8 md:min-h-[calc(100vh-7rem)] md:justify-center md:pb-0">
+        <div className="relative mx-auto flex min-h-[calc(100dvh-5rem)] max-w-[88rem] flex-col items-center justify-start gap-6 px-1 pb-4 text-center sm:gap-8 sm:pb-8 md:min-h-[calc(100vh-7rem)] md:justify-center md:gap-0 md:pb-0">
           <AnimatedHeroName
             firstLine="Gaurav Patthare"
             secondLine="Architects"
           />
 
-          <p className="mt-6 text-center text-[0.58rem] uppercase tracking-[0.34em] text-[#b95b28] sm:mt-8 sm:text-[0.68rem] sm:tracking-[0.45em] md:mt-10">
+          <p className="mt-4 text-center text-[0.58rem] uppercase tracking-[0.34em] text-[#b95b28] sm:mt-8 sm:text-[0.68rem] sm:tracking-[0.45em] md:mt-10">
             Architecture & Interior Design Studio
           </p>
 
-          <div className="mt-8 grid w-full max-w-[34rem] grid-cols-2 gap-3 sm:mt-10 sm:flex sm:max-w-none sm:flex-row sm:justify-center sm:gap-5">
+          <div className="mt-6 grid w-full max-w-[34rem] grid-cols-2 gap-3 sm:mt-10 sm:flex sm:max-w-none sm:flex-row sm:justify-center sm:gap-5">
             <a
               href="/projects"
               data-cursor="view"
@@ -54,7 +54,7 @@ export default function Page() {
               </a>
           </div>
 
-          <div className="mt-6 mb-0 w-full max-w-[48rem] px-2 sm:mt-10 sm:mb-12 sm:px-4 md:mb-16 md:max-w-[52rem]">
+          <div className="mt-auto mb-0 w-full max-w-[48rem] px-2 sm:mt-10 sm:mb-12 sm:px-4 md:mt-10 md:mb-16 md:max-w-[52rem]">
             <AnimatedSkyline />
           </div>
 

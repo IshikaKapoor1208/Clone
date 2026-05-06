@@ -35,7 +35,7 @@ export default function IdentitySection() {
             </div>
 
             <div
-              className="mb-10 flex h-[150px] items-center justify-center gap-1 overflow-hidden md:h-[2500px] lg:h-[360px] lg:px-16 xl:px-20"
+              className="mb-10 flex h-[150px] items-center justify-center gap-1 overflow-hidden md:h-[250px] lg:h-[360px] lg:px-16 xl:px-20"
             >
               {images.map((img, idx) => (
                 <motion.div
