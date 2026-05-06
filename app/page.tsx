@@ -20,41 +20,43 @@ export default function Page() {
       <SmoothScroll />
       <Navbar />
 
-      <section id="top" className="relative overflow-hidden bg-white px-4 pt-20 sm:px-5 md:min-h-screen md:px-10 md:pt-28 lg:px-12">
+      <section id="top" className="relative min-h-[100svh] overflow-hidden bg-white px-4 pt-20 sm:px-5 md:min-h-screen md:px-10 md:pt-28 lg:px-12">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_0%,rgba(250,247,243,0.94)_64%,rgba(246,242,237,1)_100%)]" />
 
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.58))]" />
         </div>
 
-        <div className="relative mx-auto flex max-w-[88rem] flex-col items-center justify-start gap-6 px-1 pb-4 text-center sm:gap-8 sm:pb-8 md:min-h-[calc(100vh-7rem)] md:justify-center md:gap-0 md:pb-0">
-          <AnimatedHeroName
-            firstLine="Gaurav Patthare"
-            secondLine="Architects"
-          />
+        <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[88rem] flex-col items-center justify-between px-1 pb-4 pt-6 text-center sm:gap-8 sm:pb-8 sm:pt-8 md:min-h-[calc(100vh-7rem)] md:justify-center md:gap-0 md:pb-0 md:pt-0">
+          <div className="flex flex-col items-center">
+            <AnimatedHeroName
+              firstLine="Gaurav Patthare"
+              secondLine="Architects"
+            />
 
-          <p className="mt-4 text-center text-[0.58rem] uppercase tracking-[0.34em] text-[#b95b28] sm:mt-8 sm:text-[0.68rem] sm:tracking-[0.45em] md:mt-10">
-            Architecture & Interior Design Studio
-          </p>
+            <p className="mt-4 text-center text-[0.58rem] uppercase tracking-[0.34em] text-[#b95b28] sm:mt-8 sm:text-[0.68rem] sm:tracking-[0.45em] md:mt-10">
+              Architecture & Interior Design Studio
+            </p>
 
-          <div className="mt-6 grid w-full max-w-[34rem] grid-cols-2 gap-3 sm:mt-10 sm:flex sm:max-w-none sm:flex-row sm:justify-center sm:gap-5">
-            <a
-              href="/projects"
-              data-cursor="view"
-              className="inline-flex w-full items-center justify-center border border-[#b95b28] bg-[linear-gradient(135deg,#c66a33_0%,#a64a20_100%)] px-4 py-3 text-[0.62rem] uppercase tracking-[0.28em] text-white shadow-[0_16px_40px_rgba(166,74,32,0.18)] transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-[#9f451e] hover:shadow-[0_22px_48px_rgba(166,74,32,0.28)] active:translate-y-0 active:scale-[0.99] sm:w-[13.5rem] sm:flex-none sm:px-6 sm:py-3.5 sm:text-[0.7rem] sm:tracking-[0.3em] md:w-[14rem] md:px-7 md:py-3.5 md:text-[0.72rem]"
-            >
-              Explore Work
-            </a>
-            <a
-              href="/contact"
-              data-cursor="view"
-              className="inline-flex w-full items-center justify-center border border-[#c46e3d] bg-white/30 px-4 py-3 text-[0.62rem] uppercase tracking-[0.28em] text-[#b95b28] transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-[#b95b28] hover:bg-white/65 hover:shadow-[0_18px_36px_rgba(196,110,61,0.16)] active:translate-y-0 active:scale-[0.99] sm:w-[13.5rem] sm:flex-none sm:px-6 sm:py-3.5 sm:text-[0.7rem] sm:tracking-[0.3em] md:w-[14rem] md:px-7 md:py-3.5 md:text-[0.72rem]"
+            <div className="mt-6 grid w-full max-w-[34rem] grid-cols-2 gap-3 sm:mt-10 sm:flex sm:max-w-none sm:flex-row sm:justify-center sm:gap-5">
+              <a
+                href="/projects"
+                data-cursor="view"
+                className="inline-flex w-full items-center justify-center border border-[#b95b28] bg-[linear-gradient(135deg,#c66a33_0%,#a64a20_100%)] px-4 py-3 text-[0.62rem] uppercase tracking-[0.28em] text-white shadow-[0_16px_40px_rgba(166,74,32,0.18)] transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-[#9f451e] hover:shadow-[0_22px_48px_rgba(166,74,32,0.28)] active:translate-y-0 active:scale-[0.99] sm:w-[13.5rem] sm:flex-none sm:px-6 sm:py-3.5 sm:text-[0.7rem] sm:tracking-[0.3em] md:w-[14rem] md:px-7 md:py-3.5 md:text-[0.72rem]"
               >
-                Start a Project
+                Explore Work
               </a>
+              <a
+                href="/contact"
+                data-cursor="view"
+                className="inline-flex w-full items-center justify-center border border-[#c46e3d] bg-white/30 px-4 py-3 text-[0.62rem] uppercase tracking-[0.28em] text-[#b95b28] transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-[#b95b28] hover:bg-white/65 hover:shadow-[0_18px_36px_rgba(196,110,61,0.16)] active:translate-y-0 active:scale-[0.99] sm:w-[13.5rem] sm:flex-none sm:px-6 sm:py-3.5 sm:text-[0.7rem] sm:tracking-[0.3em] md:w-[14rem] md:px-7 md:py-3.5 md:text-[0.72rem]"
+                >
+                  Start a Project
+                </a>
+            </div>
           </div>
 
-          <div className="mt-8 mb-0 w-full max-w-[48rem] px-2 sm:mt-10 sm:mb-12 sm:px-4 md:mt-10 md:mb-16 md:max-w-[52rem]">
+          <div className="w-full max-w-[48rem] px-2 sm:px-4 md:mt-10 md:max-w-[52rem]">
             <AnimatedSkyline />
           </div>
 
