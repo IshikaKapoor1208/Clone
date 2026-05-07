@@ -10,7 +10,7 @@ export default function ContactPage() {
         <main className="relative min-h-screen bg-white text-ink overflow-x-hidden">
             <Navbar />
 
-            <section className="relative px-6 py-16 md:px-12 md:py-24 pt-24">
+            <section className="relative px-6 py-16 pt-32 md:px-12 md:py-24 md:pt-40">
                 {/* Background Pattern */}
                 <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.01)_0,rgba(33,32,32,0.01)_1px,transparent_1px,transparent_86px)]" />
 
@@ -24,7 +24,7 @@ export default function ContactPage() {
                         <p className="text-[0.7rem] uppercase tracking-[0.3em] text-ink/50 mb-6">
                             Connect with us
                         </p>
-                        <h1 className="font-signature text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
+                        <h1 className="font-signature text-3xl md:text-4xl xl:text-6xl font-light leading-relaxed">
                             <span className="text-rustic-red">Get in </span>
                             <span className="text-[#A34E24] italic font-medium">Touch.</span>
                         </h1>

@@ -36,7 +36,7 @@ export default function ServicesSection() {
                 src={service.img}
                 alt={service.title}
                 fill
-                className="object-cover transition-transform duration-[1000ms] group-hover:scale-105"
+                className="object-cover object-[center_66%] transition-transform duration-[1000ms] group-hover:scale-105 md:object-[center_70%]"
               />
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
@@ -67,12 +67,15 @@ export default function ServicesSection() {
           <div className="text-lg md:text-xl font-light max-w-3xl leading-relaxed text-ink">
             Our certified architects guide you through every stage of development <span>with expert knowledge and innovative solutions.</span>
           </div>
-          <button className="group shrink-0 bg-ink px-8 py-4 text-paper flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95">
+          <a
+            href="#cta-section"
+            className="group shrink-0 bg-ink px-8 py-4 text-paper flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95"
+          >
             <span className="font-medium tracking-wide">Get Started</span>
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper/20 transform group-hover:translate-x-1 transition-transform">
               <ArrowRight className="w-4 h-4" />
             </div>
-          </button>
+          </a>
         </div>
 
       </div>

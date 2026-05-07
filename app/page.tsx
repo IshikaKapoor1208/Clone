@@ -38,11 +38,11 @@ export default function Page() {
             </p>
 
             <div className="mt-6 grid w-full max-w-[34rem] grid-cols-2 gap-3 sm:mt-10 sm:flex sm:max-w-none sm:flex-row sm:justify-center sm:gap-5">
-              <a
-                href="/projects"
-                data-cursor="view"
-                className="inline-flex w-full items-center justify-center border border-[#b95b28] bg-[linear-gradient(135deg,#c66a33_0%,#a64a20_100%)] px-4 py-3 text-[0.62rem] uppercase tracking-[0.28em] text-white shadow-[0_16px_40px_rgba(166,74,32,0.18)] transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-[#9f451e] hover:shadow-[0_22px_48px_rgba(166,74,32,0.28)] active:translate-y-0 active:scale-[0.99] sm:w-[13.5rem] sm:flex-none sm:px-6 sm:py-3.5 sm:text-[0.7rem] sm:tracking-[0.3em] md:w-[14rem] md:px-7 md:py-3.5 md:text-[0.72rem]"
-              >
+            <a
+              href="#projects-overview"
+              data-cursor="view"
+              className="inline-flex w-full items-center justify-center border border-[#b95b28] bg-[linear-gradient(135deg,#c66a33_0%,#a64a20_100%)] px-4 py-3 text-[0.62rem] uppercase tracking-[0.28em] text-white shadow-[0_16px_40px_rgba(166,74,32,0.18)] transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:border-[#9f451e] hover:shadow-[0_22px_48px_rgba(166,74,32,0.28)] active:translate-y-0 active:scale-[0.99] sm:w-[13.5rem] sm:flex-none sm:px-6 sm:py-3.5 sm:text-[0.7rem] sm:tracking-[0.3em] md:w-[14rem] md:px-7 md:py-3.5 md:text-[0.72rem]"
+            >
                 Explore Work
               </a>
               <a
@@ -59,7 +59,7 @@ export default function Page() {
             <AnimatedSkyline />
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-[-0.25rem] mx-auto w-[min(92vw,58rem)] px-4 md:bottom-[-2.75rem] lg:bottom-[-3.25rem]">
+          <div className="pointer-events-none absolute inset-x-0 bottom-2 mx-auto w-[min(92vw,58rem)] px-4 md:bottom-[-2rem] lg:bottom-[-2.5rem]">
             <div className="h-px bg-[#c46e3d]/18" />
             <div className="mt-3 h-px bg-[#c46e3d]/12" />
           </div>

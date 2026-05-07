@@ -10,7 +10,7 @@ export default function ServiceDetailPage({ service }) {
       <section className="relative px-6 py-16 md:px-12 md:py-24 pt-24">
         <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(33,32,32,0.018)_0,rgba(33,32,32,0.018)_1px,transparent_1px,transparent_86px)]" />
 
-        <div className="relative mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div className="relative mx-auto grid max-w-[1500px] gap-10 -translate-y-4 lg:-translate-y-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <Link
               href="/#services"
@@ -22,19 +22,19 @@ export default function ServiceDetailPage({ service }) {
             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-ink/45">
               {service.eyebrow}
             </p>
-            <h1 className="mt-5 max-w-[8ch] text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
+            <h1 className="mt-10 max-w-[8ch] text-2xl md:mt-12 md:text-3xl xl:text-5xl font-light leading-relaxed">
               {service.title}
             </h1>
           </div>
 
-          <div className="relative min-h-[62vh] overflow-hidden rounded-[2rem] bg-ink/10 shadow-[0_34px_90px_rgba(33,32,32,0.14)]">
+          <div className="relative min-h-[62vh] overflow-hidden rounded-[2rem] bg-ink/10 shadow-[0_34px_90px_rgba(33,32,32,0.14)] lg:mt-14 xl:mt-16">
             <Image
               src={service.img || service.heroImage}
               alt={`${service.title} design reference`}
               fill
               priority
               sizes="(max-width: 1023px) 100vw, 58vw"
-              className="object-cover"
+              className="object-cover object-[center_58%] md:object-[center_62%]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
             <p className="absolute bottom-8 left-8 max-w-xl text-2xl leading-snug text-white md:text-3xl">

@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }) {
                 </span>
               </div>
 
-              <h1 className="mt-6 max-w-[11ch] text-[clamp(3.2rem,9vw,7.4rem)] font-medium leading-[0.92] tracking-[-0.03em] text-ink">
+              <h1 className="mt-6 max-w-none whitespace-nowrap text-[clamp(3rem,7.5vw,7.4rem)] font-medium leading-[0.92] tracking-[-0.03em] text-ink">
                 {renderProjectTitle(project.title)}
               </h1>
 
@@ -263,7 +263,7 @@ export default async function ProjectPage({ params }) {
                 Next Project
               </p>
               <Link href={`/projects/${nextProject.slug}`} className="group inline-block">
-                <h2 className="max-w-[12ch] text-[clamp(2.2rem,5vw,4.6rem)] font-medium leading-[0.95] tracking-[-0.03em] text-white transition-opacity duration-300 group-hover:opacity-75">
+                <h2 className="max-w-none whitespace-nowrap text-[clamp(1.9rem,4.2vw,4.3rem)] font-medium leading-[0.95] tracking-[-0.03em] text-white transition-opacity duration-300 group-hover:opacity-75">
                   {renderProjectTitle(nextProject.title)}
                 </h2>
               </Link>

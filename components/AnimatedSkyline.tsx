@@ -4,6 +4,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useId } from "react";
 
 const skylineBuildings = [
+  { x: 8, width: 36, height: 28, windows: 1 },
+  { x: 48, width: 22, height: 40, windows: 1 },
   { x: 74, width: 56, height: 36, windows: 1 },
   { x: 134, width: 62, height: 58, windows: 2 },
   { x: 206, width: 50, height: 82, windows: 3 },
@@ -14,6 +16,8 @@ const skylineBuildings = [
   { x: 550, width: 56, height: 40, windows: 1 },
   { x: 618, width: 70, height: 92, windows: 3 },
   { x: 700, width: 58, height: 52, windows: 2 },
+  { x: 764, width: 34, height: 34, windows: 1 },
+  { x: 802, width: 12, height: 24, windows: 1 },
 ];
 
 function BuildingWindows({
@@ -87,7 +91,7 @@ export default function AnimatedSkyline() {
 
         <g>
           <path
-            d={`M24 ${baseY}H780`}
+            d={`M8 ${baseY}H812`}
             stroke="#d8b08a"
             strokeOpacity="0.42"
             strokeWidth="1.4"
@@ -141,7 +145,7 @@ export default function AnimatedSkyline() {
           </g>
 
           <motion.path
-            d="M20 178H784"
+            d="M8 178H812"
             stroke="#c46e3d"
             strokeOpacity="0.18"
             strokeWidth="2"
