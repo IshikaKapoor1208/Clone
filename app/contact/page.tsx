@@ -39,33 +39,33 @@ export default function ContactPage() {
                             className="lg:col-span-5 space-y-12"
                         >
                             <div className="space-y-8">
-                                <div className="flex gap-6">
+                                <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-6">
                                     <div className="shrink-0 w-12 h-12 border border-ink/10 flex items-center justify-center">
                                         <Mail className="w-5 h-5 text-ink/60" />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-[0.65rem] uppercase tracking-widest text-ink/40 mb-1">Email Enquiry</p>
-                                        <a href="mailto:gauravpathareyarchitects@gmail.com" className="text-xl hover:text-ink/60 transition-colors">gauravpathareyarchitects@gmail.com</a>
+                                        <a href="mailto:gauravpathareyarchitects@gmail.com" className="text-lg sm:text-xl break-all sm:break-normal hover:text-ink/60 transition-colors">gauravpathareyarchitects@gmail.com</a>
                                     </div>
                                 </div>
 
-                                <div className="flex gap-6">
+                                <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-6">
                                     <div className="shrink-0 w-12 h-12 border border-ink/10 flex items-center justify-center">
                                         <Phone className="w-5 h-5 text-ink/60" />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-[0.65rem] uppercase tracking-widest text-ink/40 mb-1">Call Us</p>
-                                        <a href="tel:+917420857333" className="text-xl hover:text-ink/60 transition-colors">7420-857333</a>
+                                        <a href="tel:+917420857333" className="text-lg sm:text-xl hover:text-ink/60 transition-colors">7420-857333</a>
                                     </div>
                                 </div>
 
-                                <div className="flex gap-6">
+                                <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-6">
                                     <div className="shrink-0 w-12 h-12 border border-ink/10 flex items-center justify-center">
                                         <MapPin className="w-5 h-5 text-ink/60" />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-[0.65rem] uppercase tracking-widest text-ink/40 mb-1">Studio Address</p>
-                                        <p className="text-xl leading-relaxed">
+                                        <p className="text-lg sm:text-xl leading-relaxed break-words">
                                             Office - 328 &amp; 329, 3rd Floor, Gera Imperium Gateway,<br />
                                             Metro Station Road of Nashik Phata, Opp. Bhosari,<br />
                                             Pune, Maharashtra 411034

@@ -69,7 +69,7 @@ export default function ServicesSection() {
           </div>
           <a
             href="#cta-section"
-            className="group shrink-0 bg-ink px-8 py-4 text-paper flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95"
+            className="group shrink-0 self-center lg:self-auto bg-ink px-8 py-4 text-paper flex items-center gap-3 hover:bg-ink/90 transition-all active:scale-95"
           >
             <span className="font-medium tracking-wide">Get Started</span>
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper/20 transform group-hover:translate-x-1 transition-transform">

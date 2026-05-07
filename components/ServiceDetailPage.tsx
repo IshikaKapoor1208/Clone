@@ -14,7 +14,7 @@ export default function ServiceDetailPage({ service }) {
           <div>
             <Link
               href="/#services"
-              className="mb-10 inline-flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-ink/55 transition hover:text-ink"
+              className="mt-6 mb-10 inline-flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-ink/55 transition hover:text-ink md:mt-0"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to services
@@ -113,7 +113,7 @@ export default function ServiceDetailPage({ service }) {
             <p className="text-xs uppercase tracking-[0.3em] text-paper/45">
               Process
             </p>
-            <h2 className="mt-4 text-xl md:text-2xl xl:text-3xl font-light leading-relaxed">
+            <h2 className="mt-4 text-2xl md:text-3xl xl:text-5xl font-light leading-relaxed">
               How we shape it
             </h2>
           </div>
