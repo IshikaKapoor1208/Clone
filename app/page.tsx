@@ -55,8 +55,13 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-10 mx-auto w-full max-w-[48rem] px-2 sm:bottom-12 sm:px-4 md:bottom-[-1.75rem] md:max-w-[52rem] lg:bottom-[-2.5rem]">
+          <div className="pointer-events-none absolute inset-x-0 bottom-10 mx-auto w-full max-w-[48rem] px-2 sm:bottom-12 sm:px-4 md:bottom-[-3rem] md:max-w-[52rem] lg:bottom-[-3.5rem]">
             <AnimatedSkyline />
+          </div>
+
+          <div className="pointer-events-none absolute inset-x-0 bottom-[-0.25rem] mx-auto w-[min(92vw,58rem)] px-4 md:bottom-[-2.75rem] lg:bottom-[-3.25rem]">
+            <div className="h-px bg-[#c46e3d]/18" />
+            <div className="mt-3 h-px bg-[#c46e3d]/12" />
           </div>
 
         </div>
