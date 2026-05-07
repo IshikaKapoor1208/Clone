@@ -28,7 +28,7 @@ export default function Page() {
         </div>
 
         <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[88rem] flex-col items-center justify-center px-1 pb-4 pt-0 text-center sm:gap-8 sm:pb-8 sm:pt-4 md:min-h-[calc(100vh-7rem)] md:gap-0 md:pb-0 md:pt-0">
-          <div className="flex -translate-y-12 flex-col items-center sm:-translate-y-10 md:translate-y-0">
+          <div className="flex -translate-y-12 flex-col items-center sm:-translate-y-10 md:-translate-y-8 lg:-translate-y-10">
             <AnimatedHeroName
               firstLine="Gaurav Patthare"
               secondLine="Architects"
@@ -56,14 +56,14 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-10 mx-auto w-full max-w-[48rem] px-2 sm:bottom-12 sm:px-4 md:bottom-8 md:max-w-[52rem]">
+          <div className="pointer-events-none absolute inset-x-0 bottom-10 mx-auto w-full max-w-[48rem] px-2 sm:bottom-12 sm:px-4 md:bottom-[-1.75rem] md:max-w-[52rem] lg:bottom-[-2.5rem]">
             <AnimatedSkyline />
           </div>
 
           <a
             href="#services"
             aria-label="Scroll to services"
-            className="absolute bottom-[-8px] left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center bg-transparent text-rustic-red shadow-none transition duration-300 ease-out hover:translate-y-1 hover:shadow-none sm:bottom-[-6px] sm:h-14 sm:w-14 md:bottom-[-4px]"
+            className="absolute bottom-[-8px] left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center bg-transparent text-rustic-red shadow-none transition duration-300 ease-out hover:translate-y-1 hover:shadow-none sm:bottom-[-6px] sm:h-14 sm:w-14 md:bottom-[-0.75rem] lg:bottom-[-0.5rem]"
           >
             <ArrowDown className="hero-scroll-arrow h-6 w-6 translate-y-0.5 stroke-[2.5] sm:h-7 sm:w-7" />
           </a>
