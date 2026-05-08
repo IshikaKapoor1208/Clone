@@ -146,7 +146,7 @@ export default function Navbar() {
                       type="button"
                       onClick={() => scrollToSection("services")}
                       data-cursor="view"
-                      className="block w-full text-center text-3xl font-semibold uppercase leading-none tracking-[0.07em] transition duration-300 hover:text-black/55 md:text-left md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
+                      className="block w-full text-center text-2xl font-semibold uppercase leading-none tracking-[0.07em] text-[#b24e1f] transition duration-300 hover:text-[#9f451e] md:text-left md:hover:translate-x-2 md:text-6xl lg:text-7xl xl:text-8xl"
                     >
                       {link}
                     </button>
@@ -155,7 +155,7 @@ export default function Navbar() {
                       href={link === "Home" ? "/" : link === "Contact" ? "/contact" : `/#${link.toLowerCase()}`}
                       onClick={() => setIsOpen(false)}
                       data-cursor="view"
-                      className="block w-full text-center text-3xl font-semibold uppercase leading-none tracking-[0.07em] transition duration-300 hover:text-black/55 md:text-left md:hover:translate-x-2 md:text-7xl lg:text-8xl xl:text-9xl"
+                      className="block w-full text-center text-2xl font-semibold uppercase leading-none tracking-[0.07em] text-[#b24e1f] transition duration-300 hover:text-[#9f451e] md:text-left md:hover:translate-x-2 md:text-6xl lg:text-7xl xl:text-8xl"
                     >
                       {link}
                     </Link>

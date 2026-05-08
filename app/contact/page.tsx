@@ -77,7 +77,7 @@ export default function ContactPage() {
                             <div className="pt-10 border-t border-ink/10">
                                 <p className="text-[0.65rem] uppercase tracking-widest text-ink/40 mb-6">Follow our Journal</p>
                                 <div className="flex gap-8">
-                                    {["Instagram", "LinkedIn", "Pinterest"].map((social) => (
+                                    {["Instagram", "LinkedIn"].map((social) => (
                                         <a
                                             key={social}
                                             href="#"

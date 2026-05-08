@@ -19,8 +19,11 @@ export default function Page() {
       <SmoothScroll />
       <Navbar />
 
-      <section id="top" className="relative min-h-[100svh] overflow-hidden bg-white px-4 pt-16 sm:px-5 md:min-h-screen md:px-10 md:pt-28 lg:px-12">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_0%,rgba(250,247,243,0.94)_64%,rgba(246,242,237,1)_100%)]" />
+      <section
+        id="top"
+        className="relative min-h-[100svh] overflow-hidden bg-[linear-gradient(180deg,#fbfaf7_0%,#ffffff_100%)] px-4 pt-16 sm:px-5 md:min-h-screen md:px-10 md:pt-28 lg:px-12"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(251,250,247,0.96)_0%,rgba(255,255,255,0.82)_68%,rgba(255,255,255,1)_100%)]" />
 
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.58))]" />
